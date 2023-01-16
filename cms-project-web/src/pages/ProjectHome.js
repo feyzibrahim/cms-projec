@@ -3,6 +3,7 @@ import firstImg from "../img/64.png";
 import secondImg from "../img/103.png";
 import thirdImg from "../img/152.png";
 import dp1 from "../img/dp1.png";
+import Footer from "../globalClasses/Footer";
 
 const ProjectHome = () => {
   return (
@@ -187,13 +188,17 @@ const ProjectHome = () => {
       </div>
 
       <div className="question">
-        <h1>Do you Have any Question</h1>
-        <p>put your email address and get started</p>
-        <div className="questionEmail">
-          <input type="text" />
-          <button className="fullColeredButton"> Send</button>
+        <div className="questionSub">
+          <h1>Do you Have any Question</h1>
+          <p>put your email address and get started</p>
+          <div className="questionEmail">
+            <input type="text" placeholder="Enter your Email Address" />
+            <button className="fullColeredButton"> Send</button>
+          </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };
