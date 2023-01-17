@@ -31,8 +31,9 @@
 .content {
   margin: 40px; 
   padding: 20px;
-  /* width: 600px; */
 }
+
+/* Buttons */
 
 .fullColeredButton {  
   padding: 10px 20px;
@@ -52,96 +53,43 @@
   background-color: transparent;
 }
 
-.firstpagetext, .firstpageimg {
-  width: 38%;
-  float: left;
-}
+/* HomePage */
 
-.firstpage {
-  height: 600px;
-  padding: 50px;
-  background-color: #F2ECFF;
-  border-radius: 50px;
-}
-
-.blog-preview {
-  padding: 10px 16px;
-  margin: 20px 0px;
-  border-bottom: 1px solid #fafafa;
-}
-
-.blog-preview:hover {
-  box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
-}
-
-.blog-preview h2 { 
-  font-size: 20px;
-  color: #f1356d;
-  margin-bottom: 8px;
-}
-
-.firstSession, .fifthSession {
+.firstSession {
   background-color: #F2ECFF;
   border-radius: 25px;
-  padding: 100px 50px;
-  height: 400px;
 }
 
-.firstSession p, .firstSession h1, .firstSession button {
-  margin-bottom: 10px;
+.session {
+  padding: 4% 4%;
+  display: flex;
+  justify-content: space-between;
 }
 
-.fifthSession p, .fifthSession h1, .fifthSession button {
-  margin-bottom: 10px;
+.item {
+  flex-basis: 100%;
 }
 
-.firstSessionLeft, .firstSessionRight{
-  width: 40%;
-  float: left;
+.session img {
+  width: 100%;
 }
 
-.fifthSession {
+.session p, .session h1, .session button {
+  margin-bottom: 20px;
+}
+
+.session h1 {
+  font-size: 3.1em;
+  font-weight: 900;
+  margin-top: 50px;
+}
+
+.rightAligned {
   text-align: right;
 }
 
-.fifthSessionLeft, .fifthSessionRight {
-  width: 50%;
-  float: left;
-}
-
-.fifthSessionRight img {
-  width: 120%;
-}
-
-.redd {
-  background-color: red;
-}
-
-.firstSession h1 {
-  font-size: 3.15em;
-  font-weight: 900;
-}
-
-.firstSessionRight img {
-  width: 150%;
-  margin-top: -50px;
-}
-
-.loginLeft, .loginRight {
-  width: 50%;
-  float: left;
-}
-
-.loginRight {
-  background-color: #f1356d;
-}
-
-.loginLeft {
-  background-color: #A38ED1;
-}
-
 .secondSession, .forthSession, .sixthSession{
-  padding: 100px 50px;
+  padding: 50px 50px;
   text-align: center;
   margin-bottom: 50px;
 }
@@ -150,20 +98,11 @@
   padding-bottom: 50px;
 }
 
-.workHead {
-  margin: 0 auto;
-  text-align:center;
-}
-
 .work {
-  width: 250px;
-  height: 220px;
-  background-color: #fff;
-  text-align: center;
+  flex-basis: 100%;
   padding: 40px 20px;
   border-radius: 20px;
   margin: 0 20px;
-  display: inline-block;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -189,6 +128,10 @@
   text-decoration: none;
 }
 
+.work h2 {
+  font-size: 35px;
+}
+
 .thirdSession {
   height: 500px;
   background-color: #F2ECFF;
@@ -204,7 +147,6 @@
 
 .plan {
   width: 250px;
-  height: 320px;
   background-color: #fff;
   text-align: left;
   padding: 40px 20px;
@@ -224,6 +166,22 @@
   margin-top: 50px;
   width: 100%;
 }
+
+
+.loginLeft, .loginRight {
+  width: 50%;
+  float: left;
+}
+
+.loginRight {
+  background-color: #f1356d;
+}
+
+.loginLeft {
+  background-color: #A38ED1;
+}
+
+
 
 .Contact{
   background-color: #f2ecff;
@@ -373,29 +331,21 @@
   font-weight: bold;
 }
 
-.main{
+.aboutPage {
   background-color: #f2ecff;
-  height:60vh;
-  margin:75px;
-  padding-top: 50px;
-  margin-top: 0px;
-  padding-left: 100px;
-  font-size:15px;
-  border-radius: 8px;
-  text-align: center;
+  padding: 80px 100px;
+  font-size: 15px;
+  border-radius: 25px;
 }
 
-.much,.move,.more{
-  float:left;
-  width:30%;
+.aboutPageImage {
+  display: flex;
+  margin-top: 50px;
+  justify-content: space-between;
 }
-.much img ,.more img ,.move img{
-  width:80%;
-  padding:70px;
-  font-size: 10px;
-}
-.sub{
-  text-align: left;
+
+.aboutPageImage img{
+  height: 200px;
 }
 
 .one{
@@ -463,9 +413,8 @@
 .questionSub {
   background-color: #F2ECFF;
   height: inherit;
-  /* filter: blur(8px); */
   box-shadow: 0 0 100px #F2ECFF;
-  padding-top: 100px;
+  padding-top: 50px;
 }
 
 .questionSub p {
@@ -485,4 +434,25 @@
 .questionEmail button {
   padding: 20px 30px;
   border-radius: 15px;
+}
+
+/* footer */
+
+.footerClass {
+  padding-top: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footerClass div {
+  padding: 30px 60px;
+}
+
+.footerClass li {
+  list-style: none;
+  padding: 10px;
+}
+
+.footerClass a {
+  text-decoration: none;
 }

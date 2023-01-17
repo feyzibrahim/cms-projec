@@ -1,5 +1,5 @@
 import React from "react";
-import firstImg from "../img/64.png";
+import firstImg from "../img/64_.png";
 import secondImg from "../img/103.png";
 import thirdImg from "../img/152.png";
 import dp1 from "../img/dp1.png";
@@ -9,25 +9,27 @@ const ProjectHome = () => {
   return (
     <div className="proHome">
       <div className="firstSession">
-        <div className="firstSessionLeft">
-          <h1>College Management System</h1>
-          <p>
-            Manage your institute just using e_campus, Subscribe to a plan to
-            get the full access to our website.
-          </p>
-          <button className="fullColeredButton">Get Started</button>
-        </div>
-        <div className="firstSessionRight">
-          <img src={firstImg} alt="Some Guy looking over computer" />
+        <div className="session">
+          <div className="item">
+            <h1>College Management System</h1>
+            <p>
+              Manage your institute just using e_campus, Subscribe to a plan to
+              get the full access to our website.
+            </p>
+            <button className="fullColeredButton">Get Started</button>
+          </div>
+          <div className="item">
+            <img src={firstImg} alt="Some Guy looking over computer" />
+          </div>
         </div>
       </div>
 
       <div className="secondSession">
         <h2>How it Works</h2>
-        <div className="workHead">
+        <div className="session">
           <div className="work">
             <div className="workCircle">
-              <h1>1</h1>
+              <h2>1</h2>
             </div>
             <h3>Register Your Institute</h3>
             <p>
@@ -38,7 +40,7 @@ const ProjectHome = () => {
           </div>
           <div className="work">
             <div className="workCircle">
-              <h1>2</h1>
+              <h2>2</h2>
             </div>
             <h3>Add your staff & Students</h3>
             <p>
@@ -49,7 +51,7 @@ const ProjectHome = () => {
           </div>
           <div className="work">
             <div className="workCircle">
-              <h1>3</h1>
+              <h2>3</h2>
             </div>
             <h3>Download Now</h3>
             <p>
@@ -67,8 +69,10 @@ const ProjectHome = () => {
           Available on App Store & Playstore. Click here to see the link for
           respective stores{" "}
         </p>
+        <p>
+          <img src={secondImg} alt="Something" />
+        </p>
         <button className="fullColeredButton">Sign Up Now</button>
-        <img src={secondImg} alt="Something" />
       </div>
 
       <div className="forthSession">
@@ -104,17 +108,19 @@ const ProjectHome = () => {
         </div>
       </div>
 
-      <div className="fifthSession">
-        <div className="fifthSessionRight">
-          <img src={thirdImg} alt="Some Guy looking over computer" />
-        </div>
-        <div className="fifthSessionLeft">
-          <h1>View The Statistics Graphically</h1>
-          <p>
-            Most of the data is represented graphically in order to help you
-            visibly see the datas and make decisions accordingly
-          </p>
-          <button className="fullColeredButton">Get Started</button>
+      <div className="firstSession">
+        <div className="session rightAligned">
+          <div className="item">
+            <img src={thirdImg} alt="Some Guy looking over computer" />
+          </div>
+          <div className="item">
+            <h1>View The Statistics Graphically</h1>
+            <p>
+              Most of the data is represented graphically in order to help you
+              visibly see the datas and make decisions accordingly
+            </p>
+            <button className="fullColeredButton">Get Started</button>
+          </div>
         </div>
       </div>
 
@@ -190,7 +196,7 @@ const ProjectHome = () => {
       <div className="question">
         <div className="questionSub">
           <h1>Do you Have any Question</h1>
-          <p>put your email address and get started</p>
+          <p>Enter your email address and get started</p>
           <div className="questionEmail">
             <input type="text" placeholder="Enter your Email Address" />
             <button className="fullColeredButton"> Send</button>

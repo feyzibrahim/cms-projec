@@ -6,7 +6,7 @@ const Navbar = () => {
     <nav className="navbar">
       <h1>e_campus</h1>
       <div className="links">
-        <Link to="/home">Home</Link>
+        <Link to="/">Home</Link>
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
         <Link to="/signup" className="fullColeredButton">
