@@ -21,7 +21,9 @@ const LoginPage = () => {
             <input type="password" placeholder="password"></input>
           </p>
           <p>
-            <button className="fullColeredButton">Login</button>
+            <button className="fullColeredButton" onClick={clickHandler}>
+              Login
+            </button>
           </p>
           <p className="havean">Don't have an account?sign up Now</p>
         </div>

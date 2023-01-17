@@ -1,5 +1,4 @@
 import React from "react";
-import Create from "./Create";
 import SignUp from "./pages/SignUp";
 import AboutPage from "./pages/AboutPage";
 import LoginPage from "./pages/LoginPage";
@@ -16,7 +15,6 @@ function App() {
         <div className="content">
           <Routes>
             <Route path="/" element={<ProjectHome />} />
-            <Route path="/create" element={<Create />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/contact" element={<ContactHome />} />
             <Route path="/about" element={<AboutPage />} />
