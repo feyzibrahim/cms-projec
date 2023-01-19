@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import Navbar from "./globalClasses/Navbar";
 import ContactHome from "./pages/ContactHome";
 import ProjectHome from "./pages/ProjectHome";
+import DashBoard from "./pages/DashBoard";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path="/contact" element={<ContactHome />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/dash" element={<DashBoard />} />
           </Routes>
         </div>
       </Router>
