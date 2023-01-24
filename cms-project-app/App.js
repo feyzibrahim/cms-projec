@@ -1,12 +1,16 @@
 import { StyleSheet, View } from "react-native";
-import Sub from "./Sub";
-import Login from "./Login";
+// import Sub from "./Sub";
+// import Login from "./Login";
+import Homepage from "./Homepage";
+// import Attendence from "./Attendence";
 
 export default function App() {
   return (
     <View style={styles.container}>
       {/* <Sub /> */}
-      <Login />
+      <Homepage />
+      {/* <Attendence /> */}
+
     </View>
   );
 }
