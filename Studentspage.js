@@ -6,7 +6,7 @@ import {
   Dimensions,
 } from "react-native";
 
-export default function Homepage() {
+export default function Studentspage() {
   return (
     <View style={styles.container}>
       <View>
@@ -14,7 +14,7 @@ export default function Homepage() {
       </View>
 
       <View>
-        <Text styles={styles.top}>Hello,Sir/Madam</Text>
+        <Text styles={styles.guys}>Hello,Guyzz</Text>
       </View>
 
       <View styles={styles.today}>
@@ -40,7 +40,7 @@ export default function Homepage() {
 
       <View style={styles.due}>
         <View>
-          <Text styles={styles.damn}>Due work</Text>
+          <Text styles={styles.damn}>Homework</Text>
         </View>
         <View>
           <Text>View all</Text>
@@ -51,18 +51,20 @@ export default function Homepage() {
         <TouchableOpacity>
           <Text>php programming</Text>
           <Text>2 day left</Text>
+          <Text>cookies uses cases</Text>
+          <Text>read page no 129-135</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.markandinternal}>
         <View style={styles.intern}>
           <TouchableOpacity>
-            <Text>ADD internals</Text>
+            <Text>view internals</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.attend}>
           <TouchableOpacity>
-            <Text>MARK attendence</Text>
+            <Text>view attendence</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -129,7 +131,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     margin: 20,
   },
-  top: {
+  guys: {
     fontWeight: "bold",
     fontSize: 20,
   },
@@ -137,6 +139,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     paddingHorizontal: 20,
-    width: "100%",
+    // width: "100%",
   },
 });
