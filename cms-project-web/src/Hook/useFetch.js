@@ -3,7 +3,7 @@ import { useWorkoutsContext } from "./useWorkoutsContext";
 
 const useFetch = (url) => {
   // const [data, setData] = useState(null);
-  const { data, dispatch } = useWorkoutsContext();
+  const { workouts, dispatch } = useWorkoutsContext();
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
 
@@ -25,9 +25,9 @@ const useFetch = (url) => {
     fetchWorkouts();
 
     return () => abortConst.abort();
-  }, [url]);
+  }, [url, dispatch]);
 
-  return { data, isPending, error };
+  return { workouts, isPending, error };
 };
 
 export default useFetch;
