@@ -167,22 +167,6 @@
   width: 100%;
 }
 
-
-.loginLeft, .loginRight {
-  width: 50%;
-  float: left;
-}
-
-.loginRight {
-  background-color: #f1356d;
-}
-
-.loginLeft {
-  background-color: #A38ED1;
-}
-
-
-
 .Contact{
   background-color: #f2ecff;
   padding-top: 50px;
@@ -457,10 +441,19 @@
   text-decoration: none;
 }
 
+
+/* dashboard */
+
+.Dashboardhome {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 100px;
+}
+
 /* Workout Dummy */
 
 .workout-details {
-  background: #fff;
+  background: #f1f1f1;
   border-radius: 4px;
   margin: 20px auto;
   padding: 20px;
@@ -470,13 +463,14 @@
 .workout-details h4 {
   margin: 0 0 10px 0;
   font-size: 1.2em;
-  color: var(--primary);
 }
+
 .workout-details p {
   margin: 0;
   font-size: 0.9em;
   color: #555;
 }
+
 .workout-details span {
   position: absolute;
   top: 20px;
@@ -486,4 +480,33 @@
   padding: 6px;
   border-radius: 50%;
   color: #333;
+}
+
+/* workout form */
+
+.workoutForm label, .workoutForm input {
+  display: block;
+}
+
+.workoutForm input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.workoutButton {
+  background-color: #f1356d;
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.workoutError {
+  padding: 10px;
+
 }
