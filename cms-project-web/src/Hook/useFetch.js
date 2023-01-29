@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import { useWorkoutsContext } from "./useWorkoutsContext";
 
 const useFetch = (url) => {
-  const [data, setData] = useState(null);
+  // const [data, setData] = useState(null);
+  const { workouts, dispatch } = useWorkoutsContext();
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
 
@@ -12,7 +14,7 @@ const useFetch = (url) => {
       const response = await fetch(url, { signal: abortConst.signal });
       const json = await response.json();
       if (response.ok) {
-        setData(json);
+        dispatch({ type: "SET_WORKOUTS", payload: json });
         setIsPending(false);
         setError(null);
       } else {
@@ -23,30 +25,9 @@ const useFetch = (url) => {
     fetchWorkouts();
 
     return () => abortConst.abort();
-  }, [url]);
+  }, [url, dispatch]);
 
-  return { data, isPending, error };
+  return { workouts, isPending, error };
 };
 
 export default useFetch;
-
-// fetch(url, { signal: abortConst.signal })
-//       .then((res) => {
-//         if (!res.ok) {
-//           throw Error("Could not fetch the data from Server");
-//         }
-//         return res.json();
-//       })
-//       .then((data) => {
-//         setData(data);
-//         setIsPending(false);
-//         setError(null);
-//       })
-//       .catch((err) => {
-//         if (err.name === "AbortError") {
-//           console.log("ferch aborted");
-//         } else {
-//           setIsPending(false);
-//           setError(err.message);
-//         }
-//       });
