@@ -10,8 +10,8 @@ import { useState } from "react";
 
 export default function Attendence() {
   const date = new Date().getDate();
-  const month = new Date().getMonth()+1;
-  const year =  new Date().getFullYear();
+  const month = new Date().getMonth() + 1;
+  const year = new Date().getFullYear();
 
   const [attendence, setttAttendence] = useState([
     { name: "aleesha", rollno: "1", key: "1", status: "present" },
@@ -21,15 +21,16 @@ export default function Attendence() {
   ]);
   return (
     <View style={styles.container}>
-      <View style={styles.one}>
-        <Text style={styles.nav}>Attendace</Text>
-        <Text>{date}-{month}-{year}</Text>
+      <View style={styles.attendanceTitleDate}>
+        <Text style={styles.attendText}>Attendance</Text>
+        <Text>
+          {date}-{month}-{year}
+        </Text>
       </View>
       <FlatList
         data={attendence}
         renderItem={({ item }) => (
-          //   <View style={styles.subItem}>
-          <View style={styles.attend}>
+          <View style={styles.studentListView}>
             <TouchableOpacity>
               <View style={styles.attendsub}>
                 <View>
@@ -42,7 +43,6 @@ export default function Attendence() {
               </View>
             </TouchableOpacity>
           </View>
-          //   </View>
         )}
       />
     </View>
@@ -52,18 +52,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#dfdfdf",
-    // alignItems: 'center',
     justifyContent: "center",
     paddingVertical: 30,
     width: Dimensions.get("window").width,
   },
-  one: {
+  attendanceTitleDate: {
     flexDirection: "row",
     justifyContent: "space-between",
     width: "100%",
     paddingHorizontal: 20,
   },
-  attend: {
+  studentListView: {
     marginVertical: 10,
     padding: 10,
     borderColor: "black",
@@ -75,7 +74,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingHorizontal: 20,
   },
-  nav: {
+  attendText: {
     fontWeight: "bold",
   },
 });

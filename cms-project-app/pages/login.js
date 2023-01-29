@@ -12,27 +12,27 @@ export default function Login() {
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.ecampus}>ECAMPUS</Text>
+        <Text style={styles.ecampusText}>ECAMPUS</Text>
       </View>
-      <View style={styles.user}>
+      <View style={styles.textInputView}>
         <TextInput placeholder="enter your username " />
       </View>
 
-      <View style={styles.user}>
+      <View style={styles.textInputView}>
         <TextInput placeholder="Password" />
       </View>
 
-      <View style={styles.hello}>
+      <View style={styles.signInView}>
         <TouchableOpacity>
-          <Text style={styles.hellotext}>Sign in</Text>
+          <Text style={styles.signInText}>Sign in</Text>
         </TouchableOpacity>
       </View>
       <View>
         <Text> or continue with</Text>
       </View>
 
-      <View styles={styles.bottam}>
-        <Text>Not a memember?register now</Text>
+      <View styles={styles.registerButton}>
+        <Text>Not a memember? register now</Text>
       </View>
       <StatusBar style="auto" />
     </View>
@@ -48,21 +48,21 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width,
     paddingHorizontal: 30,
   },
-  user: {
+  textInputView: {
     backgroundColor: "#fff",
     padding: 10,
     borderRadius: 8,
     margin: 30,
     alignSelf: "stretch",
   },
-  hello: {
+  signInView: {
     backgroundColor: "#553893",
     padding: 15,
     alignSelf: "stretch",
     margin: 30,
     borderRadius: 10,
   },
-  hellotext: {
+  signInText: {
     textAlign: "center",
   },
   pass: {
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 40,
   },
-  ecampus: {
+  ecampusText: {
     fontWeight: "900",
     fontSize: 50,
   },
