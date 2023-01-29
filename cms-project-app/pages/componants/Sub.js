@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import {
   StyleSheet,
   Text,
@@ -7,7 +6,6 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useState } from "react";
-// import Subject from "./Subject";
 
 export default function Sub() {
   const [subject, setSubjects] = useState([

@@ -6,65 +6,63 @@ import {
   Dimensions,
 } from "react-native";
 
-export default function Studentspage() {
+export default function TeacherPage() {
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.ecamp}>Ecampus</Text>
+        <Text style={styles.ecampTitle}>Ecampus</Text>
       </View>
 
       <View>
-        <Text styles={styles.guys}>Hello,Guyzz</Text>
+        <Text styles={styles.subTitle}>Hello,Sir/Madam</Text>
       </View>
 
-      <View styles={styles.today}>
+      <View style={styles.classAndClassCount}>
         <View>
-          <Text>clases</Text>
+          <Text>classes</Text>
         </View>
         <View>
-          <Text>5 clases Today</Text>
+          <Text>5 classes Today</Text>
         </View>
       </View>
 
-      <View style={styles.sub}>
+      <View style={styles.subjectView}>
         <TouchableOpacity>
-          <Text>java</Text>
+          <Text>Java</Text>
           <Text>09:00-10:00</Text>
         </TouchableOpacity>
-        <View style={styles.div1}>
+        <View style={styles.subjectSubView}>
           <TouchableOpacity>
-            <Text>teacher:neethu</Text>
+            <Text>Teacher: Neethu</Text>
           </TouchableOpacity>
         </View>
       </View>
 
-      <View style={styles.due}>
+      <View style={styles.dueWorkView}>
         <View>
-          <Text styles={styles.damn}>Homework</Text>
+          <Text styles={styles.dueText}>Due work</Text>
         </View>
         <View>
           <Text>View all</Text>
         </View>
       </View>
 
-      <View style={styles.teach}>
+      <View style={styles.homeWorkView}>
         <TouchableOpacity>
           <Text>php programming</Text>
           <Text>2 day left</Text>
-          <Text>cookies uses cases</Text>
-          <Text>read page no 129-135</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.markandinternal}>
-        <View style={styles.intern}>
+        <View style={styles.addInternalView}>
           <TouchableOpacity>
-            <Text>view internals</Text>
+            <Text>ADD Internals</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.attend}>
+        <View style={styles.addAttendenceView}>
           <TouchableOpacity>
-            <Text>view attendence</Text>
+            <Text>MARK Attendence</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -81,64 +79,59 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width,
     margin: 20,
   },
-  sub: {
+  ecampTitle: {
+    fontWeight: "bold",
+    margin: 20,
+  },
+  subTitle: {
+    fontWeight: "bold",
+    fontSize: 20,
+  },
+  classAndClassCount: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+  },
+  subjectView: {
     backgroundColor: "#553893",
     padding: 40,
     margin: 40,
     borderRadius: 10,
     alignSelf: "stretch",
   },
-  teach: {
-    backgroundColor: "#553893",
-    padding: 50,
-    margin: 50,
-    borderRadius: 10,
-  },
-  damn: {
-    margin: 40,
-  },
-  intern: {
-    backgroundColor: "#553893",
-    padding: 20,
-    margin: 30,
-  },
-  count: {
-    fontSize: 60,
-    fontWeight: "900",
-  },
-  attend: {
-    backgroundColor: "#553893",
-    padding: 20,
-    margin: 30,
-  },
-  div1: {
+  subjectSubView: {
     backgroundColor: "pink",
     padding: 10,
     margin: 30,
     borderRadius: 10,
     alignSelf: "stretch",
   },
-  markandinternal: {
-    flexDirection: "row",
-  },
-  due: {
+  dueWorkView: {
     flexDirection: "row",
     justifyContent: "space-between",
     paddingHorizontal: 20,
     width: "100%",
   },
-  ecamp: {
-    fontWeight: "bold",
-    margin: 20,
+  dueText: {
+    margin: 40,
   },
-  guys: {
-    fontWeight: "bold",
-    fontSize: 20,
+  homeWorkView: {
+    backgroundColor: "#553893",
+    padding: 50,
+    margin: 50,
+    borderRadius: 10,
   },
-  today: {
+  markandinternal: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    paddingHorizontal: 20,
-    // width: "100%",
+  },
+  addInternalView: {
+    backgroundColor: "#553893",
+    padding: 20,
+    margin: 30,
+  },
+  addAttendenceView: {
+    backgroundColor: "#553893",
+    padding: 20,
+    margin: 30,
   },
 });

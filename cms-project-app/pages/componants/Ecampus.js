@@ -2,8 +2,8 @@ import { StyleSheet, Text, View } from "react-native";
 
 export default function Ecampus(item) {
   return (
-    <View>
-      <Text style={styles.camp}>ECAMPUS</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>ECAMPUS</Text>
     </View>
   );
 }
@@ -15,8 +15,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-
-  camp: {
+  title: {
     fontWeight: "bold",
     fontSize: 20,
   },

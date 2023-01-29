@@ -1,20 +1,9 @@
-import { StyleSheet, View } from "react-native";
-// import Sub from "./Sub";
-// import Login from "./Login";
-// import Homepage from "./Homepage";
-// import Attendence from "./Attendence";
-// import Studentspage from "./Studentspage";
-// import Ecampus from "./Ecampus";
-import Profile from "./Profile";
+import { StyleSheet, View, Text } from "react-native";
+import Profile from "./pages/login";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      {/* <Sub /> */}
-      {/* <Homepage /> */}
-      {/* <Attendence /> */}
-      {/* <Studentspage /> */}
-      {/* <Ecampus /> */}
       <Profile />
     </View>
   );
