@@ -17,7 +17,7 @@ export default function Homepage() {
         <Text styles={styles.top}>Hello,Sir/Madam</Text>
       </View>
 
-      <View styles={styles.today}>
+      <View style={styles.today}>
         <View>
           <Text>clases</Text>
         </View>
@@ -137,6 +137,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     paddingHorizontal: 20,
-    width: "100%",
+    // width: "100%",
   },
 });
