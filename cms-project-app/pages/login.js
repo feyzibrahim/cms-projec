@@ -8,7 +8,11 @@ import {
   Dimensions,
 } from "react-native";
 
-export default function Login() {
+export default function Login({ navigation }) {
+  const gotomainpage = () => {
+    navigation.navigate("students");
+  };
+
   return (
     <View style={styles.container}>
       <View>
@@ -23,7 +27,7 @@ export default function Login() {
       </View>
 
       <View style={styles.signInView}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={gotomainpage}>
           <Text style={styles.signInText}>Sign in</Text>
         </TouchableOpacity>
       </View>

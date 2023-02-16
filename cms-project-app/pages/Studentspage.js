@@ -6,7 +6,10 @@ import {
   Dimensions,
 } from "react-native";
 
-export default function Studentspage() {
+export default function Studentspage({ navigation }) {
+  const gotoattendace = () => {
+    navigation.navigate("Attendencepage");
+  };
   return (
     <View style={styles.container}>
       <View>
@@ -63,7 +66,7 @@ export default function Studentspage() {
           </TouchableOpacity>
         </View>
         <View style={styles.addAttendenceView}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={gotoattendace}>
             <Text>View Attendence</Text>
           </TouchableOpacity>
         </View>
