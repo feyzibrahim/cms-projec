@@ -10,6 +10,11 @@ export default function Studentspage({ navigation }) {
   const gotoattendace = () => {
     navigation.navigate("Attendencepage");
   };
+
+  const gotoInternal = () => {
+    navigation.navigate("internal");
+  };
+
   return (
     <View style={styles.container}>
       <View>
@@ -61,7 +66,7 @@ export default function Studentspage({ navigation }) {
 
       <View style={styles.markandinternal}>
         <View style={styles.addInternalView}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={gotoInternal}>
             <Text>View Internals</Text>
           </TouchableOpacity>
         </View>

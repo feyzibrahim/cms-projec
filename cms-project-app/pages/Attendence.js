@@ -19,6 +19,7 @@ export default function Attendence() {
     { name: "linto", rollno: "3", key: "3", status: "absent" },
     { name: "ahalya", rollno: "4", key: "4", status: "absent" },
   ]);
+
   return (
     <View style={styles.container}>
       <View style={styles.attendanceTitleDate}>
