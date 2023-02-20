@@ -14,7 +14,9 @@
   border-bottom: 1px solid #F2F2F2;
 }
 
-.navbar .links {
+.links {
+  display: flex;
+  align-items: center;
   margin-left: auto;
 }
 
@@ -232,7 +234,7 @@
 }
 .text{
   background-color: #f2ecff;
-  height: 100vh;
+  height: 65vh;
   margin: 50px;
   padding-top: 50px;
   margin-top: 0px;
@@ -357,11 +359,11 @@
 .some img{
   width:80%;
 }
-.some,.two{
+.some,.signupForm{
   float:left;
   width:50%;
 }
-.two input ,.two button{
+.signupForm input ,.signupForm button{
   width: 70%;
 }
 
@@ -371,7 +373,7 @@
   background-color: transparent;
 }
 
-.two{
+.signupForm{
   text-align: center;
 }
 .four{
@@ -381,7 +383,7 @@
 .five{
   font-size: 16px;
 }
-.two p{
+.signupForm p{
   padding: 1px;
 }
 
@@ -506,7 +508,7 @@
   border-radius: 4px;
 }
 
-.workoutError {
+.workoutError, .error {
   padding: 10px;
   background: #ffefef;
   border: 1px solid #e7195a;
