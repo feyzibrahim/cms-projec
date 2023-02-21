@@ -2,6 +2,7 @@
 
 * {
   margin: 0;
+  padding: 0;
   font-family: "Quicksand";
   color: #333;
 }
@@ -14,7 +15,9 @@
   border-bottom: 1px solid #F2F2F2;
 }
 
-.navbar .links {
+.links {
+  display: flex;
+  align-items: center;
   margin-left: auto;
 }
 
@@ -36,11 +39,16 @@
 /* Buttons */
 
 .fullColeredButton {  
-  padding: 10px 20px;
+  padding: 10px;
+  cursor: pointer;
   background-color: #A38ED1;
   border-radius: 10px;
   color: #fff;
   border: none;
+}
+
+.fullColeredButton:active {
+  background-color: #9582bf;
 }
 
 .fullColeredButton:hover {
@@ -232,7 +240,7 @@
 }
 .text{
   background-color: #f2ecff;
-  height: 100vh;
+  height: 65vh;
   margin: 50px;
   padding-top: 50px;
   margin-top: 0px;
@@ -251,6 +259,11 @@
   background-color:#F2ecff;
   border-bottom:2px solid #A38ED1;
   outline: none;
+}
+
+.enterYourDetails {
+  font-size: medium;
+  margin: 20px 0;
 }
 
 .pic, .bbb{
@@ -357,11 +370,11 @@
 .some img{
   width:80%;
 }
-.some,.two{
+.some,.signupForm{
   float:left;
   width:50%;
 }
-.two input ,.two button{
+.signupForm input ,.signupForm button{
   width: 70%;
 }
 
@@ -371,7 +384,7 @@
   background-color: transparent;
 }
 
-.two{
+.signupForm{
   text-align: center;
 }
 .four{
@@ -381,7 +394,7 @@
 .five{
   font-size: 16px;
 }
-.two p{
+.signupForm p{
   padding: 1px;
 }
 
@@ -442,9 +455,9 @@
 }
 
 
-/* dashboard */
+/* dash */
 
-.Dashboardhome {
+.Dashhome {
   display: grid;
   grid-template-columns: 3fr 2fr;
   gap: 100px;
@@ -506,7 +519,7 @@
   border-radius: 4px;
 }
 
-.workoutError {
+.workoutError, .error {
   padding: 10px;
   background: #ffefef;
   border: 1px solid #e7195a;
@@ -517,4 +530,88 @@
 
 input.error {
   border: 1px solid #e7195a;
+}
+
+/* Dashboard new */
+.DashBoardhome {
+  margin: 0;
+}
+
+.dHome {
+  width: 75%;
+  margin-left: 20%;
+  padding: 2%;
+}
+
+.dHomeNav {
+  display: flex;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  justify-content: space-between;
+}
+
+.dHomeNavRight {
+  display: flex;
+}
+
+.dHomeNavRight span {
+padding-left: 20px;
+}
+
+
+/* VerticalNavbar */
+
+.verticalNavbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 20%;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 90%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.verticalNavbar ul li a {
+  display: block;
+  color: #000;
+  padding: 20px 16px;
+  text-decoration: none;
+  opacity: .5;
+  display: flex;
+}
+
+.verticalNavbar ul li a span {
+  padding-right: 10px;
+}
+
+.verticalNavbar ul li a.active {
+  background-color: #ccc;
+  opacity: 1;
+  border-right: #A38ED1 5px solid;
+}
+
+.verticalNavbar ul li a:hover:not(.active) {
+  background-color: #aeaeae;
+  opacity: 1;
+}
+
+.verticalNavbar button {
+  border: none;
+  padding: 20px;
+  font-size: large;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.verticalNavbar button:hover {
+  background-color: #ccc;
+}
+
+.verticalNavbar button:active {
+  background-color: #a1a1a1;
 }

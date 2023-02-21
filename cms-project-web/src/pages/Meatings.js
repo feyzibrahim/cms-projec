@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import useFetch from "../Hook/useFetch";
 import VerticalNavbar from "../globalClasses/VerticalNavbar";
 
-const DashBoard = () => {
+const Meatings = () => {
   // const { workouts, isPending, error } = useFetch("/api/workouts");
   var today = new Date(),
     date = today.toTimeString();
@@ -16,12 +16,12 @@ const DashBoard = () => {
   });
 
   return (
-    <div className="DashBoardhome">
+    <div className="Meatingshome">
       <VerticalNavbar />
       <div className="dHome">
         <div className="dHomeNav">
           <div className="dHomeNavLeft">
-            <h1>Dashboard</h1>
+            <h1>Meatings</h1>
             <p>{date}</p>
           </div>
           <div className="dHomeNavRight">
@@ -36,4 +36,4 @@ const DashBoard = () => {
   );
 };
 
-export default DashBoard;
+export default Meatings;

@@ -6,7 +6,7 @@ import Footer from "../globalClasses/Footer";
 
 const AboutPage = () => {
   return (
-    <div>
+    <div className="content">
       <div className="aboutPage">
         <div className="sub">
           <h1>Meet our team of creators</h1>
