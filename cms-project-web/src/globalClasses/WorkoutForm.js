@@ -51,29 +51,29 @@ const WorkoutForm = () => {
 
   return (
     <form className="workoutForm" onSubmit={handleSubmit}>
-      <h3>Add a new Workout</h3>
-      <label>Exrcise Title</label>
+      <h3>Add a new Teacher</h3>
+      <label>Teacher name</label>
       <input
         type="text"
         onChange={(e) => setTitle(e.target.value)}
         value={title}
         className={emptyFields.includes("title") ? "error" : ""}
       />
-      <label>Load (In Kg):</label>
+      <label>Id</label>
       <input
         type="number"
         onChange={(e) => setLoad(e.target.value)}
         value={load}
         className={emptyFields.includes("load") ? "error" : ""}
       />
-      <label>Reps </label>
+      <label>Phone no:</label>
       <input
         type="number"
         onChange={(e) => setReps(e.target.value)}
         value={reps}
         className={emptyFields.includes("reps") ? "error" : ""}
       />
-      <button className="workoutButton">Add Workout</button>
+      <button className="workoutButton">Add Teacher</button>
       {error && <div className="workoutError">{error}</div>}
     </form>
   );

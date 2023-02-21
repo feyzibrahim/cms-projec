@@ -28,11 +28,11 @@ const WorkoutDetails = ({ workout }) => {
     <div className="workout-details">
       <h4>{workout.title}</h4>
       <p>
-        <strong>Load (kg): </strong>
+        <strong>Id: </strong>
         {workout.load}
       </p>
       <p>
-        <strong>Number of reps: </strong>
+        <strong>Condact Number: </strong>
         {workout.reps}
       </p>
       <p>
