@@ -1,21 +1,57 @@
 import { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
-export default function Internal() {
+export default function Internal({ navigation }) {
+  const gotomarksheetpage = () => {
+    navigation.navigate("Studentmarksheet");
+  };
   const [sem, setSem] = useState([
-    "sem1",
-    "sem2",
-    "sem3",
-    "sem4",
-    "sem5",
-    "sem6",
+    { sem: "SEM1", key: "1", color: "#9A85C9" },
+    { sem: "SEM2", key: "2", color: "#A29AFF" },
+    { sem: "SEM3", key: "3", color: "#CDC7DA" },
+    { sem: "SEM4", key: "4", color: "#9A85C9" },
+    { sem: "SEM5", key: "5", color: "#A29AFF" },
+    { sem: "SEM6", key: "6", color: "#CDC7DA" },
   ]);
 
   return (
     <View style={styles.container}>
-      <Text>heeee</Text>
+      <FlatList
+        data={sem}
+        renderItem={({ item }) => (
+          <View style={styles.subItem}>
+            <TouchableOpacity>
+              <View
+                style={{
+                  backgroundColor: item.color,
+                  width: 300,
+                  padding: 40,
+                  marginBottam: 40,
+                  borderRadius: 20,
+                }}
+              >
+                <View>
+                  <TouchableOpacity onPress={gotomarksheetpage}>
+                    <Text>{item.sem}</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </TouchableOpacity>
+          </View>
+        )}
+      />
     </View>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  subItem: {
+    margin: 30,
+  },
+});

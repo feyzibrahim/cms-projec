@@ -18,6 +18,10 @@ export default function Attendence() {
     { name: "aneena", rollno: "2", key: "2", status: "present" },
     { name: "linto", rollno: "3", key: "3", status: "absent" },
     { name: "ahalya", rollno: "4", key: "4", status: "absent" },
+    { name: "anjana", rollno: "5", key: "5", status: "present" },
+    { name: "ansila", rollno: "6", key: "6", status: "absent" },
+    { name: "fahima", rollno: "7", key: "7", status: "absent" },
+    { name: "jadeera", rollno: "8", key: "8", status: "present" },
   ]);
 
   return (
