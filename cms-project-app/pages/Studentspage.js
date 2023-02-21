@@ -4,6 +4,7 @@ import {
   Text,
   TouchableOpacity,
   Dimensions,
+  ScrollView,
 } from "react-native";
 
 export default function Studentspage({ navigation }) {
@@ -16,67 +17,69 @@ export default function Studentspage({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
-      <View>
-        <Text style={styles.ecampTitle}>Ecampus</Text>
-      </View>
-
-      <View>
-        <Text styles={styles.subTitle}>Hello,Sir/Madam</Text>
-      </View>
-
-      <View style={styles.classAndClassCount}>
+    <ScrollView>
+      <View style={styles.container}>
         <View>
-          <Text>classes</Text>
+          <Text style={styles.ecampTitle}>Ecampus</Text>
         </View>
-        <View>
-          <Text>5 classes Today</Text>
-        </View>
-      </View>
 
-      <View style={styles.subjectView}>
-        <TouchableOpacity>
-          <Text>Java</Text>
-          <Text>09:00-10:00</Text>
-        </TouchableOpacity>
-        <View style={styles.subjectSubView}>
+        <View>
+          <Text styles={styles.subTitle}>Hello,Sir/Madam</Text>
+        </View>
+
+        <View style={styles.classAndClassCount}>
+          <View>
+            <Text>classes</Text>
+          </View>
+          <View>
+            <Text>5 classes Today</Text>
+          </View>
+        </View>
+
+        <View style={styles.subjectView}>
           <TouchableOpacity>
-            <Text>Teacher: Neethu</Text>
+            <Text>Java</Text>
+            <Text>09:00-10:00</Text>
+          </TouchableOpacity>
+          <View style={styles.subjectSubView}>
+            <TouchableOpacity>
+              <Text>Teacher: Neethu</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        <View style={styles.dueWorkView}>
+          <View>
+            <Text styles={styles.dueText}>Due work</Text>
+          </View>
+          <View>
+            <Text>View all</Text>
+          </View>
+        </View>
+
+        <View style={styles.homeWorkView}>
+          <TouchableOpacity>
+            <Text>php programming</Text>
+            <Text>2 day left</Text>
+            <Text>cookies uses cases</Text>
+            <Text>read page no 129-135</Text>
           </TouchableOpacity>
         </View>
-      </View>
 
-      <View style={styles.dueWorkView}>
-        <View>
-          <Text styles={styles.dueText}>Due work</Text>
-        </View>
-        <View>
-          <Text>View all</Text>
-        </View>
-      </View>
-
-      <View style={styles.homeWorkView}>
-        <TouchableOpacity>
-          <Text>php programming</Text>
-          <Text>2 day left</Text>
-          <Text>cookies uses cases</Text>
-          <Text>read page no 129-135</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.markandinternal}>
-        <View style={styles.addInternalView}>
-          <TouchableOpacity onPress={gotoInternal}>
-            <Text>View Internals</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.addAttendenceView}>
-          <TouchableOpacity onPress={gotoattendace}>
-            <Text>View Attendence</Text>
-          </TouchableOpacity>
+        <View style={styles.markandinternal}>
+          <View style={styles.addInternalView}>
+            <TouchableOpacity onPress={gotoInternal}>
+              <Text>View Internals</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.addAttendenceView}>
+            <TouchableOpacity onPress={gotoattendace}>
+              <Text>View Attendence</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 const styles = StyleSheet.create({
