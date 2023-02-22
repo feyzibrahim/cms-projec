@@ -8,27 +8,47 @@ import {
   Dimensions,
 } from "react-native";
 export default function StudentMarksheet() {
-  const [Mark, setMark] = useState([
+  const [mark, setMark] = useState([
     { sub: "maths", internal: "14", external: "60", maxinternal: "15" },
     { sub: "statitics", internal: "13", external: "60", maxinternal: "20" },
     { sub: "c programming", internal: "14", external: "60", maxinternal: "15" },
+    { sub: "c programming", internal: "14", external: "60", maxinternal: "15" },
+    { sub: "c programming", internal: "14", external: "60", maxinternal: "15" },
+    { sub: "c programming", internal: "14", external: "60", maxinternal: "15" },
+    { sub: "c programming", internal: "14", external: "60", maxinternal: "15" },
+    { sub: "c programming", internal: "14", external: "60", maxinternal: "15" },
+    { sub: "c programming", internal: "14", external: "60", maxinternal: "15" },
+    { sub: "c programming", internal: "14", external: "60", maxinternal: "15" },
+    { sub: "c programming", internal: "14", external: "60", maxinternal: "15" },
+    { sub: "c programming", internal: "14", external: "60", maxinternal: "15" },
+    { sub: "c programming", internal: "14", external: "60", maxinternal: "15" },
+    { sub: "c programming", internal: "14", external: "60", maxinternal: "15" },
+    { sub: "c programming", internal: "14", external: "60", maxinternal: "15" },
   ]);
   return (
-    <FlatList>
-      data={Mark}
-      renderItem=
-      {({ item }) => (
-        <View style={styles.marksheet}>
+    <View>
+      <FlatList
+        data={mark}
+        renderItem={({ item }) => (
           <TouchableOpacity>
-            <View>
-              <Text>{item.sub}</Text>
-              <Text>{item.internal}</Text>
-              <Text>{item.maxinternal}</Text>
+            <View style={styles.marksheet}>
+              <Text>Subject: {item.sub}</Text>
+              <Text>
+                Internal: {item.internal}/{item.maxinternal}
+              </Text>
             </View>
           </TouchableOpacity>
-        </View>
-      )}
-    </FlatList>
+        )}
+      />
+    </View>
   );
 }
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  marksheet: {
+    // backgroundColor: "#ccc",
+    padding: 10,
+    marginVertical: 5,
+    borderColor: "#ccc",
+    borderBottomWidth: 2,
+  },
+});

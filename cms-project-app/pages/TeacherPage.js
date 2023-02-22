@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 30,
     width: Dimensions.get("window").width,
-    margin: 20,
+    // margin: 20,
   },
   ecampTitle: {
     fontWeight: "bold",

@@ -18,7 +18,11 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen name="loginpage" component={Login} />
         <Stack.Screen name="profilepage" component={Profile} />
-        <Stack.Screen name="students" component={Studentspage} />
+        <Stack.Screen
+          name="students"
+          component={Studentspage}
+          options={{ title: "Ecampus" }}
+        />
         <Stack.Screen name="subject" component={Sub} />
         <Stack.Screen name="Teacher" component={TeacherPage} />
         <Stack.Screen name="Attendencepage" component={Attendence} />

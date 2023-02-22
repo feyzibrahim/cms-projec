@@ -7,7 +7,7 @@ const Classes = () => {
   var today = new Date(),
     date = today.toTimeString();
 
-  const [college, setCollege] = useState({
+  const [college] = useState({
     college: "Lissah College",
     place: "Kaithapoyil",
     teachersCount: 57,
