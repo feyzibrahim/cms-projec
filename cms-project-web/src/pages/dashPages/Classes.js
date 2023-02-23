@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import VerticalNavbar from "../globalClasses/VerticalNavbar";
 
-const Settings = () => {
+const Classes = () => {
   var today = new Date(),
     date = today.toTimeString();
 
@@ -14,12 +13,11 @@ const Settings = () => {
   });
 
   return (
-    <div className="Settingshome">
-      <VerticalNavbar />
+    <div className="Classeshome">
       <div className="dHome">
         <div className="dHomeNav">
           <div className="dHomeNavLeft">
-            <h1>Settings</h1>
+            <h1>Classes</h1>
             <p>{date}</p>
           </div>
           <div className="dHomeNavRight">
@@ -34,4 +32,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default Classes;

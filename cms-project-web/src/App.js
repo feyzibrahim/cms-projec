@@ -11,15 +11,15 @@ import LoginPage from "./pages/LoginPage";
 import Navbar from "./globalClasses/Navbar";
 import ContactHome from "./pages/ContactHome";
 import ProjectHome from "./pages/ProjectHome";
-import Dash from "./pages/Dash";
 import { useAuthContext } from "./Hook/useAuthContext";
 import DashBoard from "./pages/DashBoard";
-import Dues from "./pages/Dues";
-import Meatings from "./pages/Meatings";
-import Teachers from "./pages/Teachers";
-import Courses from "./pages/Courses";
-import Classes from "./pages/Classes";
-import Settings from "./pages/Settings";
+import Dues from "./pages/dashPages/Dues";
+import Meatings from "./pages/dashPages/Meatings";
+import Teachers from "./pages/dashPages/Teachers";
+import Courses from "./pages/dashPages/Courses";
+import Classes from "./pages/dashPages/Classes";
+import Settings from "./pages/dashPages/Settings";
+import Dash from "./pages/dashPages/Dash";
 
 function App() {
   const { user } = useAuthContext();
@@ -43,17 +43,19 @@ function App() {
             />
             <Route
               path="/dash"
-              element={user ? <Dash /> : <Navigate to="/" />}
-            />
+              element={user ? <DashBoard /> : <Navigate to="/" />}
+            >
+              <Route index element={<Dash />} />
+              <Route path="teachers" element={<Teachers />} />
+              <Route path="dues" element={<Dues />} />
+              <Route path="meatings" element={<Meatings />} />
+              <Route path="teachers" element={<Teachers />} />
+              <Route path="courses" element={<Courses />} />
+              <Route path="settings" element={<Settings />} />
+              <Route path="classes" element={<Classes />} />
+            </Route>
             <Route path="/contact" element={<ContactHome />} />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/dashboard" element={<DashBoard />} />
-            <Route path="/dues" element={<Dues />} />
-            <Route path="/meatings" element={<Meatings />} />
-            <Route path="/teachers" element={<Teachers />} />
-            <Route path="/courses" element={<Courses />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/classes" element={<Classes />} />
           </Routes>
         </div>
       </Router>

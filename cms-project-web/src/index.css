@@ -13,6 +13,7 @@
   align-items: center;
   margin: 0 auto;
   border-bottom: 1px solid #F2F2F2;
+  height: 5vh;
 }
 
 .links {
@@ -533,14 +534,16 @@ input.error {
 }
 
 /* Dashboard new */
-.DashBoardhome {
-  margin: 0;
+
+.dashHomee {
+  padding: 30px;
 }
 
-.dHome {
-  width: 75%;
-  margin-left: 20%;
-  padding: 2%;
+.DashBoardhome {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  height: 89vh;
 }
 
 .dHomeNav {
@@ -566,10 +569,9 @@ padding-left: 20px;
   list-style-type: none;
   margin: 0;
   padding: 0;
-  width: 20%;
+  /* width: 20%; */
   background-color: #f1f1f1;
-  position: fixed;
-  height: 90%;
+  /* height: 100%; */
   overflow: auto;
   display: flex;
   flex-direction: column;
