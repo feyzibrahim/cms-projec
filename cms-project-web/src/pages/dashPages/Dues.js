@@ -15,7 +15,7 @@ const Dues = () => {
   });
 
   return (
-    <div className="Dueshome">
+    <div className="Dueshome addSomeMargin">
       <div className="dHome">
         <div className="dHomeNav">
           <div className="dHomeNavLeft">

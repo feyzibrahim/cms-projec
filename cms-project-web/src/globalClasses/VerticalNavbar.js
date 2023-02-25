@@ -1,49 +1,77 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useLogout } from "../Hook/useLogout";
 
 const Navbar = () => {
+  const { logout } = useLogout();
+
+  const handleClick = () => {
+    logout();
+  };
+
   return (
     <nav className="verticalNavbar">
       <ul>
         <li>
-          <NavLink activeClassName="active" to="/">
+          <NavLink
+            className={({ isActive }) => (isActive ? "active" : "inactive")}
+            to="/dash"
+          >
             <span className="material-symbols-outlined">dashboard</span>
             Dashboard
           </NavLink>
         </li>
         <li>
-          <NavLink activeClassName="active" to="/dash/teachers">
+          <NavLink
+            className={({ isActive }) => (isActive ? "active" : "inactive")}
+            to="/dash/teachers"
+          >
             <span className="material-symbols-outlined">Groups</span>Teachers
           </NavLink>
         </li>
         <li>
-          <NavLink activeClassName="active" to="/dash/classes">
+          <NavLink
+            className={({ isActive }) => (isActive ? "active" : "inactive")}
+            to="/dash/classes"
+          >
             <span className="material-symbols-outlined">Class</span>Class
           </NavLink>
         </li>
         <li>
-          <NavLink activeClassName="active" to="/dash/courses">
+          <NavLink
+            className={({ isActive }) => (isActive ? "active" : "inactive")}
+            to="/dash/courses"
+          >
             <span className="material-symbols-outlined">Person</span>Courses
           </NavLink>
         </li>
         <li>
-          <NavLink activeClassName="active" to="/dash/meatings">
+          <NavLink
+            className={({ isActive }) => (isActive ? "active" : "inactive")}
+            to="/dash/meatings"
+          >
             <span className="material-symbols-outlined">Hearing</span>Meatings
           </NavLink>
         </li>
         <li>
-          <NavLink activeClassName="active" to="/dash/dues">
+          <NavLink
+            className={({ isActive }) => (isActive ? "active" : "inactive")}
+            to="/dash/dues"
+          >
             <span className="material-symbols-outlined">Hourglass_Empty</span>
             Dues
           </NavLink>
         </li>
         <li>
-          <NavLink activeClassName="active" to="/dash/settings">
+          <NavLink
+            className={({ isActive }) => (isActive ? "active" : "inactive")}
+            to="/dash/settings"
+          >
             <span className="material-symbols-outlined">Settings</span>Settings
           </NavLink>
         </li>
       </ul>
-      <button>
+      <button onClick={handleClick}>
         <span className="material-symbols-outlined">Logout</span>Logout
       </button>
     </nav>

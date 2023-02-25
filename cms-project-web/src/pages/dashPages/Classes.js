@@ -13,7 +13,7 @@ const Classes = () => {
   });
 
   return (
-    <div className="Classeshome">
+    <div className="Classeshome addSomeMargin">
       <div className="dHome">
         <div className="dHomeNav">
           <div className="dHomeNavLeft">

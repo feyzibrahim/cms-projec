@@ -15,7 +15,7 @@ const Meatings = () => {
   });
 
   return (
-    <div className="Meatingshome">
+    <div className="Meatingshome addSomeMargin">
       <div className="dHome">
         <div className="dHomeNav">
           <div className="dHomeNavLeft">

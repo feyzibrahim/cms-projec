@@ -13,7 +13,7 @@ const Settings = () => {
   });
 
   return (
-    <div className="Settingshome">
+    <div className="Settingshome addSomeMargin">
       <div className="dHome">
         <div className="dHomeNav">
           <div className="dHomeNavLeft">

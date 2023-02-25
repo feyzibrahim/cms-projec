@@ -1,15 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useLogout } from "../Hook/useLogout";
 import { useAuthContext } from "../Hook/useAuthContext";
 
 const Navbar = () => {
-  const { logout } = useLogout();
   const { user } = useAuthContext();
-
-  const handleClick = () => {
-    logout();
-  };
 
   return (
     <nav className="navbar">
@@ -30,9 +24,6 @@ const Navbar = () => {
         )}
         {user && (
           <div>
-            <button className="borderColoredButton" onClick={handleClick}>
-              Log Out
-            </button>
             <span>{user.email}</span>
           </div>
         )}

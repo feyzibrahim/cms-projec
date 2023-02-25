@@ -18,7 +18,7 @@ const Teachers = () => {
   const { workouts, isPending, error } = useFetch("/api/workouts");
 
   return (
-    <div className="Teachershome">
+    <div className="Teachershome addSomeMargin">
       <div className="dHomeNav">
         <div className="dHomeNavLeft">
           <h1>Teachers</h1>

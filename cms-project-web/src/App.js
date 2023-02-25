@@ -34,11 +34,11 @@ function App() {
               element={!user ? <ProjectHome /> : <Navigate to="/dash" />}
             />
             <Route
-              path="/login"
+              path="login"
               element={!user ? <LoginPage /> : <Navigate to="/dash" />}
             />
             <Route
-              path="/signup"
+              path="signup"
               element={!user ? <SignUp /> : <Navigate to="/dash" />}
             />
             <Route
@@ -54,8 +54,8 @@ function App() {
               <Route path="settings" element={<Settings />} />
               <Route path="classes" element={<Classes />} />
             </Route>
-            <Route path="/contact" element={<ContactHome />} />
-            <Route path="/about" element={<AboutPage />} />
+            <Route path="contact" element={<ContactHome />} />
+            <Route path="about" element={<AboutPage />} />
           </Routes>
         </div>
       </Router>

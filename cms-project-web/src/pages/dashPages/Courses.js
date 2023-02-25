@@ -15,7 +15,7 @@ const Courses = () => {
   });
 
   return (
-    <div className="Courseshome">
+    <div className="Courseshome addSomeMargin">
       <div className="dHome">
         <div className="dHomeNav">
           <div className="dHomeNavLeft">
