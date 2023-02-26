@@ -621,3 +621,53 @@ padding-left: 20px;
 .addSomeMargin{
   margin: 30px;
 }
+
+/* College Dashboard */
+
+.dashCollegeDetail {
+  display: grid;
+  grid-template-columns: 2.5fr 1.5fr;
+  margin-top: 30px;
+}
+
+.countList {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.countListCounter {
+  background-color: #DFDFDF;
+  padding: 15px 10px;
+  margin-right: 10px;
+  border-radius: 15px;
+}
+
+.dashCollegeDetailRight {
+  background-color: #DFDFDF;
+  padding: 20px;
+  border-radius: 15px;
+  height: 65vh;
+}
+
+.dashCollegeDetailRight p {
+  padding-top: 10px;
+}
+
+.dashTodos {
+  background-color: #DFDFDF;
+  padding: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  border-radius: 15px;
+  height: 56vh;
+}
+
+.dashTodosNav {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.dashTodos p {
+  padding-left: 20px;
+}
