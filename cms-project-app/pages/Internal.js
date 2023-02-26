@@ -34,7 +34,7 @@ export default function Internal({ navigation }) {
         data={sem}
         renderItem={({ item }) => (
           <View style={styles.subItem}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={gotomarksheetpage}>
               <View
                 style={{
                   backgroundColor: item.color,
@@ -44,11 +44,7 @@ export default function Internal({ navigation }) {
                   borderRadius: 20,
                 }}
               >
-                <View>
-                  <TouchableOpacity onPress={gotomarksheetpage}>
-                    <Text>{item.sem}</Text>
-                  </TouchableOpacity>
-                </View>
+                <Text>{item.sem}</Text>
               </View>
             </TouchableOpacity>
           </View>

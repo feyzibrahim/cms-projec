@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-// import useFetch from "../Hook/useFetch";
-import VerticalNavbar from "../globalClasses/VerticalNavbar";
 
-const Courses = () => {
-  // const { workouts, isPending, error } = useFetch("/api/workouts");
+const Settings = () => {
   var today = new Date(),
     date = today.toTimeString();
 
-  const [college, setCollege] = useState({
+  const [college] = useState({
     college: "Lissah College",
     place: "Kaithapoyil",
     teachersCount: 57,
@@ -16,12 +13,11 @@ const Courses = () => {
   });
 
   return (
-    <div className="Courseshome">
-      <VerticalNavbar />
+    <div className="Settingshome addSomeMargin">
       <div className="dHome">
         <div className="dHomeNav">
           <div className="dHomeNavLeft">
-            <h1>Courses</h1>
+            <h1>Settings</h1>
             <p>{date}</p>
           </div>
           <div className="dHomeNavRight">
@@ -36,4 +32,4 @@ const Courses = () => {
   );
 };
 
-export default Courses;
+export default Settings;

@@ -4,8 +4,8 @@ import {
   Text,
   View,
   TextInput,
-  TouchableOpacity,
   Dimensions,
+  Pressable,
 } from "react-native";
 
 export default function Login({ navigation }) {
@@ -19,18 +19,25 @@ export default function Login({ navigation }) {
         <Text style={styles.ecampusText}>ECAMPUS</Text>
       </View>
       <View style={styles.textInputView}>
-        <TextInput placeholder="enter your username " />
+        <TextInput placeholder="Enter your username" />
       </View>
 
       <View style={styles.textInputView}>
         <TextInput placeholder="Password" />
       </View>
 
-      <View style={styles.signInView}>
-        <TouchableOpacity onPress={gotomainpage}>
-          <Text style={styles.signInText}>Sign in</Text>
-        </TouchableOpacity>
+      <View style={styles.signIn}>
+        <Pressable
+          style={styles.signInView}
+          android_ripple={{
+            color: "black",
+          }}
+          onPress={() => gotomainpage()}
+        >
+          <Text style={styles.centerText}>Log In</Text>
+        </Pressable>
       </View>
+
       <View>
         <Text> or continue with</Text>
       </View>
@@ -60,22 +67,24 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
   },
   signInView: {
-    backgroundColor: "#553893",
-    padding: 15,
+    backgroundColor: "#A38ED1",
+    justifyContent: "center",
+    alignItems: "center",
+    elevation: 4,
+    padding: 20,
+  },
+  signIn: {
+    overflow: "hidden",
     alignSelf: "stretch",
     margin: 30,
     borderRadius: 10,
   },
-  signInText: {
-    textAlign: "center",
-  },
-  pass: {
-    backgroundColor: "#fff",
-    padding: 10,
-    margin: 40,
-  },
   ecampusText: {
     fontWeight: "900",
     fontSize: 50,
+  },
+  centerText: {
+    alignSelf: "center",
+    color: "#fff",
   },
 });

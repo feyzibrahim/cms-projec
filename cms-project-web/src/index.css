@@ -13,6 +13,7 @@
   align-items: center;
   margin: 0 auto;
   border-bottom: 1px solid #F2F2F2;
+  height: 5vh;
 }
 
 .links {
@@ -533,14 +534,16 @@ input.error {
 }
 
 /* Dashboard new */
-.DashBoardhome {
-  margin: 0;
+
+.dashHomee {
+  padding: 30px;
 }
 
-.dHome {
-  width: 75%;
-  margin-left: 20%;
-  padding: 2%;
+.DashBoardhome {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  height: 89vh;
 }
 
 .dHomeNav {
@@ -566,10 +569,7 @@ padding-left: 20px;
   list-style-type: none;
   margin: 0;
   padding: 0;
-  width: 20%;
   background-color: #f1f1f1;
-  position: fixed;
-  height: 90%;
   overflow: auto;
   display: flex;
   flex-direction: column;
@@ -614,4 +614,60 @@ padding-left: 20px;
 
 .verticalNavbar button:active {
   background-color: #a1a1a1;
+}
+
+/* addSomeMargin */
+
+.addSomeMargin{
+  margin: 30px;
+}
+
+/* College Dashboard */
+
+.dashCollegeDetail {
+  display: grid;
+  grid-template-columns: 2.5fr 1.5fr;
+  margin-top: 30px;
+}
+
+.countList {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.countListCounter {
+  background-color: #DFDFDF;
+  padding: 15px 10px;
+  margin-right: 10px;
+  border-radius: 15px;
+}
+
+.dashCollegeDetailRight {
+  background-color: #DFDFDF;
+  padding: 20px;
+  border-radius: 15px;
+  height: 65vh;
+}
+
+.dashCollegeDetailRight p {
+  padding-top: 10px;
+}
+
+.dashTodos {
+  background-color: #DFDFDF;
+  padding: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  border-radius: 15px;
+  height: 56vh;
+}
+
+.dashTodosNav {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.dashTodos p {
+  padding-left: 20px;
 }

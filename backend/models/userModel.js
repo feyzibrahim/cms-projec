@@ -14,6 +14,21 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  college_name: {
+    type: String,
+  },
+  place: {
+    type: String,
+  },
+  teachers_count: {
+    type: Number,
+  },
+  students_count: {
+    type: Number,
+  },
+  staff_count: {
+    type: Number,
+  },
 });
 
 userSchema.statics.signup = async function (email, password) {
