@@ -6,14 +6,13 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import ReviewDetails from "../screen/ReviewDetails";
 
-const screens = {
-  screen: Profile,
-  navigationOptions: {
-    title: "ecampus",
-  },
-};
+// const screens = {
+//   screen: Profile,
+//   navigationOptions: {
+//     title: "ecampus",
+//   },
+// };
 
 export default function Internal({ navigation }) {
   const gotomarksheetpage = () => {

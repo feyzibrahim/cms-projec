@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
   FlatList,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -29,7 +28,7 @@ export default function Setting({ navigation }) {
           renderItem={({ item }) => (
             <TouchableOpacity
               onPress={() => {
-                const str = "{item.name}";
+                const str = item.name;
                 navigation.navigate(str);
               }}
             >
@@ -45,7 +44,6 @@ const styles = StyleSheet.create({
   settingsheet: {
     backgroundColor: "#A38ED1",
     paddingVertical: 55,
-    // borderRadius: 30,
   },
   changeset: {
     fontSize: 20,
@@ -55,7 +53,6 @@ const styles = StyleSheet.create({
   },
   datasheet: {
     padding: 30,
-    // marginLeft: 30,
     backgroundColor: "#DFDFDf",
   },
 });

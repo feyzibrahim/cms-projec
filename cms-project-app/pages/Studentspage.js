@@ -28,7 +28,7 @@ export default function Studentspage({ navigation }) {
         </View>
 
         <View>
-          <Text styles={styles.subTitle}>Hello,Sir/Madam</Text>
+          <Text styles={styles.subTitle}>Hello, Guyz</Text>
         </View>
 
         <View style={styles.classAndClassCount}>
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 30,
     width: Dimensions.get("window").width,
-    margin: 20,
+    // margin: 20,
   },
   ecampTitle: {
     fontWeight: "bold",
