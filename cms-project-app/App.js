@@ -9,6 +9,8 @@ import Attendence from "./pages/Attendence";
 import Internal from "./pages/Internal";
 import Sub from "./pages/componants/Sub";
 import StudentMarksheet from "./pages/StudentMarksheet";
+import Setting from "./pages/Setting";
+import Aboutus from "./pages/Aboutus";
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +30,8 @@ export default function App() {
         <Stack.Screen name="Attendencepage" component={Attendence} />
         <Stack.Screen name="internal" component={Internal} />
         <Stack.Screen name="Studentmarksheet" component={StudentMarksheet} />
+        <Stack.Screen name="Setting" component={Setting} />
+        <Stack.Screen name="aboutus" component={Aboutus} />
       </Stack.Navigator>
     </NavigationContainer>
   );

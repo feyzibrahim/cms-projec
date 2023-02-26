@@ -7,10 +7,18 @@ import {
   View,
 } from "react-native";
 
+// const screens = {
+//   screen: Profile,
+//   navigationOptions: {
+//     title: "ecampus",
+//   },
+// };
+
 export default function Internal({ navigation }) {
   const gotomarksheetpage = () => {
     navigation.navigate("Studentmarksheet");
   };
+
   const [sem, setSem] = useState([
     { sem: "SEM1", key: "1", color: "#9A85C9" },
     { sem: "SEM2", key: "2", color: "#A29AFF" },
