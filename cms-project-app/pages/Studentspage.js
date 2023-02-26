@@ -16,6 +16,10 @@ export default function Studentspage({ navigation }) {
     navigation.navigate("internal");
   };
 
+  const gotosetting = () => {
+    navigation.navigate("Setting");
+  };
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -77,6 +81,11 @@ export default function Studentspage({ navigation }) {
               <Text>View Attendence</Text>
             </TouchableOpacity>
           </View>
+        </View>
+        <View style={styles.addsettings}>
+          <TouchableOpacity onPress={gotosetting}>
+            <Text>Settings</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </ScrollView>
@@ -144,6 +153,11 @@ const styles = StyleSheet.create({
   },
   addAttendenceView: {
     backgroundColor: "#553893",
+    padding: 20,
+    margin: 30,
+  },
+  addsettings: {
+    backgroundColor: "pink",
     padding: 20,
     margin: 30,
   },
