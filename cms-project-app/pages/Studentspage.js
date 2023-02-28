@@ -152,6 +152,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#553893",
     padding: 20,
     alignSelf: "space-around",
+    flexDirection: "row",
   },
   addAttendenceView: {
     backgroundColor: "#553893",
@@ -159,8 +160,9 @@ const styles = StyleSheet.create({
     alignSelf: "space-around",
   },
   addsettings: {
-    backgroundColor: "pink",
+    backgroundColor: "#553893",
     padding: 20,
     margin: 30,
+    borderRadius: 5,
   },
 });
