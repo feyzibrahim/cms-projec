@@ -1,35 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
+import Loader from "../../globalClasses/Loader";
 
-const Classes = () => {
+const Departments = () => {
   var today = new Date(),
     date = today.toTimeString();
-
-  const [college] = useState({
-    college: "Lissah College",
-    place: "Kaithapoyil",
-    teachersCount: 57,
-    StudentsCount: 650,
-    staffCount: 8,
-  });
 
   return (
     <div className="Classeshome addSomeMargin">
       <div className="dHome">
         <div className="dHomeNav">
           <div className="dHomeNavLeft">
-            <h1>Classes</h1>
+            <h1>Departments</h1>
             <p>{date}</p>
           </div>
           <div className="dHomeNavRight">
-            <h2>
-              {college.college}, {college.place}
-            </h2>
             <span className="material-symbols-outlined">notifications</span>
           </div>
         </div>
+        <Loader />
       </div>
     </div>
   );
 };
 
-export default Classes;
+export default Departments;

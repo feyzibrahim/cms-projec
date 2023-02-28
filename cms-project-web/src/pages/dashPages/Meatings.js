@@ -1,18 +1,9 @@
-import React, { useState } from "react";
-// import useFetch from "../Hook/useFetch";
+import React from "react";
+import Loader from "../../globalClasses/Loader";
 
 const Meatings = () => {
-  // const { workouts, isPending, error } = useFetch("/api/workouts");
   var today = new Date(),
     date = today.toTimeString();
-
-  const [college] = useState({
-    college: "Lissah College",
-    place: "Kaithapoyil",
-    teachersCount: 57,
-    StudentsCount: 650,
-    staffCount: 8,
-  });
 
   return (
     <div className="Meatingshome addSomeMargin">
@@ -23,12 +14,10 @@ const Meatings = () => {
             <p>{date}</p>
           </div>
           <div className="dHomeNavRight">
-            <h2>
-              {college.college}, {college.place}
-            </h2>
             <span className="material-symbols-outlined">notifications</span>
           </div>
         </div>
+        <Loader />
       </div>
     </div>
   );

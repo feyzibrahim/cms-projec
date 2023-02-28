@@ -1,16 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
 const Settings = () => {
   var today = new Date(),
     date = today.toTimeString();
-
-  const [college] = useState({
-    college: "Lissah College",
-    place: "Kaithapoyil",
-    teachersCount: 57,
-    StudentsCount: 650,
-    staffCount: 8,
-  });
 
   return (
     <div className="Settingshome addSomeMargin">
@@ -21,9 +13,6 @@ const Settings = () => {
             <p>{date}</p>
           </div>
           <div className="dHomeNavRight">
-            <h2>
-              {college.college}, {college.place}
-            </h2>
             <span className="material-symbols-outlined">notifications</span>
           </div>
         </div>

@@ -6,6 +6,7 @@ import { useAuthContext } from "../Hook/useAuthContext";
 const WorkoutDetails = ({ workout }) => {
   const { user } = useAuthContext();
   const { dispatch } = useWorkoutsContext();
+
   const handleClick = async () => {
     if (!user) {
       return;

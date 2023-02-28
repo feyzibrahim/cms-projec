@@ -24,7 +24,6 @@ app.use("/api/user", userRoutes);
 app.use("/api/college", collegeRoutes);
 
 // connect to db
-// sfoaij osajoaif
 
 mongoose
   .connect(process.env.MONGO_URI)

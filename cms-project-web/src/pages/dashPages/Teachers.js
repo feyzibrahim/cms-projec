@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import useFetch from "../../Hook/useFetch";
-import WorkoutDetails from "../../globalClasses/WorkoutDetails";
-import WorkoutForm from "../../globalClasses/WorkoutForm";
+import WorkoutDetails from "../../componants/WorkoutDetails";
+import WorkoutForm from "../../componants/WorkoutForm";
+import Loader from "../../globalClasses/Loader";
 
 const Teachers = () => {
   var today = new Date(),
@@ -34,7 +35,7 @@ const Teachers = () => {
       <div className="Dashhome">
         <div className="dashsubLeft">
           {error && <div>{error}</div>}
-          {isPending && <div className="loading">Loading....</div>}
+          {isPending && <Loader />}
           {workouts &&
             workouts.map((workouts) => (
               <WorkoutDetails key={workouts._id} workout={workouts} />

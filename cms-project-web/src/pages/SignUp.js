@@ -7,10 +7,17 @@ import { Link } from "react-router-dom";
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordAgain, setPasswordAgain] = useState("");
   const { signup, isLoading, error } = useSignup();
+  const [passNotMatch, setPassNotMatch] = useState("");
 
   const handleClick = async (e) => {
     e.preventDefault();
+
+    if (password !== passwordAgain) {
+      setPassNotMatch("Password are not same");
+      return;
+    }
 
     await signup(email, password);
   };
@@ -25,9 +32,6 @@ const SignUp = () => {
           <form className="signupForm" onSubmit={handleClick}>
             <h1>Create an account</h1>
             <p>Please enter your details below to signup to e-campus</p>
-            <p>
-              <input type="text" placeholder="Name"></input>
-            </p>
             <p>
               <input
                 type="email"
@@ -45,7 +49,12 @@ const SignUp = () => {
               ></input>
             </p>
             <p>
-              <input type="password" placeholder="passwordAgain"></input>
+              <input
+                type="password"
+                placeholder="passwordAgain"
+                onChange={(e) => setPasswordAgain(e.target.value)}
+                value={passwordAgain}
+              ></input>
             </p>
             <p>
               <button className="fullColeredButton" disabled={isLoading}>
@@ -53,10 +62,7 @@ const SignUp = () => {
               </button>
             </p>
             {error && <div className="error">{error}</div>}
-            {/* <p>or</p> */}
-            {/* <p>
-            <button className="four">sign up with Google</button>
-          </p> */}
+            {passNotMatch && <div className="error">{passNotMatch}</div>}
             <p className="five">
               Already have an account? <Link to="/login">Log in Now</Link>
             </p>
