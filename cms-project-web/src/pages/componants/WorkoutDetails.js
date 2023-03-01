@@ -1,11 +1,12 @@
 import React from "react";
-import { useWorkoutsContext } from "../Hook/useWorkoutsContext";
+import { useWorkoutsContext } from "../../Hook/useWorkoutsContext";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
-import { useAuthContext } from "../Hook/useAuthContext";
+import { useAuthContext } from "../../Hook/useAuthContext";
 
 const WorkoutDetails = ({ workout }) => {
   const { user } = useAuthContext();
   const { dispatch } = useWorkoutsContext();
+
   const handleClick = async () => {
     if (!user) {
       return;

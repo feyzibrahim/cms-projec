@@ -11,15 +11,15 @@ import LoginPage from "./pages/LoginPage";
 import Navbar from "./globalClasses/Navbar";
 import ContactHome from "./pages/ContactHome";
 import ProjectHome from "./pages/ProjectHome";
-import { useAuthContext } from "./Hook/useAuthContext";
 import DashBoard from "./pages/DashBoard";
 import Dues from "./pages/dashPages/Dues";
 import Meatings from "./pages/dashPages/Meatings";
 import Teachers from "./pages/dashPages/Teachers";
-import Courses from "./pages/dashPages/Courses";
-import Classes from "./pages/dashPages/Classes";
+import Departments from "./pages/dashPages/Departments";
 import Settings from "./pages/dashPages/Settings";
 import Dash from "./pages/dashPages/Dash";
+
+import { useAuthContext } from "./Hook/useAuthContext";
 
 function App() {
   const { user } = useAuthContext();
@@ -50,9 +50,8 @@ function App() {
               <Route path="dues" element={<Dues />} />
               <Route path="meatings" element={<Meatings />} />
               <Route path="teachers" element={<Teachers />} />
-              <Route path="courses" element={<Courses />} />
               <Route path="settings" element={<Settings />} />
-              <Route path="classes" element={<Classes />} />
+              <Route path="departments" element={<Departments />} />
             </Route>
             <Route path="contact" element={<ContactHome />} />
             <Route path="about" element={<AboutPage />} />

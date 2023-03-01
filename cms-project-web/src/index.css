@@ -646,7 +646,7 @@ padding-left: 20px;
   background-color: #DFDFDF;
   padding: 20px;
   border-radius: 15px;
-  height: 65vh;
+  height: 63vh;
 }
 
 .dashCollegeDetailRight p {
@@ -659,7 +659,7 @@ padding-left: 20px;
   margin-top: 10px;
   margin-right: 10px;
   border-radius: 15px;
-  height: 56vh;
+  height: 53vh;
 }
 
 .dashTodosNav {
@@ -670,4 +670,151 @@ padding-left: 20px;
 
 .dashTodos p {
   padding-left: 20px;
+}
+
+.collegeDataNotFound {
+  position: relative;
+  height: 70vh;
+}
+
+.collegeDataNotFoundContainer {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.collegeDataNotFoundContainer h3 {
+  padding-top: 20px;
+}
+
+.collegeDataNotFoundContainer h5 {
+  padding-bottom: 20px;
+  color: #888888;
+}
+
+.collegeNewForm {
+  margin: 0 30%;
+  padding-top: 40px;
+  
+}
+
+.collegeNewForm input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  
+}
+
+.collegeNewForm label, .collegeNewForm input {
+  display: block;
+}
+
+.collegeNewFormTitle, .collegeFormButton {
+  width: 100%;
+  text-align: center;
+}
+
+.collegeFormButton button{
+  width: 100%;
+}
+
+/* Loader Animation */
+
+.lds {
+  position: relative;
+  height: 60vh;
+}
+
+.lds-container{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.lds-facebook {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: #000000;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.lds-facebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+
+.lds-facebook div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+
+.lds-facebook div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+
+@keyframes lds-facebook {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%, 100% {
+    top: 24px;
+    height: 32px;
+  }
+}
+
+/* Department Tiles */
+
+.departmentRow{ 
+  margin-top: 20px;
+}
+
+.departmentTile {
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.departmentTile:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Meetings Page */
+
+.meetingsContainer {
+  padding-top: 20px;
+}
+
+.meetingRows {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.meetingRows div {
+  width: 100%;
+  border: #000 1px solid;
+  padding: 20px;
 }

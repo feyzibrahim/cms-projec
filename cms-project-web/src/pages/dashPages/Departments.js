@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from "react";
 import Loader from "../../globalClasses/Loader";
+import DepartmentTile from "../componants/DepartmentTile";
 import { useAuthContext } from "../../Hook/useAuthContext";
-import MeetingRows from "../componants/MeetingRows";
+import { Col, Row } from "antd";
 
-const Meatings = () => {
+const Departments = () => {
   var today = new Date(),
     date = today.toTimeString();
 
   const { user } = useAuthContext();
-  const [meetings, setMeetings] = useState(null);
+  const [department, setDepartment] = useState(null);
   const [isPending, setIsPending] = useState(true);
 
   useEffect(() => {
     const abortConst = new AbortController();
     const fetchData = async () => {
-      const response = await fetch("/api/meetings", {
+      const response = await fetch("/api/department", {
         signal: abortConst.signal,
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -23,7 +24,7 @@ const Meatings = () => {
       const json = await response.json();
 
       if (response.ok) {
-        setMeetings(json);
+        setDepartment(json);
         console.log(json);
         setIsPending(false);
       }
@@ -37,42 +38,31 @@ const Meatings = () => {
   }, []);
 
   return (
-    <div className="Meatingshome addSomeMargin">
+    <div className="Classeshome addSomeMargin">
       <div className="dHome">
         <div className="dHomeNav">
           <div className="dHomeNavLeft">
-            <h1>Meatings</h1>
+            <h1>Departments</h1>
             <p>{date}</p>
           </div>
           <div className="dHomeNavRight">
             <span className="material-symbols-outlined">notifications</span>
           </div>
         </div>
-        <div className="meetingsContainer">
-          {isPending && <Loader />}
-          <div className="meetingRows">
-            <div>
-              <p>Meeting Name</p>
-            </div>
-            <div>
-              <p>Organized By</p>
-            </div>
-            <div>
-              <p>Location</p>
-            </div>
-            <div>
-              <p>Time and Date</p>
-            </div>
-            <div>
-              <p>Status</p>
-            </div>
-          </div>
-          {meetings &&
-            meetings.map((meeting) => <MeetingRows meeting={meeting} />)}
-        </div>
+        {isPending && <Loader />}
+        <Row gutter={[24, 32]} className="departmentRow">
+          {department &&
+            department.map((department) => {
+              return (
+                <Col lg={8} key={department._id}>
+                  <DepartmentTile department={department} />
+                </Col>
+              );
+            })}
+        </Row>
       </div>
     </div>
   );
 };
 
-export default Meatings;
+export default Departments;

@@ -24,27 +24,20 @@ const Navbar = () => {
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? "active" : "inactive")}
+            to="/dash/departments"
+          >
+            <span className="material-symbols-outlined">Class</span>Departments
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            className={({ isActive }) => (isActive ? "active" : "inactive")}
             to="/dash/teachers"
           >
             <span className="material-symbols-outlined">Groups</span>Teachers
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            className={({ isActive }) => (isActive ? "active" : "inactive")}
-            to="/dash/classes"
-          >
-            <span className="material-symbols-outlined">Class</span>Class
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            className={({ isActive }) => (isActive ? "active" : "inactive")}
-            to="/dash/courses"
-          >
-            <span className="material-symbols-outlined">Person</span>Courses
-          </NavLink>
-        </li>
+
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? "active" : "inactive")}
