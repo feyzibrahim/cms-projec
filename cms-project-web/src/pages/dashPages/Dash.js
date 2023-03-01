@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useAuthContext } from "../../Hook/useAuthContext";
 import { Link } from "react-router-dom";
 import img from "../../img/noCollegeData.png";
-import CollegeForm from "../../componants/CollegeForm";
+import CollegeForm from "../componants/CollegeForm";
 import Loader from "../../globalClasses/Loader";
 
 const Dash = () => {
@@ -19,7 +19,7 @@ const Dash = () => {
   useEffect(() => {
     const abortConst = new AbortController();
     const fetchData = async () => {
-      const response = await fetch("api/college", {
+      const response = await fetch("/api/college", {
         signal: abortConst.signal,
         headers: {
           Authorization: `Bearer ${user.token}`,

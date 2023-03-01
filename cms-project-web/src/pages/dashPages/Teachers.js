@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useFetch from "../../Hook/useFetch";
-import WorkoutDetails from "../../componants/WorkoutDetails";
-import WorkoutForm from "../../componants/WorkoutForm";
+import WorkoutDetails from "../componants/WorkoutDetails";
+import WorkoutForm from "../componants/WorkoutForm";
 import Loader from "../../globalClasses/Loader";
 
 const Teachers = () => {

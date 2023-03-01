@@ -2,25 +2,27 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const departmentSchema = new Schema(
+const meetingSchema = new Schema(
   {
-    department_name: {
+    meeting_name: {
       type: String,
       required: true,
     },
-    year_count: {
-      type: Number,
-      required: true,
-    },
-    hod: {
+    organized_by: {
       type: String,
       required: true,
     },
-    teacher_count: {
-      type: Number,
-    },
-    students_count: {
+    location: {
       type: String,
+      required: true,
+    },
+    timestamps: {
+      type: Date,
+      required: true,
+    },
+    isOver: {
+      type: Boolean,
+      required: true,
     },
     user_id: {
       type: String,
@@ -30,4 +32,4 @@ const departmentSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("departmentModel", departmentSchema);
+module.exports = mongoose.model("meetingModel", meetingSchema);

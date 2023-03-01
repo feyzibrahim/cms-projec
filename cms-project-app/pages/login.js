@@ -12,6 +12,9 @@ export default function Login({ navigation }) {
   const gotomainpage = () => {
     navigation.navigate("students");
   };
+  const gototeacberpage = () => {
+    navigation.navigate("Teacher");
+  };
 
   return (
     <View style={styles.container}>
@@ -35,6 +38,17 @@ export default function Login({ navigation }) {
           onPress={() => gotomainpage()}
         >
           <Text style={styles.centerText}>Log In</Text>
+        </Pressable>
+      </View>
+      <View style={styles.signIn}>
+        <Pressable
+          style={styles.signInView}
+          android_ripple={{
+            color: "black",
+          }}
+          onPress={() => gototeacberpage()}
+        >
+          <Text style={styles.centerText}>Go to teachers main page</Text>
         </Pressable>
       </View>
 

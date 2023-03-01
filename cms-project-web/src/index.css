@@ -783,3 +783,38 @@ padding-left: 20px;
     height: 32px;
   }
 }
+
+/* Department Tiles */
+
+.departmentRow{ 
+  margin-top: 20px;
+}
+
+.departmentTile {
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.departmentTile:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Meetings Page */
+
+.meetingsContainer {
+  padding-top: 20px;
+}
+
+.meetingRows {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.meetingRows div {
+  width: 100%;
+  border: #000 1px solid;
+  padding: 20px;
+}
