@@ -3,14 +3,18 @@ import Loader from "../../globalClasses/Loader";
 import DepartmentTile from "../componants/DepartmentTile";
 import { useAuthContext } from "../../Hook/useAuthContext";
 import { Col, Row } from "antd";
+import img from "../../img/noCollegeData.png";
+import DepartmentForm from "../componants/DepartmentForm";
+import { useDepartmentContext } from "../../Hook/useDepartmentContext";
 
 const Departments = () => {
   var today = new Date(),
     date = today.toTimeString();
 
   const { user } = useAuthContext();
-  const [department, setDepartment] = useState(null);
+  const { department, dispatch } = useDepartmentContext();
   const [isPending, setIsPending] = useState(true);
+  const [isNotForm, setIsNotForm] = useState(true);
 
   useEffect(() => {
     const abortConst = new AbortController();
@@ -24,8 +28,8 @@ const Departments = () => {
       const json = await response.json();
 
       if (response.ok) {
-        setDepartment(json);
         console.log(json);
+        dispatch({ type: "SET_DEPARTMENT", payload: json });
         setIsPending(false);
       }
       if (!response.ok) {
@@ -45,21 +49,54 @@ const Departments = () => {
             <h1>Departments</h1>
             <p>{date}</p>
           </div>
-          <div className="dHomeNavRight">
+          <div className="depHomeNavRight">
+            <button
+              className="fullColeredButton"
+              onClick={() => {
+                const isForm = !isNotForm;
+                setIsNotForm(isForm);
+                console.log(isNotForm);
+              }}
+            >
+              {isNotForm ? "Add New Department" : "Go back"}
+            </button>
             <span className="material-symbols-outlined">notifications</span>
           </div>
         </div>
         {isPending && <Loader />}
-        <Row gutter={[24, 32]} className="departmentRow">
-          {department &&
-            department.map((department) => {
-              return (
-                <Col lg={8} key={department._id}>
-                  <DepartmentTile department={department} />
-                </Col>
-              );
-            })}
-        </Row>
+
+        {isNotForm ? (
+          department != null && department.length > 0 ? (
+            <Row gutter={[24, 32]} className="departmentRow">
+              {department &&
+                department.map((department) => {
+                  return (
+                    <Col lg={8} key={department._id}>
+                      <DepartmentTile department={department} />
+                    </Col>
+                  );
+                })}
+            </Row>
+          ) : (
+            <div className="collegeDataNotFound">
+              <div className="collegeDataNotFoundContainer">
+                <img src={img} alt="No data found" />
+                <h2>Department Are Not Added</h2>
+                <h5>
+                  Please update Department details by Clicking below button
+                </h5>
+                <button
+                  className="fullColeredButton"
+                  onClick={() => setIsNotForm(false)}
+                >
+                  Click Here
+                </button>
+              </div>
+            </div>
+          )
+        ) : (
+          <DepartmentForm />
+        )}
       </div>
     </div>
   );

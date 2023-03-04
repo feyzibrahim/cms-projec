@@ -43,7 +43,6 @@ const CollegeForm = () => {
 
     if (!response.ok) {
       setError(json.error);
-      //   setEmptyFields(json.emptyFields);
     }
 
     if (response.ok) {
@@ -54,7 +53,6 @@ const CollegeForm = () => {
       setstudents_count("");
 
       setError(null);
-      //   setEmptyFields([]);
 
       console.log("New Workout Added", json);
     }
@@ -89,7 +87,7 @@ const CollegeForm = () => {
         onChange={(e) => setstaff_count(e.target.value)}
         value={staff_count}
       />
-      <label>students_count Count</label>
+      <label>Students Count</label>
       <input
         type="number"
         onChange={(e) => setstudents_count(e.target.value)}

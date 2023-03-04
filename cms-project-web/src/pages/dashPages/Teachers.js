@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import useFetch from "../../Hook/useFetch";
 import WorkoutDetails from "../componants/WorkoutDetails";
 import WorkoutForm from "../componants/WorkoutForm";
@@ -7,14 +7,6 @@ import Loader from "../../globalClasses/Loader";
 const Teachers = () => {
   var today = new Date(),
     date = today.toTimeString();
-
-  const [college] = useState({
-    college: "Lissah College",
-    place: "Kaithapoyil",
-    teachersCount: 57,
-    StudentsCount: 650,
-    staffCount: 8,
-  });
 
   const { workouts, isPending, error } = useFetch("/api/workouts");
 
@@ -26,9 +18,6 @@ const Teachers = () => {
           <p>{date}</p>
         </div>
         <div className="dHomeNavRight">
-          <h2>
-            {college.college}, {college.place}
-          </h2>
           <span className="material-symbols-outlined">notifications</span>
         </div>
       </div>
