@@ -3,6 +3,7 @@ import useFetch from "../../Hook/useFetch";
 import WorkoutDetails from "../componants/WorkoutDetails";
 import WorkoutForm from "../componants/WorkoutForm";
 import Loader from "../../globalClasses/Loader";
+import img from "../../img/noCollegeData.png";
 
 const Teachers = () => {
   var today = new Date(),
@@ -25,10 +26,22 @@ const Teachers = () => {
         <div className="dashsubLeft">
           {error && <div>{error}</div>}
           {isPending && <Loader />}
-          {workouts &&
+          {workouts != null && workouts.length > 0 ? (
             workouts.map((workouts) => (
               <WorkoutDetails key={workouts._id} workout={workouts} />
-            ))}
+            ))
+          ) : (
+            <div className="collegeDataNotFound">
+              <div className="collegeDataNotFoundContainer">
+                <img src={img} alt="No data found" />
+                <h2>Teachers are not created</h2>
+                <h5>
+                  Use the form here to update teachers details. More details
+                  will be given in the new updates. stay tuned for that
+                </h5>
+              </div>
+            </div>
+          )}
         </div>
         <WorkoutForm />
       </div>

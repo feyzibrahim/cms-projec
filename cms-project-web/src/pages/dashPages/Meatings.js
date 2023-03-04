@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Loader from "../../globalClasses/Loader";
 import { useAuthContext } from "../../Hook/useAuthContext";
 import MeetingRows from "../componants/MeetingRows";
+import img from "../../img/noCollegeData.png";
 
 const Meatings = () => {
   var today = new Date(),
@@ -50,25 +51,48 @@ const Meatings = () => {
         </div>
         <div className="meetingsContainer">
           {isPending && <Loader />}
-          <div className="meetingRows">
+
+          {meetings != null && meetings.length > 0 ? (
             <div>
-              <p>Meeting Name</p>
+              <div className="meetingRows">
+                <div>
+                  <p>Meeting Name</p>
+                </div>
+                <div>
+                  <p>Organized By</p>
+                </div>
+                <div>
+                  <p>Location</p>
+                </div>
+                <div>
+                  <p>Time and Date</p>
+                </div>
+                <div>
+                  <p>Status</p>
+                </div>
+              </div>
+              {meetings.map((meeting) => (
+                <MeetingRows meeting={meeting} />
+              ))}
             </div>
-            <div>
-              <p>Organized By</p>
+          ) : (
+            <div className="collegeDataNotFound">
+              <div className="collegeDataNotFoundContainer">
+                <img src={img} alt="No data found" />
+                <h2>No Meetings are Created</h2>
+                <h5>
+                  Be the first to add one to create a meeting... Click below
+                  button to add one
+                </h5>
+                <button
+                  className="fullColeredButton"
+                  // onClick={() => setIsNotForm(false)}
+                >
+                  Click Here
+                </button>
+              </div>
             </div>
-            <div>
-              <p>Location</p>
-            </div>
-            <div>
-              <p>Time and Date</p>
-            </div>
-            <div>
-              <p>Status</p>
-            </div>
-          </div>
-          {meetings &&
-            meetings.map((meeting) => <MeetingRows meeting={meeting} />)}
+          )}
         </div>
       </div>
     </div>
