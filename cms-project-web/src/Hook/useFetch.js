@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { useWorkoutsContext } from "./useWorkoutsContext";
-import { useAuthContext } from "../Hook/useAuthContext";
+import { useWorkoutsContext } from "./contextHooks/useWorkoutsContext";
+import { useAuthContext } from "./contextHooks/useAuthContext";
 
 const useFetch = (url) => {
   const { workouts, dispatch } = useWorkoutsContext();

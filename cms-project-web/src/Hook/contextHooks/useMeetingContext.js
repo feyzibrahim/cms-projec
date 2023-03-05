@@ -1,4 +1,4 @@
-import { MeetingContext } from "../context/MeetingContext";
+import { MeetingContext } from "../../context/MeetingContext";
 import { useContext } from "react";
 
 export const useMeetingContext = () => {

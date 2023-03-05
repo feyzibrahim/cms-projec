@@ -1,6 +1,6 @@
 import React from "react";
-import { useAuthContext } from "../../Hook/useAuthContext";
-import { useDepartmentContext } from "../../Hook/useDepartmentContext";
+import { useAuthContext } from "../../Hook/contextHooks/useAuthContext";
+import { useDepartmentContext } from "../../Hook/contextHooks/useDepartmentContext";
 //
 
 const DepartmentTile = ({ department }) => {

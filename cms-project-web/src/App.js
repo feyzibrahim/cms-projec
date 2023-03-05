@@ -19,7 +19,7 @@ import Departments from "./pages/dashPages/Departments";
 import Settings from "./pages/dashPages/Settings";
 import Dash from "./pages/dashPages/Dash";
 
-import { useAuthContext } from "./Hook/useAuthContext";
+import { useAuthContext } from "./Hook/contextHooks/useAuthContext";
 
 function App() {
   const { user } = useAuthContext();

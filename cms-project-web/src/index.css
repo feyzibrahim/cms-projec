@@ -837,3 +837,17 @@ padding-left: 20px;
   border: #000 1px solid;
   padding: 20px;
 }
+
+.meetingComplete {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.meetingComplete button {
+  display: flex;
+}
+
+.meetingComplete button:hover {
+  color: #e7195a;
+}

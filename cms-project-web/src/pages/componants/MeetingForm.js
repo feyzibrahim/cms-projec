@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { useAuthContext } from "../../Hook/useAuthContext";
-import { useMeetingContext } from "../../Hook/useMeetingContext";
+import { useAuthContext } from "../../Hook/contextHooks/useAuthContext";
+import { useMeetingContext } from "../../Hook/contextHooks/useMeetingContext";
 
 const MeetingForm = () => {
   const { user } = useAuthContext();

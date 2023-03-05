@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Loader from "../../globalClasses/Loader";
-import { useAuthContext } from "../../Hook/useAuthContext";
+import { useAuthContext } from "../../Hook/contextHooks/useAuthContext";
 import MeetingRows from "../componants/MeetingRows";
 import img from "../../img/noCollegeData.png";
 import MeetingForm from "../componants/MeetingForm";
-import { useMeetingContext } from "../../Hook/useMeetingContext";
+import { useMeetingContext } from "../../Hook/contextHooks/useMeetingContext";
 
 const Meatings = () => {
   var today = new Date(),
@@ -83,9 +83,12 @@ const Meatings = () => {
                   <div>
                     <p>Status</p>
                   </div>
+                  <div>
+                    <p>Mark as Complete</p>
+                  </div>
                 </div>
                 {meetings.map((meeting) => (
-                  <MeetingRows meeting={meeting} />
+                  <MeetingRows meeting={meeting} key={meeting._id} />
                 ))}
               </div>
             ) : (

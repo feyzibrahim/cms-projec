@@ -9,6 +9,12 @@ export const meetingReducer = (state, action) => {
       return {
         meetings: action.payload,
       };
+    case "UPDATE_MEETING":
+      return {
+        meetings: state.meetings.map((w) =>
+          w._id === action.payload._id ? action.payload : w
+        ),
+      };
     case "CREATE_MEETING":
       return {
         meetings: [action.payload, ...state.meetings],
