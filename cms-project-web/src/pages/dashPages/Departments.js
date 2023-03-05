@@ -55,7 +55,6 @@ const Departments = () => {
               onClick={() => {
                 const isForm = !isNotForm;
                 setIsNotForm(isForm);
-                console.log(isNotForm);
               }}
             >
               {isNotForm ? "Add New Department" : "Go back"}

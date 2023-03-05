@@ -3,14 +3,17 @@ import Loader from "../../globalClasses/Loader";
 import { useAuthContext } from "../../Hook/useAuthContext";
 import MeetingRows from "../componants/MeetingRows";
 import img from "../../img/noCollegeData.png";
+import MeetingForm from "../componants/MeetingForm";
+import { useMeetingContext } from "../../Hook/useMeetingContext";
 
 const Meatings = () => {
   var today = new Date(),
     date = today.toTimeString();
 
   const { user } = useAuthContext();
-  const [meetings, setMeetings] = useState(null);
+  const { meetings, dispatch } = useMeetingContext();
   const [isPending, setIsPending] = useState(true);
+  const [isNotForm, setIsNotForm] = useState(true);
 
   useEffect(() => {
     const abortConst = new AbortController();
@@ -24,7 +27,7 @@ const Meatings = () => {
       const json = await response.json();
 
       if (response.ok) {
-        setMeetings(json);
+        dispatch({ type: "SET_MEETING", payload: json });
         console.log(json);
         setIsPending(false);
       }
@@ -45,53 +48,66 @@ const Meatings = () => {
             <h1>Meatings</h1>
             <p>{date}</p>
           </div>
-          <div className="dHomeNavRight">
+          <div className="depHomeNavRight">
+            <button
+              className="fullColeredButton"
+              onClick={() => {
+                const isForm = !isNotForm;
+                setIsNotForm(isForm);
+              }}
+            >
+              {isNotForm ? "Add New Department" : "Go back"}
+            </button>
             <span className="material-symbols-outlined">notifications</span>
           </div>
         </div>
         <div className="meetingsContainer">
           {isPending && <Loader />}
 
-          {meetings != null && meetings.length > 0 ? (
-            <div>
-              <div className="meetingRows">
-                <div>
-                  <p>Meeting Name</p>
+          {isNotForm ? (
+            meetings != null && meetings.length > 0 ? (
+              <div>
+                <div className="meetingRows">
+                  <div>
+                    <p>Meeting Name</p>
+                  </div>
+                  <div>
+                    <p>Organized By</p>
+                  </div>
+                  <div>
+                    <p>Location</p>
+                  </div>
+                  <div>
+                    <p>Time and Date</p>
+                  </div>
+                  <div>
+                    <p>Status</p>
+                  </div>
                 </div>
-                <div>
-                  <p>Organized By</p>
-                </div>
-                <div>
-                  <p>Location</p>
-                </div>
-                <div>
-                  <p>Time and Date</p>
-                </div>
-                <div>
-                  <p>Status</p>
+                {meetings.map((meeting) => (
+                  <MeetingRows meeting={meeting} />
+                ))}
+              </div>
+            ) : (
+              <div className="collegeDataNotFound">
+                <div className="collegeDataNotFoundContainer">
+                  <img src={img} alt="No data found" />
+                  <h2>No Meetings are Created</h2>
+                  <h5>
+                    Be the first to add one to create a meeting... Click below
+                    button to add one
+                  </h5>
+                  <button
+                    className="fullColeredButton"
+                    onClick={() => setIsNotForm(false)}
+                  >
+                    Click Here
+                  </button>
                 </div>
               </div>
-              {meetings.map((meeting) => (
-                <MeetingRows meeting={meeting} />
-              ))}
-            </div>
+            )
           ) : (
-            <div className="collegeDataNotFound">
-              <div className="collegeDataNotFoundContainer">
-                <img src={img} alt="No data found" />
-                <h2>No Meetings are Created</h2>
-                <h5>
-                  Be the first to add one to create a meeting... Click below
-                  button to add one
-                </h5>
-                <button
-                  className="fullColeredButton"
-                  // onClick={() => setIsNotForm(false)}
-                >
-                  Click Here
-                </button>
-              </div>
-            </div>
+            <MeetingForm />
           )}
         </div>
       </div>

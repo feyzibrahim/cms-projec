@@ -5,7 +5,7 @@ import img from "../../img/noCollegeData.png";
 const Dues = () => {
   var today = new Date(),
     date = today.toTimeString();
-  const [isPending, setIsPending] = useState(false);
+  const [isPending] = useState(false);
 
   return (
     <div className="Dueshome addSomeMargin">
