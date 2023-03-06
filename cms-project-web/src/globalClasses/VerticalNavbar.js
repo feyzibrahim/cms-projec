@@ -32,7 +32,7 @@ const Navbar = () => {
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? "active" : "inactive")}
-            to="/dash/teachers"
+            to="/dash/teacher"
           >
             <span className="material-symbols-outlined">Groups</span>Teachers
           </NavLink>

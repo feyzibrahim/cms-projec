@@ -15,6 +15,7 @@ import DashBoard from "./pages/DashBoard";
 import Dues from "./pages/dashPages/Dues";
 import Meatings from "./pages/dashPages/Meatings";
 import Teachers from "./pages/dashPages/Teachers";
+import Teacher from "./pages/dashPages/Teacher";
 import Departments from "./pages/dashPages/Departments";
 import Settings from "./pages/dashPages/Settings";
 import Dash from "./pages/dashPages/Dash";
@@ -47,10 +48,10 @@ function App() {
               element={user ? <DashBoard /> : <Navigate to="/" />}
             >
               <Route index element={<Dash />} />
-              <Route path="teachers" element={<Teachers />} />
               <Route path="dues" element={<Dues />} />
               <Route path="meatings" element={<Meatings />} />
               <Route path="teachers" element={<Teachers />} />
+              <Route path="teacher" element={<Teacher />} />
               <Route path="settings" element={<Settings />} />
               <Route path="departments" element={<Departments />} />
             </Route>
