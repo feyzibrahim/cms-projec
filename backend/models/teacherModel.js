@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const teacherSchema = new Schema(
   {
-    name: {
+    teacherName: {
       type: String,
       required: true,
     },
@@ -41,11 +41,9 @@ const teacherSchema = new Schema(
       type: Date,
       required: true,
     },
-    subjectsCanTeach: [
-      {
-        type: String,
-      },
-    ],
+    subjectsCanTeach: {
+      type: String,
+    },
     salary: {
       type: Number,
     },

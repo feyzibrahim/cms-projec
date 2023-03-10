@@ -34,7 +34,7 @@ const getTeacher = async (req, res) => {
 
 const createTeacher = async (req, res) => {
   const {
-    name,
+    teacherName,
     email,
     password,
     registrationNumber,
@@ -52,7 +52,7 @@ const createTeacher = async (req, res) => {
   try {
     const user_id = req.user._id;
     const teacher = await Teacher.create({
-      name,
+      teacherName,
       email,
       password,
       registrationNumber,

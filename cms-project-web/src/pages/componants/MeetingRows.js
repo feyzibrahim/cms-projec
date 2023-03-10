@@ -86,7 +86,7 @@ const MeetingRows = ({ meeting }) => {
         ) : (
           <button className="fullColeredButton" onClick={handleUpdate}>
             <span className="material-symbols-outlined">Check</span>
-            <p>Mark As Read</p>
+            <p>Mark As Done</p>
           </button>
         )}
       </div>

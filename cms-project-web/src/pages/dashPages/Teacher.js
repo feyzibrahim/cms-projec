@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import img from "../../img/noCollegeData.png";
 import Loader from "../../globalClasses/Loader";
-import MeetingForm from "../componants/MeetingForm";
+import TeacherForm from "../componants/TeacherForm";
 import { useAuthContext } from "../../Hook/contextHooks/useAuthContext";
 import { useTeacherContext } from "../../Hook/contextHooks/useTeacherContext";
 
@@ -86,8 +86,8 @@ const Teacher = () => {
                     <p>Update</p>
                   </div>
                 </div> */}
-                {teacher.map((teach) => (
-                  <p>{teach.name}</p>
+                {teacher.map((t) => (
+                  <p>{t.teacherName}</p>
                 ))}
               </div>
             ) : (
@@ -109,7 +109,7 @@ const Teacher = () => {
               </div>
             )
           ) : (
-            <MeetingForm />
+            <TeacherForm />
           )}
         </div>
       </div>
