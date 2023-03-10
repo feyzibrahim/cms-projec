@@ -1,24 +1,23 @@
 import React, { useState, useEffect } from "react";
 import img from "../../img/noCollegeData.png";
 import Loader from "../../globalClasses/Loader";
-import MeetingRows from "../componants/MeetingRows";
-import MeetingForm from "../componants/MeetingForm";
+import TeacherForm from "../componants/TeacherForm";
 import { useAuthContext } from "../../Hook/contextHooks/useAuthContext";
-import { useMeetingContext } from "../../Hook/contextHooks/useMeetingContext";
+import { useTeacherContext } from "../../Hook/contextHooks/useTeacherContext";
 
-const Meatings = () => {
+const Teacher = () => {
   var today = new Date(),
     date = today.toTimeString();
 
   const { user } = useAuthContext();
-  const { meetings, dispatch } = useMeetingContext();
+  const { teacher, dispatch } = useTeacherContext();
   const [isPending, setIsPending] = useState(true);
   const [isNotForm, setIsNotForm] = useState(true);
 
   useEffect(() => {
     const abortConst = new AbortController();
     const fetchData = async () => {
-      const response = await fetch("/api/meetings", {
+      const response = await fetch("/api/teacher", {
         signal: abortConst.signal,
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -27,7 +26,7 @@ const Meatings = () => {
       const json = await response.json();
 
       if (response.ok) {
-        dispatch({ type: "SET_MEETING", payload: json });
+        dispatch({ type: "SET_TEACHER", payload: json });
         console.log(json);
         setIsPending(false);
       }
@@ -45,7 +44,7 @@ const Meatings = () => {
       <div className="dHome">
         <div className="dHomeNav">
           <div className="dHomeNavLeft">
-            <h1>Meatings</h1>
+            <h1>Teachers</h1>
             <p>{date}</p>
           </div>
           <div className="depHomeNavRight">
@@ -56,7 +55,7 @@ const Meatings = () => {
                 setIsNotForm(isForm);
               }}
             >
-              {isNotForm ? "Add New Department" : "Go back"}
+              {isNotForm ? "Add New Teacher" : "Go back"}
             </button>
             <span className="material-symbols-outlined">notifications</span>
           </div>
@@ -65,9 +64,9 @@ const Meatings = () => {
           {isPending && <Loader />}
 
           {isNotForm ? (
-            meetings != null && meetings.length > 0 ? (
+            teacher != null && teacher.length > 0 ? (
               <div>
-                <div className="meetingRows">
+                {/* <div className="meetingRows">
                   <div>
                     <p>Meeting Name</p>
                   </div>
@@ -86,19 +85,19 @@ const Meatings = () => {
                   <div>
                     <p>Update</p>
                   </div>
-                </div>
-                {meetings.map((meeting) => (
-                  <MeetingRows meeting={meeting} key={meeting._id} />
+                </div> */}
+                {teacher.map((t) => (
+                  <p>{t.teacherName}</p>
                 ))}
               </div>
             ) : (
               <div className="collegeDataNotFound">
                 <div className="collegeDataNotFoundContainer">
                   <img src={img} alt="No data found" />
-                  <h2>No Meetings are Created</h2>
+                  <h2>Teachers are not Added</h2>
                   <h5>
-                    Be the first to add one to create a meeting... Click below
-                    button to add one
+                    Please Click below button and fill up the form in order to
+                    add a teacher.
                   </h5>
                   <button
                     className="fullColeredButton"
@@ -110,7 +109,7 @@ const Meatings = () => {
               </div>
             )
           ) : (
-            <MeetingForm />
+            <TeacherForm />
           )}
         </div>
       </div>
@@ -118,4 +117,4 @@ const Meatings = () => {
   );
 };
 
-export default Meatings;
+export default Teacher;

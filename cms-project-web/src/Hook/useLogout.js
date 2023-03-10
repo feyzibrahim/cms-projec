@@ -1,5 +1,5 @@
-import { useAuthContext } from "./useAuthContext";
-import { useWorkoutsContext } from "./useWorkoutsContext";
+import { useAuthContext } from "./contextHooks/useAuthContext";
+import { useWorkoutsContext } from "./contextHooks/useWorkoutsContext";
 
 export const useLogout = () => {
   const { dispatch } = useAuthContext();

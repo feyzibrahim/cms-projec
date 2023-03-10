@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useAuthContext } from "../../Hook/useAuthContext";
+import { useAuthContext } from "../../Hook/contextHooks/useAuthContext";
 import { Link } from "react-router-dom";
 import img from "../../img/noCollegeData.png";
 import CollegeForm from "../componants/CollegeForm";

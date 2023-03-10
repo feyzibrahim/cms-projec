@@ -1,4 +1,4 @@
-import { DepartmentContext } from "../context/DepartmentContext";
+import { DepartmentContext } from "../../context/DepartmentContext";
 import { useContext } from "react";
 
 export const useDepartmentContext = () => {

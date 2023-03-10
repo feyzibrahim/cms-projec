@@ -5,18 +5,22 @@ import App from "./App";
 import { WorkoutsContextProvider } from "./context/WorkoutContext";
 import { AuthContextProvider } from "./context/AuthContext";
 import { DepartmentContextProvider } from "./context/DepartmentContext";
+import { MeetingContextProvider } from "./context/MeetingContext";
+import { TeacherContextProvider } from "./context/TeacherContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  // <React.StrictMode>
   <AuthContextProvider>
     <WorkoutsContextProvider>
       <DepartmentContextProvider>
-        <App />
+        <MeetingContextProvider>
+          <TeacherContextProvider>
+            <App />
+          </TeacherContextProvider>
+        </MeetingContextProvider>
       </DepartmentContextProvider>
     </WorkoutsContextProvider>
   </AuthContextProvider>
-  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
