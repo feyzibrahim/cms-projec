@@ -66,29 +66,36 @@ const Teacher = () => {
           {isNotForm ? (
             teacher != null && teacher.length > 0 ? (
               <div>
-                {/* <div className="meetingRows">
-                  <div>
-                    <p>Meeting Name</p>
-                  </div>
-                  <div>
-                    <p>Organized By</p>
-                  </div>
-                  <div>
-                    <p>Location</p>
-                  </div>
-                  <div>
-                    <p>Time and Date</p>
-                  </div>
-                  <div>
-                    <p>Status</p>
-                  </div>
-                  <div>
-                    <p>Update</p>
-                  </div>
-                </div> */}
                 {teacher.map((t) => (
-                  <p>{t.teacherName}</p>
+                  <p key={t._id}>{t.teacherName}</p>
                 ))}
+                <div>
+                  {/* <MaterialTable
+                    columns={[
+                      { title: "Ad", field: "name" },
+                      { title: "Soyad", field: "surname" },
+                      {
+                        title: "Doğum Yl",
+                        field: "birthYear",
+                        type: "numeric",
+                      },
+                      {
+                        title: "Doğum Yeri",
+                        field: "birthCity",
+                        lookup: { 34: "İstanbul", 63: "Şanlurfa" },
+                      },
+                    ]}
+                    data={[
+                      {
+                        name: "Mehmet",
+                        surname: "Baran",
+                        birthYear: 1987,
+                        birthCity: 63,
+                      },
+                    ]}
+                    title="Demo Title"
+                  /> */}
+                </div>
               </div>
             ) : (
               <div className="collegeDataNotFound">
