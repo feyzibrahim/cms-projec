@@ -4,6 +4,7 @@ import Loader from "../../globalClasses/Loader";
 import TeacherForm from "../componants/TeacherForm";
 import { useAuthContext } from "../../Hook/contextHooks/useAuthContext";
 import { useTeacherContext } from "../../Hook/contextHooks/useTeacherContext";
+import TeacherRows from "../componants/TeacherRows";
 
 const Teacher = () => {
   var today = new Date(),
@@ -27,7 +28,6 @@ const Teacher = () => {
 
       if (response.ok) {
         dispatch({ type: "SET_TEACHER", payload: json });
-        console.log(json);
         setIsPending(false);
       }
       if (!response.ok) {
@@ -60,41 +60,36 @@ const Teacher = () => {
             <span className="material-symbols-outlined">notifications</span>
           </div>
         </div>
-        <div className="meetingsContainer">
+        <div className="teacherContainer">
           {isPending && <Loader />}
 
           {isNotForm ? (
             teacher != null && teacher.length > 0 ? (
               <div>
-                {teacher.map((t) => (
-                  <p key={t._id}>{t.teacherName}</p>
-                ))}
                 <div>
-                  {/* <MaterialTable
-                    columns={[
-                      { title: "Ad", field: "name" },
-                      { title: "Soyad", field: "surname" },
-                      {
-                        title: "Doğum Yl",
-                        field: "birthYear",
-                        type: "numeric",
-                      },
-                      {
-                        title: "Doğum Yeri",
-                        field: "birthCity",
-                        lookup: { 34: "İstanbul", 63: "Şanlurfa" },
-                      },
-                    ]}
-                    data={[
-                      {
-                        name: "Mehmet",
-                        surname: "Baran",
-                        birthYear: 1987,
-                        birthCity: 63,
-                      },
-                    ]}
-                    title="Demo Title"
-                  /> */}
+                  <div className="teacherRowsHeader">
+                    <div>
+                      <p>Teacher Name</p>
+                    </div>
+                    <div>
+                      <p>Email Id</p>
+                    </div>
+                    <div>
+                      <p>Gender</p>
+                    </div>
+                    <div>
+                      <p>Department</p>
+                    </div>
+                    <div>
+                      <p>Desgination</p>
+                    </div>
+                    <div>
+                      <p>Mobile Number</p>
+                    </div>
+                  </div>
+                  {teacher.map((t) => (
+                    <TeacherRows teacher={t} key={t._id} />
+                  ))}
                 </div>
               </div>
             ) : (

@@ -826,28 +826,94 @@ padding-left: 20px;
   padding-top: 20px;
 }
 
-.meetingRows {
+.meetingRows, .meetingRowsHeader {
   display: flex;
   width: 100%;
   justify-content: space-evenly;
+  margin-bottom: 4px;
 }
 
-.meetingRows div {
+.meetingRows {
+  background-color: #f1f1f1;
+}
+
+.meetingRowsHeader p {
+  font-weight: bold;
+}
+
+.meetingRows p {
+  font-size: 13px;
+}
+
+.meetingRows:hover {
+  cursor: pointer;
+}
+
+.meetingRows div, .meetingRowsHeader div {
   width: 100%;
-  border: #000 1px solid;
-  padding: 20px;
+  padding: 10px;
+}
+
+.meetingRowsHeader div {
+  background-color: #e9e9e9;
 }
 
 .meetingComplete {
   display: flex;
   justify-content: space-between;
-
+  padding: 0;
+  margin: 0;
 }
 
 .meetingComplete button {
   display: flex;
+  padding: 5px;
+  margin: 0;
 }
 
 .meetingComplete button:hover {
   color: #e7195a;
+}
+
+/* Teacher Page */
+
+.teacherContainer {
+  padding-top: 20px;
+}
+
+.teacherRows, .teacherRowsHeader {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  margin-bottom: 4px;
+}
+
+.teacherRows {
+  background-color: #f1f1f1;
+}
+
+.teacherRows:hover {
+  background-color: #A38ED1;
+  cursor: pointer;
+}
+
+.teacherRows:active {
+  background-color: #8b79b0;
+}
+
+.teacherRowsHeader p {
+  font-weight: bold;
+}
+
+.teacherRows p {
+  font-size: 13px;
+}
+
+.teacherRows div, .teacherRowsHeader div {
+  width: 100%;
+  padding: 10px;
+}
+
+.teacherRowsHeader div {
+  background-color: #e9e9e9;
 }

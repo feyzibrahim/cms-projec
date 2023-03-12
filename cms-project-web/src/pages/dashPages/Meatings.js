@@ -67,7 +67,7 @@ const Meatings = () => {
           {isNotForm ? (
             meetings != null && meetings.length > 0 ? (
               <div>
-                <div className="meetingRows">
+                <div className="meetingRowsHeader">
                   <div>
                     <p>Meeting Name</p>
                   </div>
