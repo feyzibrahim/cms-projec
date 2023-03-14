@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useAuthContext } from "../../Hook/contextHooks/useAuthContext";
 import { useMeetingContext } from "../../Hook/contextHooks/useMeetingContext";
 
-const MeetingForm = () => {
+const MeetingForm = (props) => {
   const { user } = useAuthContext();
   const [meeting_name, setMeetingName] = useState("");
   const [organized_by, setOrganizedBy] = useState("");
@@ -51,6 +51,7 @@ const MeetingForm = () => {
       setTimeStamps("");
       setError(null);
       dispatch({ type: "CREATE_MEETING", payload: json });
+      props.showForm();
     }
   };
 

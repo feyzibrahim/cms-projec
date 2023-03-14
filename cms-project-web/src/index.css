@@ -700,10 +700,11 @@ padding-left: 20px;
   color: #888888;
 }
 
+/* Teacher Form */
+
 .collegeNewForm {
-  margin: 0 30%;
+  margin: 0 10%;
   padding-top: 40px;
-  
 }
 
 .collegeNewForm input {
@@ -724,10 +725,17 @@ padding-left: 20px;
 .collegeNewFormTitle, .collegeFormButton {
   width: 100%;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .collegeFormButton button{
   width: 100%;
+}
+
+.collegeNewFormContainer {
+ display: grid;
+ grid-template-columns: 1fr 1fr; 
+ gap: 50px;
 }
 
 /* Loader Animation */
@@ -916,4 +924,69 @@ padding-left: 20px;
 
 .teacherRowsHeader div {
   background-color: #e9e9e9;
+}
+
+/* Teacher Profile */
+
+.teacherProfile {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.6);
+}
+
+.teacherProfileContainer {
+  padding: 50px;
+}
+
+.tpNav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tpNav span{
+  font-size: 3em;
+  color: #fff;
+}
+
+.tpProfileSession {
+  width: 70%;
+  background: #fff;
+  margin-left: 11%;
+  padding: 50px;
+  height: 60vh;
+  overflow-y: scroll;
+  text-align: center;
+}
+
+.tpProfileSession form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  text-align: left;
+}
+
+.tpProfileSession input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.tpProfileSession label, .tpProfileSession input {
+  display: block;
+  width: 100%;
+}
+
+.tpProfileSession button {
+  margin: 0 10px;
 }

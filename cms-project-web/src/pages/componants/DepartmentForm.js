@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useAuthContext } from "../../Hook/contextHooks/useAuthContext";
 import { useDepartmentContext } from "../../Hook/contextHooks/useDepartmentContext";
 
-const DepartmentForm = () => {
+const DepartmentForm = (props) => {
   const { user } = useAuthContext();
   const [department_name, setDepartment_name] = useState("");
   const [year_count, setYearCount] = useState("");
@@ -28,8 +28,6 @@ const DepartmentForm = () => {
       teacher_count,
       students_count,
     };
-
-    console.log(department);
 
     const response = await fetch("/api/department", {
       method: "POST",
@@ -56,6 +54,7 @@ const DepartmentForm = () => {
       setError(null);
 
       console.log("New Workout Added", json);
+      props.showForm();
     }
   };
 

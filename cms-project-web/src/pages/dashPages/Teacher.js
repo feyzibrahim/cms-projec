@@ -15,6 +15,10 @@ const Teacher = () => {
   const [isPending, setIsPending] = useState(true);
   const [isNotForm, setIsNotForm] = useState(true);
 
+  const showForm = () => {
+    setIsNotForm(!isNotForm);
+  };
+
   useEffect(() => {
     const abortConst = new AbortController();
     const fetchData = async () => {
@@ -51,8 +55,7 @@ const Teacher = () => {
             <button
               className="fullColeredButton"
               onClick={() => {
-                const isForm = !isNotForm;
-                setIsNotForm(isForm);
+                showForm();
               }}
             >
               {isNotForm ? "Add New Teacher" : "Go back"}
@@ -103,7 +106,7 @@ const Teacher = () => {
                   </h5>
                   <button
                     className="fullColeredButton"
-                    onClick={() => setIsNotForm(false)}
+                    onClick={() => showForm()}
                   >
                     Click Here
                   </button>
@@ -111,7 +114,7 @@ const Teacher = () => {
               </div>
             )
           ) : (
-            <TeacherForm />
+            <TeacherForm showForm={showForm} />
           )}
         </div>
       </div>

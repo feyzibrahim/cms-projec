@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import TeacherProfile from "./TeacherProfile";
 // import { useAuthContext } from "../../Hook/contextHooks/useAuthContext";
 // import { useMeetingContext } from "../../Hook/contextHooks/useMeetingContext";
 
-const TeacherRows = ({ teacher }) => {
+const TeacherRows = (props) => {
   // const { user } = useAuthContext();
   // const { dispatch } = useMeetingContext();
 
@@ -60,30 +61,40 @@ const TeacherRows = ({ teacher }) => {
   //   }
   // };
 
+  const teacher = props.teacher;
+
+  const [showProfile, setShowProfile] = useState(false);
+
+  const showProfileOnClick = () => {
+    setShowProfile(!showProfile);
+  };
   return (
-    <div
-      className="teacherRows"
-      onClick={() => {
-        console.log(teacher.teacherName);
-      }}
-    >
-      <div>
-        <p>{teacher.teacherName}</p>
-      </div>
-      <div>
-        <p>{teacher.email}</p>
-      </div>
-      <div>
-        <p>{teacher.gender}</p>
-      </div>
-      <div>
-        <p>{teacher.department}</p>
-      </div>
-      <div>
-        <p>{teacher.designation}</p>
-      </div>
-      <div>
-        <p>{teacher.facultyMobileNumber}</p>
+    <div>
+      {showProfile && (
+        <TeacherProfile
+          showProfileOnClick={showProfileOnClick}
+          teacher={teacher}
+        />
+      )}
+      <div className="teacherRows" onClick={showProfileOnClick}>
+        <div>
+          <p>{teacher.teacherName}</p>
+        </div>
+        <div>
+          <p>{teacher.email}</p>
+        </div>
+        <div>
+          <p>{teacher.gender}</p>
+        </div>
+        <div>
+          <p>{teacher.department}</p>
+        </div>
+        <div>
+          <p>{teacher.designation}</p>
+        </div>
+        <div>
+          <p>{teacher.facultyMobileNumber}</p>
+        </div>
       </div>
     </div>
   );

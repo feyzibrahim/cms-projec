@@ -16,6 +16,10 @@ const Departments = () => {
   const [isPending, setIsPending] = useState(true);
   const [isNotForm, setIsNotForm] = useState(true);
 
+  const showForm = () => {
+    setIsNotForm(!isNotForm);
+  };
+
   useEffect(() => {
     const abortConst = new AbortController();
     const fetchData = async () => {
@@ -53,8 +57,7 @@ const Departments = () => {
             <button
               className="fullColeredButton"
               onClick={() => {
-                const isForm = !isNotForm;
-                setIsNotForm(isForm);
+                showForm();
               }}
             >
               {isNotForm ? "Add New Department" : "Go back"}
@@ -86,7 +89,7 @@ const Departments = () => {
                 </h5>
                 <button
                   className="fullColeredButton"
-                  onClick={() => setIsNotForm(false)}
+                  onClick={() => showForm()}
                 >
                   Click Here
                 </button>
@@ -94,7 +97,7 @@ const Departments = () => {
             </div>
           )
         ) : (
-          <DepartmentForm />
+          <DepartmentForm showForm={showForm} />
         )}
       </div>
     </div>

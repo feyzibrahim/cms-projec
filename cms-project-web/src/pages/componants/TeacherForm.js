@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useAuthContext } from "../../Hook/contextHooks/useAuthContext";
 import { useTeacherContext } from "../../Hook/contextHooks/useTeacherContext";
 
-const TeacherForm = () => {
+const TeacherForm = (props) => {
   const { user } = useAuthContext();
   const [error, setError] = useState();
 
@@ -75,6 +75,7 @@ const TeacherForm = () => {
       dispatch({ type: "CREATE_TEACHER", payload: json });
 
       console.log("New Teacher Added", json);
+      props.showForm();
     }
   };
 
@@ -83,75 +84,84 @@ const TeacherForm = () => {
       <div className="collegeNewFormTitle">
         <h3>Enter Teacher Details</h3>
       </div>
-      <label>Teacher Name</label>
-      <input
-        type="text"
-        onChange={(e) => setTeacherName(e.target.value)}
-        value={teacherName}
-      />
-      <label>Email Address</label>
-      <input
-        type="email"
-        onChange={(e) => setEmail(e.target.value)}
-        value={email}
-      />
-      <label>Password</label>
-      <input
-        type="password"
-        onChange={(e) => setPassword(e.target.value)}
-        value={password}
-      />
-      <label>Registration ID</label>
-      <input
-        type="text"
-        onChange={(e) => setRegistrationNumber(e.target.value)}
-        value={registrationNumber}
-      />
-      <label>Gender</label>
-      <input
-        type="text"
-        onChange={(e) => setGender(e.target.value)}
-        value={gender}
-      />
-      <label>Designation</label>
-      <input
-        type="text"
-        onChange={(e) => setDesignation(e.target.value)}
-        value={designation}
-      />
-      <label>Department</label>
-      <input
-        type="text"
-        onChange={(e) => setDepartment(e.target.value)}
-        value={department}
-      />
-      <label>Mobile Number</label>
-      <input
-        type="number"
-        onChange={(e) => setFacultyMobileNumber(e.target.value)}
-        value={facultyMobileNumber}
-      />
-      <label>Date of Birth</label>
-      <input type="date" onChange={(e) => setDob(e.target.value)} value={dob} />
-      <label>Joining Date</label>
-      <input
-        type="date"
-        onChange={(e) => setJoiningDate(e.target.value)}
-        value={joiningDate}
-      />
-      <label>Subjects can Teach</label>
-      <input
-        type="text"
-        onChange={(e) => setSubjectsCanTeach(e.target.value)}
-        value={subjectsCanTeach}
-      />
-      <label>Salary</label>
-      <input
-        type="number"
-        onChange={(e) => setSalary(e.target.value)}
-        value={salary}
-      />
-
+      <div className="collegeNewFormContainer">
+        <div>
+          <label>Teacher Name</label>
+          <input
+            type="text"
+            onChange={(e) => setTeacherName(e.target.value)}
+            value={teacherName}
+          />
+          <label>Email Address</label>
+          <input
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
+          <label>Password</label>
+          <input
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
+          <label>Registration ID</label>
+          <input
+            type="text"
+            onChange={(e) => setRegistrationNumber(e.target.value)}
+            value={registrationNumber}
+          />
+          <label>Gender</label>
+          <input
+            type="text"
+            onChange={(e) => setGender(e.target.value)}
+            value={gender}
+          />
+          <label>Designation</label>
+          <input
+            type="text"
+            onChange={(e) => setDesignation(e.target.value)}
+            value={designation}
+          />
+        </div>
+        <div>
+          <label>Department</label>
+          <input
+            type="text"
+            onChange={(e) => setDepartment(e.target.value)}
+            value={department}
+          />
+          <label>Mobile Number</label>
+          <input
+            type="number"
+            onChange={(e) => setFacultyMobileNumber(e.target.value)}
+            value={facultyMobileNumber}
+          />
+          <label>Date of Birth</label>
+          <input
+            type="date"
+            onChange={(e) => setDob(e.target.value)}
+            value={dob}
+          />
+          <label>Joining Date</label>
+          <input
+            type="date"
+            onChange={(e) => setJoiningDate(e.target.value)}
+            value={joiningDate}
+          />
+          <label>Subjects can Teach</label>
+          <input
+            type="text"
+            onChange={(e) => setSubjectsCanTeach(e.target.value)}
+            value={subjectsCanTeach}
+          />
+          <label>Salary</label>
+          <input
+            type="number"
+            onChange={(e) => setSalary(e.target.value)}
+            value={salary}
+          />
+        </div>
+      </div>
       <div className="collegeFormButton">
         <button className="fullColeredButton" onClick={handleSubmit}>
           Add Department
