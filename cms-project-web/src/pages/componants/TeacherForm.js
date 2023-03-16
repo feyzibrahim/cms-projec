@@ -65,7 +65,7 @@ const TeacherForm = (props) => {
     }
 
     if (response.ok) {
-      signup(email, password, userTypeG, json.user_id);
+      signup(email, password, userTypeG, json.user_id, json._id);
       setTeacherName("");
       setEmail("");
       setPassword("");
@@ -82,15 +82,20 @@ const TeacherForm = (props) => {
       dispatch({ type: "CREATE_TEACHER", payload: json });
 
       console.log("New Teacher Added", json);
-      console.log(json.user_id);
     }
   };
 
-  const signup = async (email, password, userType, collegeId) => {
+  const signup = async (email, password, userType, collegeId, dataAccessId) => {
     const response = await fetch("/api/user/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password, userType, collegeId }),
+      body: JSON.stringify({
+        email,
+        password,
+        userType,
+        collegeId,
+        dataAccessId,
+      }),
     });
 
     const json = await response.json();
