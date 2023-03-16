@@ -6,6 +6,7 @@ import { useTeacherContext } from "../../Hook/contextHooks/useTeacherContext";
 const TeacherForm = (props) => {
   const { user } = useAuthContext();
   const [error, setError] = useState();
+  const [isloading, setIsLoading] = useState(false);
 
   const [teacherName, setTeacherName] = useState();
   const [email, setEmail] = useState();
@@ -22,12 +23,16 @@ const TeacherForm = (props) => {
 
   const { dispatch } = useTeacherContext();
 
+  const userTypeG = "teacher";
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!user) {
       setError("You must be logged in...");
       return;
     }
+
+    setIsLoading(true);
 
     const teacher = {
       teacherName,
@@ -43,6 +48,7 @@ const TeacherForm = (props) => {
       subjectsCanTeach,
       salary,
     };
+
     const response = await fetch("/api/teacher", {
       method: "POST",
       body: JSON.stringify(teacher),
@@ -59,6 +65,7 @@ const TeacherForm = (props) => {
     }
 
     if (response.ok) {
+      signup(email, password, userTypeG, json.user_id);
       setTeacherName("");
       setEmail("");
       setPassword("");
@@ -75,7 +82,25 @@ const TeacherForm = (props) => {
       dispatch({ type: "CREATE_TEACHER", payload: json });
 
       console.log("New Teacher Added", json);
+      console.log(json.user_id);
+    }
+  };
+
+  const signup = async (email, password, userType, collegeId) => {
+    const response = await fetch("/api/user/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password, userType, collegeId }),
+    });
+
+    const json = await response.json();
+    if (!response.ok) {
+      setError(json.error);
+    }
+
+    if (response.ok) {
       props.showForm();
+      console.log("New User Created", json);
     }
   };
 
@@ -164,7 +189,7 @@ const TeacherForm = (props) => {
       </div>
       <div className="collegeFormButton">
         <button className="fullColeredButton" onClick={handleSubmit}>
-          Add Department
+          {isloading ? "Loading..." : "Add Department"}
         </button>
       </div>
 

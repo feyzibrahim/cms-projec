@@ -16,6 +16,7 @@ const TeacherProfile = (props) => {
     var date = curr.toISOString().substring(0, 10);
     return date;
   };
+
   const handleDelete = () => {
     const deleteData = async () => {
       setIsPending(true);
@@ -137,15 +138,19 @@ const TeacherProfile = (props) => {
             </div>
           </form>
 
-          <button
+          {/* <button
             className="fullColeredButton"
             onClick={(e) => {
               e.preventDefault();
-              setCanBeEdited(false);
+              setCanBeEdited(!canBeEdited);
+              if (!canBeEdited) {
+                handleUpdate();
+                console.log("Update Teacher");
+              }
             }}
           >
-            Edit The Profile
-          </button>
+            {canBeEdited ? "Edit The Profile" : "Update"}
+          </button> */}
           <button
             className="fullColeredButton"
             onClick={(e) => {

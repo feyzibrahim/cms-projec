@@ -10,6 +10,7 @@ const SignUp = () => {
   const [passwordAgain, setPasswordAgain] = useState("");
   const { signup, isLoading, error } = useSignup();
   const [passNotMatch, setPassNotMatch] = useState("");
+  const admin = "admin";
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -19,7 +20,7 @@ const SignUp = () => {
       return;
     }
 
-    await signup(email, password);
+    await signup(email, password, admin);
   };
 
   return (
