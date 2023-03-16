@@ -15,6 +15,10 @@ const Meatings = () => {
   const [isPending, setIsPending] = useState(true);
   const [isNotForm, setIsNotForm] = useState(true);
 
+  const showForm = () => {
+    setIsNotForm(!isNotForm);
+  };
+
   useEffect(() => {
     const abortConst = new AbortController();
     const fetchData = async () => {
@@ -52,8 +56,7 @@ const Meatings = () => {
             <button
               className="fullColeredButton"
               onClick={() => {
-                const isForm = !isNotForm;
-                setIsNotForm(isForm);
+                showForm();
               }}
             >
               {isNotForm ? "Add New Department" : "Go back"}
@@ -67,7 +70,7 @@ const Meatings = () => {
           {isNotForm ? (
             meetings != null && meetings.length > 0 ? (
               <div>
-                <div className="meetingRows">
+                <div className="meetingRowsHeader">
                   <div>
                     <p>Meeting Name</p>
                   </div>
@@ -102,7 +105,7 @@ const Meatings = () => {
                   </h5>
                   <button
                     className="fullColeredButton"
-                    onClick={() => setIsNotForm(false)}
+                    onClick={() => showForm()}
                   >
                     Click Here
                   </button>
@@ -110,7 +113,7 @@ const Meatings = () => {
               </div>
             )
           ) : (
-            <MeetingForm />
+            <MeetingForm showForm={showForm} />
           )}
         </div>
       </div>

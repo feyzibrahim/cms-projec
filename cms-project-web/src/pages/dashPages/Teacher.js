@@ -4,6 +4,7 @@ import Loader from "../../globalClasses/Loader";
 import TeacherForm from "../componants/TeacherForm";
 import { useAuthContext } from "../../Hook/contextHooks/useAuthContext";
 import { useTeacherContext } from "../../Hook/contextHooks/useTeacherContext";
+import TeacherRows from "../componants/TeacherRows";
 
 const Teacher = () => {
   var today = new Date(),
@@ -13,6 +14,10 @@ const Teacher = () => {
   const { teacher, dispatch } = useTeacherContext();
   const [isPending, setIsPending] = useState(true);
   const [isNotForm, setIsNotForm] = useState(true);
+
+  const showForm = () => {
+    setIsNotForm(!isNotForm);
+  };
 
   useEffect(() => {
     const abortConst = new AbortController();
@@ -27,7 +32,6 @@ const Teacher = () => {
 
       if (response.ok) {
         dispatch({ type: "SET_TEACHER", payload: json });
-        console.log(json);
         setIsPending(false);
       }
       if (!response.ok) {
@@ -51,8 +55,7 @@ const Teacher = () => {
             <button
               className="fullColeredButton"
               onClick={() => {
-                const isForm = !isNotForm;
-                setIsNotForm(isForm);
+                showForm();
               }}
             >
               {isNotForm ? "Add New Teacher" : "Go back"}
@@ -60,35 +63,37 @@ const Teacher = () => {
             <span className="material-symbols-outlined">notifications</span>
           </div>
         </div>
-        <div className="meetingsContainer">
+        <div className="teacherContainer">
           {isPending && <Loader />}
 
           {isNotForm ? (
             teacher != null && teacher.length > 0 ? (
               <div>
-                {/* <div className="meetingRows">
-                  <div>
-                    <p>Meeting Name</p>
+                <div>
+                  <div className="teacherRowsHeader">
+                    <div>
+                      <p>Teacher Name</p>
+                    </div>
+                    <div>
+                      <p>Email Id</p>
+                    </div>
+                    <div>
+                      <p>Gender</p>
+                    </div>
+                    <div>
+                      <p>Department</p>
+                    </div>
+                    <div>
+                      <p>Desgination</p>
+                    </div>
+                    <div>
+                      <p>Mobile Number</p>
+                    </div>
                   </div>
-                  <div>
-                    <p>Organized By</p>
-                  </div>
-                  <div>
-                    <p>Location</p>
-                  </div>
-                  <div>
-                    <p>Time and Date</p>
-                  </div>
-                  <div>
-                    <p>Status</p>
-                  </div>
-                  <div>
-                    <p>Update</p>
-                  </div>
-                </div> */}
-                {teacher.map((t) => (
-                  <p>{t.teacherName}</p>
-                ))}
+                  {teacher.map((t) => (
+                    <TeacherRows teacher={t} key={t._id} />
+                  ))}
+                </div>
               </div>
             ) : (
               <div className="collegeDataNotFound">
@@ -101,7 +106,7 @@ const Teacher = () => {
                   </h5>
                   <button
                     className="fullColeredButton"
-                    onClick={() => setIsNotForm(false)}
+                    onClick={() => showForm()}
                   >
                     Click Here
                   </button>
@@ -109,7 +114,7 @@ const Teacher = () => {
               </div>
             )
           ) : (
-            <TeacherForm />
+            <TeacherForm showForm={showForm} />
           )}
         </div>
       </div>

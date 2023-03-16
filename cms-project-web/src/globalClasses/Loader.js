@@ -4,7 +4,7 @@ const Loader = () => {
   return (
     <div className="lds">
       <div className="lds-container">
-        <div class="lds-facebook">
+        <div className="lds-facebook">
           <div></div>
           <div></div>
           <div></div>
