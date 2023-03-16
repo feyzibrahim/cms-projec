@@ -65,6 +65,8 @@ const TeacherForm = (props) => {
     }
 
     if (response.ok) {
+      console.log("New Teacher Added", json);
+      // console.log(json._id);
       signup(email, password, userTypeG, json.user_id, json._id);
       setTeacherName("");
       setEmail("");
@@ -80,8 +82,6 @@ const TeacherForm = (props) => {
 
       setError("");
       dispatch({ type: "CREATE_TEACHER", payload: json });
-
-      console.log("New Teacher Added", json);
     }
   };
 
