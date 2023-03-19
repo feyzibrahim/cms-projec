@@ -7,7 +7,6 @@ import { ActivityIndicator } from "react-native-paper";
 
 export default function TeacherProfile() {
   const { user } = useAuthContext();
-
   const [teacher, setTeacher] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
