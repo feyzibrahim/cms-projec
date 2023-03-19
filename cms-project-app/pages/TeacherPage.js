@@ -4,17 +4,16 @@ import {
   Text,
   TouchableOpacity,
   Dimensions,
+  Pressable,
 } from "react-native";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function TeacherPage() {
+  const { user, logout } = useAuthContext();
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.ecampTitle}>Ecampus</Text>
-      </View>
-
-      <View>
-        <Text styles={styles.subTitle}>Hello,Sir/Madam</Text>
+        <Text styles={styles.subTitle}>Hello, {user && user.email}</Text>
       </View>
 
       <View style={styles.classAndClassCount}>
@@ -69,6 +68,7 @@ export default function TeacherPage() {
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -77,7 +77,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 30,
     width: Dimensions.get("window").width,
-    // margin: 20,
   },
   ecampTitle: {
     fontWeight: "bold",

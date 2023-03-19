@@ -1,5 +1,5 @@
 {
-  "proxy": "https://cms-server-80fv.onrender.com",
+  "proxy": "https://cms-server-80fv.onrender.com/",
   "name": "cms-project-web",
   "version": "0.1.0",
   "private": true,
