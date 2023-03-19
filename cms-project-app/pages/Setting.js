@@ -9,11 +9,11 @@ import {
 import { MaterialIcons } from "@expo/vector-icons";
 
 export default function Setting({ navigation }) {
-  const [setting, setSetting] = useState([
-    { data: "privacy Policy", name: "privacypolicy", key: "1" },
-    { data: "terms and condition", name: "termsandconditions", key: "2" },
-    { data: "Help", name: "help", key: "3" },
-    { data: "Log Out", name: "logout", key: "4" },
+  const [setting] = useState([
+    { data: "Your Profile", name: "profilepage", key: "1" },
+    { data: "Privacy Policy", name: "privacypolicy", key: "2" },
+    { data: "Terms & Condition", name: "termsandconditions", key: "3" },
+    { data: "Help", name: "help", key: "4" },
   ]);
   return (
     <View>

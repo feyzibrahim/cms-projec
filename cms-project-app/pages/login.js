@@ -1,4 +1,6 @@
 import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
+import { useAuthContext } from "../hooks/useAuthContext";
 import {
   StyleSheet,
   Text,
@@ -8,12 +10,19 @@ import {
   Pressable,
 } from "react-native";
 
-export default function Login({ navigation }) {
-  const gotomainpage = () => {
-    navigation.navigate("students");
-  };
-  const gototeacberpage = () => {
-    navigation.navigate("Teacher");
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { login } = useAuthContext();
+
+  const handleLogin = () => {
+    if (email == "" && password == "") {
+      alert("Please enter the details");
+      return;
+    }
+
+    login(email, password);
   };
 
   return (
@@ -22,11 +31,23 @@ export default function Login({ navigation }) {
         <Text style={styles.ecampusText}>ECAMPUS</Text>
       </View>
       <View style={styles.textInputView}>
-        <TextInput placeholder="Enter your username" />
+        <TextInput
+          placeholder="Enter your username/email"
+          value={email}
+          onChangeText={(text) => {
+            setEmail(text);
+          }}
+        />
       </View>
-
+      <Text></Text>
       <View style={styles.textInputView}>
-        <TextInput placeholder="Password" />
+        <TextInput
+          placeholder="Password"
+          value={password}
+          onChangeText={(text) => {
+            setPassword(text);
+          }}
+        />
       </View>
 
       <View style={styles.signIn}>
@@ -35,29 +56,10 @@ export default function Login({ navigation }) {
           android_ripple={{
             color: "black",
           }}
-          onPress={() => gotomainpage()}
+          onPress={() => handleLogin()}
         >
           <Text style={styles.centerText}>Log In</Text>
         </Pressable>
-      </View>
-      <View style={styles.signIn}>
-        <Pressable
-          style={styles.signInView}
-          android_ripple={{
-            color: "black",
-          }}
-          onPress={() => gototeacberpage()}
-        >
-          <Text style={styles.centerText}>Go to teachers main page</Text>
-        </Pressable>
-      </View>
-
-      <View>
-        <Text> or continue with</Text>
-      </View>
-
-      <View styles={styles.registerButton}>
-        <Text>Not a memember? register now</Text>
       </View>
       <StatusBar style="auto" />
     </View>
