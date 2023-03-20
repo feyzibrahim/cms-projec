@@ -56,7 +56,6 @@ const TeacherProfile = (props) => {
           >
             Close
           </span>
-          <p>Teacher Profile</p>
         </div>
         <div className="tpProfileSession">
           <form>

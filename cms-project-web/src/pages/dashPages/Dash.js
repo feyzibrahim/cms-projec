@@ -1,10 +1,11 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useAuthContext } from "../../Hook/contextHooks/useAuthContext";
-import { Link } from "react-router-dom";
 import img from "../../img/noCollegeData.png";
 import CollegeForm from "../componants/CollegeForm";
 import Loader from "../../globalClasses/Loader";
+import DashEvents from "../componants/DashEvents";
+import DashAnnouncements from "../componants/DashAnnouncements";
 
 const Dash = () => {
   var today = new Date(),
@@ -73,19 +74,9 @@ const Dash = () => {
                 <h6>Non-Teaching Staff</h6>
               </div>
             </div>
-
-            <div className="dashTodos">
-              <div className="dashTodosNav">
-                <h3>Todos</h3>
-                <Link to="/">View All</Link>
-              </div>
-              <p>{">"} Todos are empty</p>
-            </div>
+            <DashEvents />
           </div>
-          <div className="dashCollegeDetailRight">
-            <h3>Announcements</h3>
-            <p>{">"} No New Announcements</p>
-          </div>
+          <DashAnnouncements />
         </div>
       ) : isNotForm ? (
         <div className="collegeDataNotFound">
