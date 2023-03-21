@@ -649,9 +649,14 @@ padding-left: 20px;
 
 .dashCollegeDetailRight {
   background-color: #DFDFDF;
-  padding: 20px;
   border-radius: 15px;
+}
+
+.dashScollable {
   height: 63vh;
+  overflow-y: auto;
+  margin: 10px;
+  padding: 10px;
 }
 
 .dashCollegeDetailRight p {
@@ -1035,6 +1040,10 @@ padding-left: 20px;
   box-sizing: border-box;
 }
 
+.dashCForm textarea {
+  height: 250px;
+}
+
 .optional {
   color: #a9a9a9;
 }
@@ -1055,4 +1064,45 @@ padding-left: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.alignCenter {
+  display: flex;
+  align-items: center;
+}
+
+.annDisc {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding:  10px; 
+}
+
+.annDScroll {
+  max-height: 30vh;
+  overflow-y: auto;
+}
+
+.specialScroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.specialScroll::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+.specialScroll::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+.annDiscHead {
+  display: flex;
+  justify-content: space-between;
+}
+
+.annDisc span {
+  padding: 5px;
+}
+
+.annP {
+  cursor: pointer;
 }

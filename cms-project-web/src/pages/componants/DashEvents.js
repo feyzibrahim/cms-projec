@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DashCreateForm from "./DashCreateForm";
+import { useAuthContext } from "../../Hook/contextHooks/useAuthContext";
+import Loader from "../../globalClasses/Loader";
+import { useEventContext } from "../../Hook/contextHooks/useEventContext";
 
 const DashEvents = () => {
   const [showDashCreateForm, setShowDashCreateForm] = useState(false);
@@ -8,8 +11,34 @@ const DashEvents = () => {
     setShowDashCreateForm(!showDashCreateForm);
   };
 
+  const { user } = useAuthContext();
+  const { events, dispatch } = useEventContext();
+  const [isPending, setIsPending] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("/api/event", {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      const json = await response.json();
+
+      if (response.ok) {
+        dispatch({ type: "SET_EVENT", payload: json });
+        setIsPending(false);
+      }
+      if (!response.ok) {
+        console.log(json.error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="dashTodos">
+      {isPending && <Loader />}
       {showDashCreateForm && (
         <DashCreateForm showDashCreateFormOnClick={showDashCreateFormOnClick} />
       )}
@@ -24,7 +53,11 @@ const DashEvents = () => {
           Create New Event
         </button>
       </div>
-      <p>{">"} Todos are empty</p>
+      {events != null && events.length > 0 ? (
+        events.map((e) => <p>{e.eventName}</p>)
+      ) : (
+        <p>{">"} Todos are empty</p>
+      )}
     </div>
   );
 };
