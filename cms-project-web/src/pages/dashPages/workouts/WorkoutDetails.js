@@ -1,7 +1,7 @@
 import React from "react";
-import { useWorkoutsContext } from "../../Hook/contextHooks/useWorkoutsContext";
+import { useWorkoutsContext } from "../../../Hook/contextHooks/useWorkoutsContext";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
-import { useAuthContext } from "../../Hook/contextHooks/useAuthContext";
+import { useAuthContext } from "../../../Hook/contextHooks/useAuthContext";
 
 const WorkoutDetails = ({ workout }) => {
   const { user } = useAuthContext();

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const DashCreateForm = (props) => {
+const DashEventForm = (props) => {
   const [eventName, setEventName] = useState("");
   const [eventDate, setEventDate] = useState("");
   const [eventTime, setEventTime] = useState("");
@@ -62,4 +62,4 @@ const DashCreateForm = (props) => {
   );
 };
 
-export default DashCreateForm;
+export default DashEventForm;

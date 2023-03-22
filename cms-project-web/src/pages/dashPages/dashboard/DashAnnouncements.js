@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import DashAnnounceForm from "./DashAnnounceForm";
-import { useAuthContext } from "../../Hook/contextHooks/useAuthContext";
-import Loader from "../../globalClasses/Loader";
-import { useAnnouncementContext } from "../../Hook/contextHooks/useAnnouncementContext";
+import { useAuthContext } from "../../../Hook/contextHooks/useAuthContext";
+import Loader from "../../../globalClasses/Loader";
+import { useAnnouncementContext } from "../../../Hook/contextHooks/useAnnouncementContext";
 import AnnouncementTile from "./AnnouncementTile";
 
 const DashAnnouncements = () => {

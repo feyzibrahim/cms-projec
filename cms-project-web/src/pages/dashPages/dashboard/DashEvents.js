@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import DashCreateForm from "./DashCreateForm";
-import { useAuthContext } from "../../Hook/contextHooks/useAuthContext";
-import Loader from "../../globalClasses/Loader";
-import { useEventContext } from "../../Hook/contextHooks/useEventContext";
+import DashEventForm from "./DashEventForm";
+import { useAuthContext } from "../../../Hook/contextHooks/useAuthContext";
+import Loader from "../../../globalClasses/Loader";
+import { useEventContext } from "../../../Hook/contextHooks/useEventContext";
 
 const DashEvents = () => {
   const [showDashCreateForm, setShowDashCreateForm] = useState(false);
@@ -40,7 +40,7 @@ const DashEvents = () => {
     <div className="dashTodos">
       {isPending && <Loader />}
       {showDashCreateForm && (
-        <DashCreateForm showDashCreateFormOnClick={showDashCreateFormOnClick} />
+        <DashEventForm showDashCreateFormOnClick={showDashCreateFormOnClick} />
       )}
       <div className="dashTodosNav">
         <h3>Events</h3>
@@ -56,7 +56,7 @@ const DashEvents = () => {
       {events != null && events.length > 0 ? (
         events.map((e) => <p>{e.eventName}</p>)
       ) : (
-        <p>{">"} Todos are empty</p>
+        <p>{">"} Events are empty</p>
       )}
     </div>
   );

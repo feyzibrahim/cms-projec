@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useTeacherContext } from "../../Hook/contextHooks/useTeacherContext";
-import { useAuthContext } from "../../Hook/contextHooks/useAuthContext";
+import { useTeacherContext } from "../../../Hook/contextHooks/useTeacherContext";
+import { useAuthContext } from "../../../Hook/contextHooks/useAuthContext";
 
 const TeacherProfile = (props) => {
   const teacher = props.teacher;

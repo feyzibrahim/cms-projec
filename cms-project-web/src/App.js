@@ -13,12 +13,12 @@ import ContactHome from "./pages/ContactHome";
 import ProjectHome from "./pages/ProjectHome";
 import DashBoard from "./pages/DashBoard";
 import Dues from "./pages/dashPages/Dues";
-import Meatings from "./pages/dashPages/Meatings";
-import Teachers from "./pages/dashPages/Teachers";
-import Teacher from "./pages/dashPages/Teacher";
-import Departments from "./pages/dashPages/Departments";
+import Meatings from "./pages/dashPages/meetings/Meatings";
+import Teachers from "./pages/dashPages/workouts/Teachers";
+import Teacher from "./pages/dashPages/teacher/Teacher";
+import Departments from "./pages/dashPages/department/Departments";
 import Settings from "./pages/dashPages/Settings";
-import Dash from "./pages/dashPages/Dash";
+import Dash from "./pages/dashPages/dashboard/Dash";
 
 import { useAuthContext } from "./Hook/contextHooks/useAuthContext";
 

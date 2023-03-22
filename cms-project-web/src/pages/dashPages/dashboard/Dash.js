@@ -1,11 +1,11 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useAuthContext } from "../../Hook/contextHooks/useAuthContext";
-import img from "../../img/noCollegeData.png";
-import CollegeForm from "../componants/CollegeForm";
-import Loader from "../../globalClasses/Loader";
-import DashEvents from "../componants/DashEvents";
-import DashAnnouncements from "../componants/DashAnnouncements";
+import { useAuthContext } from "../../../Hook/contextHooks/useAuthContext";
+import img from "../../../img/noCollegeData.png";
+import CollegeForm from "./CollegeForm";
+import Loader from "../../../globalClasses/Loader";
+import DashEvents from "./DashEvents";
+import DashAnnouncements from "./DashAnnouncements";
 
 const Dash = () => {
   var today = new Date(),
