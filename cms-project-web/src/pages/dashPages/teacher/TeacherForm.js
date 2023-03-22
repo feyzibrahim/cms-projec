@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { useAuthContext } from "../../Hook/contextHooks/useAuthContext";
-import { useTeacherContext } from "../../Hook/contextHooks/useTeacherContext";
+import { useAuthContext } from "../../../Hook/contextHooks/useAuthContext";
+import { useTeacherContext } from "../../../Hook/contextHooks/useTeacherContext";
 
 const TeacherForm = (props) => {
   const { user } = useAuthContext();

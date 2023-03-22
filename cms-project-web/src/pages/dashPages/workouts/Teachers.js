@@ -1,9 +1,9 @@
 import React from "react";
-import useFetch from "../../Hook/useFetch";
-import WorkoutDetails from "../componants/WorkoutDetails";
-import WorkoutForm from "../componants/WorkoutForm";
-import Loader from "../../globalClasses/Loader";
-import img from "../../img/noCollegeData.png";
+import useFetch from "../../../Hook/useFetch";
+import WorkoutDetails from "./WorkoutDetails";
+import WorkoutForm from "./WorkoutForm";
+import Loader from "../../../globalClasses/Loader";
+import img from "../../../img/noCollegeData.png";
 
 const Teachers = () => {
   var today = new Date(),

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import img from "../../img/noCollegeData.png";
-import Loader from "../../globalClasses/Loader";
-import MeetingRows from "../componants/MeetingRows";
-import MeetingForm from "../componants/MeetingForm";
-import { useAuthContext } from "../../Hook/contextHooks/useAuthContext";
-import { useMeetingContext } from "../../Hook/contextHooks/useMeetingContext";
+import img from "../../../img/noCollegeData.png";
+import Loader from "../../../globalClasses/Loader";
+import MeetingRows from "./MeetingRows";
+import MeetingForm from "./MeetingForm";
+import { useAuthContext } from "../../../Hook/contextHooks/useAuthContext";
+import { useMeetingContext } from "../../../Hook/contextHooks/useMeetingContext";
 
 const Meatings = () => {
   var today = new Date(),

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Loader from "../../globalClasses/Loader";
-import DepartmentTile from "../componants/DepartmentTile";
-import { useAuthContext } from "../../Hook/contextHooks/useAuthContext";
+import Loader from "../../../globalClasses/Loader";
+import DepartmentTile from "./DepartmentTile";
+import { useAuthContext } from "../../../Hook/contextHooks/useAuthContext";
 import { Col, Row } from "antd";
-import img from "../../img/noCollegeData.png";
-import DepartmentForm from "../componants/DepartmentForm";
-import { useDepartmentContext } from "../../Hook/contextHooks/useDepartmentContext";
+import img from "../../../img/noCollegeData.png";
+import DepartmentForm from "./DepartmentForm";
+import { useDepartmentContext } from "../../../Hook/contextHooks/useDepartmentContext";
 
 const Departments = () => {
   var today = new Date(),

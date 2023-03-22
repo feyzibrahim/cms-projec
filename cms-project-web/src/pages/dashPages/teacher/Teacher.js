@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import img from "../../img/noCollegeData.png";
-import Loader from "../../globalClasses/Loader";
-import TeacherForm from "../componants/TeacherForm";
-import { useAuthContext } from "../../Hook/contextHooks/useAuthContext";
-import { useTeacherContext } from "../../Hook/contextHooks/useTeacherContext";
-import TeacherRows from "../componants/TeacherRows";
+import img from "../../../img/noCollegeData.png";
+import Loader from "../../../globalClasses/Loader";
+import TeacherForm from "./TeacherForm";
+import { useAuthContext } from "../../../Hook/contextHooks/useAuthContext";
+import { useTeacherContext } from "../../../Hook/contextHooks/useTeacherContext";
+import TeacherRows from "./TeacherRows";
 
 const Teacher = () => {
   var today = new Date(),

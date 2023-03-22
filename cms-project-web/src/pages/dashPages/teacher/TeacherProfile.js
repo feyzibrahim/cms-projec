@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useTeacherContext } from "../../Hook/contextHooks/useTeacherContext";
-import { useAuthContext } from "../../Hook/contextHooks/useAuthContext";
+import { useTeacherContext } from "../../../Hook/contextHooks/useTeacherContext";
+import { useAuthContext } from "../../../Hook/contextHooks/useAuthContext";
 
 const TeacherProfile = (props) => {
   const teacher = props.teacher;
@@ -56,7 +56,6 @@ const TeacherProfile = (props) => {
           >
             Close
           </span>
-          <p>Teacher Profile</p>
         </div>
         <div className="tpProfileSession">
           <form>

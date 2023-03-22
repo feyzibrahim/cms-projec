@@ -7,6 +7,8 @@ import { AuthContextProvider } from "./context/AuthContext";
 import { DepartmentContextProvider } from "./context/DepartmentContext";
 import { MeetingContextProvider } from "./context/MeetingContext";
 import { TeacherContextProvider } from "./context/TeacherContext";
+import { EventContextProvider } from "./context/EventContext";
+import { AnnouncementContextProvider } from "./context/AnnouncementContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,7 +17,11 @@ root.render(
       <DepartmentContextProvider>
         <MeetingContextProvider>
           <TeacherContextProvider>
-            <App />
+            <EventContextProvider>
+              <AnnouncementContextProvider>
+                <App />
+              </AnnouncementContextProvider>
+            </EventContextProvider>
           </TeacherContextProvider>
         </MeetingContextProvider>
       </DepartmentContextProvider>

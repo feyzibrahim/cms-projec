@@ -46,6 +46,7 @@
   border-radius: 10px;
   color: #fff;
   border: none;
+  margin: 0;
 }
 
 .fullColeredButton:active {
@@ -648,9 +649,14 @@ padding-left: 20px;
 
 .dashCollegeDetailRight {
   background-color: #DFDFDF;
-  padding: 20px;
   border-radius: 15px;
+}
+
+.dashScollable {
   height: 63vh;
+  overflow-y: auto;
+  margin: 10px;
+  padding: 10px;
 }
 
 .dashCollegeDetailRight p {
@@ -670,6 +676,8 @@ padding-left: 20px;
   display: flex;
   justify-content: space-between;
   padding: 10px;
+  align-items: center;
+
 }
 
 .dashTodos p {
@@ -989,4 +997,112 @@ padding-left: 20px;
 
 .tpProfileSession button {
   margin: 0 10px;
+}
+
+/* Dash Events Form */
+
+.dashCreateForm {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.6);
+}
+
+.dashCloseButton span {
+  font-size: 2em;
+  font-weight: 900;
+}
+
+.dashCForm {
+  background-color: #fff;
+  width: 40%;
+  margin: 80px 30%;
+  border-radius: 20px;
+  padding: 30px;
+}
+
+.dashCForm h2 {
+  margin-bottom: 20px;
+}
+
+.dashCForm input, .dashCForm textarea {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.dashCForm textarea {
+  height: 250px;
+}
+
+.optional {
+  color: #a9a9a9;
+}
+
+.dashCForm button {
+  width: 100%;
+}
+
+.dashCHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* Dash Announcements */
+
+.dashAnnounNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alignCenter {
+  display: flex;
+  align-items: center;
+}
+
+.annDisc {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding:  10px; 
+}
+
+.annDScroll {
+  max-height: 30vh;
+  overflow-y: auto;
+}
+
+.specialScroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.specialScroll::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+.specialScroll::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+.annDiscHead {
+  display: flex;
+  justify-content: space-between;
+}
+
+.annDisc span {
+  padding: 5px;
+}
+
+.annP {
+  cursor: pointer;
 }
