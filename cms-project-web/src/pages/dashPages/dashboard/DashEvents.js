@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import EventTile from "./EventTile";
 import DashEventForm from "./DashEventForm";
-import { useAuthContext } from "../../../Hook/contextHooks/useAuthContext";
 import Loader from "../../../globalClasses/Loader";
+import React, { useState, useEffect } from "react";
 import { useEventContext } from "../../../Hook/contextHooks/useEventContext";
+import { useAuthContext } from "../../../Hook/contextHooks/useAuthContext";
 
 const DashEvents = () => {
   const [showDashCreateForm, setShowDashCreateForm] = useState(false);
@@ -54,9 +55,9 @@ const DashEvents = () => {
         </button>
       </div>
       {events != null && events.length > 0 ? (
-        events.map((e) => <p>{e.eventName}</p>)
+        events.map((e) => <EventTile e={e} />)
       ) : (
-        <p>{">"} Events are empty</p>
+        <p> Events are empty</p>
       )}
     </div>
   );

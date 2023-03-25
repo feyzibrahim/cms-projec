@@ -1058,6 +1058,15 @@ padding-left: 20px;
   justify-content: space-between;
 }
 
+.eventTile {
+  display: flex;
+  flex-direction: row;
+}
+
+.eventOrganizer {
+  color: #878787;
+}
+
 /* Dash Announcements */
 
 .dashAnnounNav {
