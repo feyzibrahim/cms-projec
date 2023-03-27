@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import EventTile from "./EventTile";
 import DashEventForm from "./DashEventForm";
-import { useAuthContext } from "../../../Hook/contextHooks/useAuthContext";
 import Loader from "../../../globalClasses/Loader";
+import React, { useState, useEffect } from "react";
 import { useEventContext } from "../../../Hook/contextHooks/useEventContext";
+import { useAuthContext } from "../../../Hook/contextHooks/useAuthContext";
 
 const DashEvents = () => {
   const [showDashCreateForm, setShowDashCreateForm] = useState(false);
@@ -38,26 +39,32 @@ const DashEvents = () => {
 
   return (
     <div className="dashTodos">
-      {isPending && <Loader />}
-      {showDashCreateForm && (
-        <DashEventForm showDashCreateFormOnClick={showDashCreateFormOnClick} />
-      )}
-      <div className="dashTodosNav">
-        <h3>Events</h3>
-        <button
-          className="fullColeredButton"
-          onClick={() => {
-            showDashCreateFormOnClick();
-          }}
-        >
-          Create New Event
-        </button>
+      <div className="dashEventsDiv specialScroll">
+        {isPending && <Loader />}
+        {showDashCreateForm && (
+          <DashEventForm
+            showDashCreateFormOnClick={showDashCreateFormOnClick}
+          />
+        )}
+        <div className="dashTodosNav ">
+          <h3>Events</h3>
+          <button
+            className="fullColeredButton"
+            onClick={() => {
+              showDashCreateFormOnClick();
+            }}
+          >
+            Create New Event
+          </button>
+        </div>
+        <div>
+          {events != null && events.length > 0 ? (
+            events.map((e) => <EventTile e={e} key={e._id} />)
+          ) : (
+            <p> Events are empty</p>
+          )}
+        </div>
       </div>
-      {events != null && events.length > 0 ? (
-        events.map((e) => <p>{e.eventName}</p>)
-      ) : (
-        <p>{">"} Events are empty</p>
-      )}
     </div>
   );
 };

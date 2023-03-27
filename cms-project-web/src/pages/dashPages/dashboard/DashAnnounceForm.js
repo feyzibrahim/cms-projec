@@ -53,7 +53,7 @@ const DashAnnounceForm = (props) => {
   };
 
   return (
-    <div className="dashCreateForm">
+    <div className="fullScreenDiv">
       <div className="dashCForm">
         <div className="dashCHeader">
           <h2>New Announcement</h2>

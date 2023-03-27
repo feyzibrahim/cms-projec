@@ -669,13 +669,12 @@ padding-left: 20px;
   margin-top: 10px;
   margin-right: 10px;
   border-radius: 15px;
-  height: 53vh;
 }
 
 .dashTodosNav {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: 5px;
   align-items: center;
 
 }
@@ -936,19 +935,6 @@ padding-left: 20px;
 
 /* Teacher Profile */
 
-.teacherProfile {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0, 0.6);
-}
-
 .teacherProfileContainer {
   padding: 50px;
 }
@@ -1001,16 +987,10 @@ padding-left: 20px;
 
 /* Dash Events Form */
 
-.dashCreateForm {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0, 0.6);
+.dashEventsDiv {
+  overflow-y: auto;
+  height: 53vh;
+  padding: 5px;
 }
 
 .dashCloseButton span {
@@ -1058,16 +1038,31 @@ padding-left: 20px;
   justify-content: space-between;
 }
 
+.eventTile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  border-top: 1px solid #b6b6b6;
+  margin: 0;
+}
+
+.eventTile:hover {
+  background-color: #A38ED1;
+  cursor: pointer;
+}
+
+.eventNameMax {
+  max-width: 60%;
+  padding: 0;
+  margin: 0;
+}
+
 /* Dash Announcements */
 
 .dashAnnounNav {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-}
-
-.alignCenter {
-  display: flex;
   align-items: center;
 }
 
@@ -1082,18 +1077,6 @@ padding-left: 20px;
   overflow-y: auto;
 }
 
-.specialScroll::-webkit-scrollbar {
-  width: 5px;
-}
-
-.specialScroll::-webkit-scrollbar-track {
-  background: #f1f1f1; 
-}
-
-.specialScroll::-webkit-scrollbar-thumb {
-  background: #888; 
-}
-
 .annDiscHead {
   display: flex;
   justify-content: space-between;
@@ -1105,4 +1088,43 @@ padding-left: 20px;
 
 .annP {
   cursor: pointer;
+}
+
+/* --------------- */
+/*  Commen Styles  */
+/* --------------- */
+
+.specialScroll::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 10px;
+}
+
+.specialScroll::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border-radius: 10px;
+}
+
+.specialScroll::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 10px;
+}
+
+/* AlignVertically center */
+ .alignCenter {
+  display: flex;
+  align-items: center;
+}
+
+/* Full screen div */
+
+.fullScreenDiv {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.6);
 }

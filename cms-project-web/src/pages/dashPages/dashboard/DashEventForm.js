@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useAuthContext } from "../../../Hook/contextHooks/useAuthContext";
+import { useEventContext } from "../../../Hook/contextHooks/useEventContext";
 
 const DashEventForm = (props) => {
   const [eventName, setEventName] = useState("");
@@ -6,9 +8,65 @@ const DashEventForm = (props) => {
   const [eventTime, setEventTime] = useState("");
   const [eventOrganizer, setEventOrganizer] = useState("");
   const [eventRemarks, setEventRemarks] = useState("");
+  const [error, setError] = useState(null);
+  const { dispatch } = useEventContext();
+
+  const { user } = useAuthContext();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!user) {
+      setError("You must be logged in...");
+      return;
+    }
+
+    if (
+      eventName !== "" &&
+      eventDate !== "" &&
+      eventTime !== "" &&
+      eventOrganizer !== ""
+    ) {
+      var eventDateAndTime = eventDate + " " + eventTime;
+
+      const event = {
+        eventName,
+        eventDateAndTime,
+        eventOrganizer,
+        eventRemarks,
+      };
+
+      const response = await fetch("/api/event", {
+        method: "POST",
+        body: JSON.stringify(event),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+
+      const json = await response.json();
+
+      if (!response.ok) {
+        setError(json.error);
+      }
+
+      if (response.ok) {
+        props.showDashCreateFormOnClick();
+        setEventName("");
+        setEventDate("");
+        setEventTime("");
+        setEventOrganizer("");
+        setEventRemarks("");
+        dispatch({ type: "CREATE_EVENT", payload: json });
+      }
+    } else {
+      setError("Please Fill the Form");
+    }
+  };
 
   return (
-    <div className="dashCreateForm">
+    <div className="fullScreenDiv">
       <div className="dashCForm">
         <div className="dashCHeader">
           <h2>New Event</h2>
@@ -55,7 +113,10 @@ const DashEventForm = (props) => {
             onChange={(e) => setEventRemarks(e.target.value)}
             value={eventRemarks}
           />
-          <button className="fullColeredButton">Create Event</button>
+          {error && <div className="workoutError">{error}</div>}
+          <button className="fullColeredButton" onClick={handleSubmit}>
+            Create Event
+          </button>
         </form>
       </div>
     </div>
