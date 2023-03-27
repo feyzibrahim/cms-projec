@@ -47,7 +47,7 @@ const TeacherProfile = (props) => {
   };
 
   return (
-    <div className="teacherProfile">
+    <div className="fullScreenDiv">
       <div className="teacherProfileContainer">
         <div className="tpNav">
           <span
@@ -136,20 +136,6 @@ const TeacherProfile = (props) => {
               />
             </div>
           </form>
-
-          {/* <button
-            className="fullColeredButton"
-            onClick={(e) => {
-              e.preventDefault();
-              setCanBeEdited(!canBeEdited);
-              if (!canBeEdited) {
-                handleUpdate();
-                console.log("Update Teacher");
-              }
-            }}
-          >
-            {canBeEdited ? "Edit The Profile" : "Update"}
-          </button> */}
           <button
             className="fullColeredButton"
             onClick={(e) => {
