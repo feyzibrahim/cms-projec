@@ -7,18 +7,19 @@ import {
   View,
 } from "react-native";
 
-export default function Internal({ navigation }) {
+export default function StudentsList({ navigation }) {
   const gotomarksheetpage = () => {
-    navigation.navigate("studentsList");
+    navigation.navigate("Studentmarksheet");
   };
 
   const [sem, setSem] = useState([
-    { sem: "SEM1", key: "1", color: "#9A85C9" },
-    { sem: "SEM2", key: "2", color: "#A29AFF" },
-    { sem: "SEM3", key: "3", color: "#CDC7DA" },
-    { sem: "SEM4", key: "4", color: "#9A85C9" },
-    { sem: "SEM5", key: "5", color: "#A29AFF" },
-    { sem: "SEM6", key: "6", color: "#CDC7DA" },
+    { sem: "Faiz", key: "1" },
+    { sem: "Ahalya", key: "2" },
+    { sem: "Vafa", key: "3" },
+    { sem: "Bazi", key: "4" },
+    { sem: "Donu", key: "5" },
+    { sem: "Linto", key: "6" },
+    { sem: "Ansila", key: "7" },
   ]);
 
   return (
@@ -30,11 +31,9 @@ export default function Internal({ navigation }) {
             <TouchableOpacity onPress={gotomarksheetpage}>
               <View
                 style={{
-                  backgroundColor: item.color,
-                  width: 300,
-                  padding: 40,
-                  marginBottam: 40,
-                  borderRadius: 20,
+                  marginVertical: 10,
+                  borderBottomColor: "#000",
+                  borderBottomWidth: 2,
                 }}
               >
                 <Text>{item.sem}</Text>

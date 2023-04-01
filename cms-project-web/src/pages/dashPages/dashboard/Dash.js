@@ -56,8 +56,9 @@ const Dash = () => {
         </div>
       </div>
 
-      {isPending && <Loader />}
-      {college != null && college.length > 0 ? (
+      {isPending ? (
+        <Loader />
+      ) : college != null && college.length > 0 ? (
         <div className="dashCollegeDetail">
           <div className="dashCollegeDetailLeft">
             <div className="countList">

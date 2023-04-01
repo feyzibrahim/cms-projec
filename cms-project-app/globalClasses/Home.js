@@ -2,6 +2,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import AuthStack from "./AuthStack";
 import TeacherStack from "./TeacherStack";
+import StudentStack from "./StudentStack";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { ActivityIndicator, View } from "react-native";
 
@@ -18,7 +19,15 @@ export default function Home() {
 
   return (
     <NavigationContainer>
-      {user ? <TeacherStack /> : <AuthStack />}
+      {user ? (
+        user.userType === "teacher" ? (
+          <TeacherStack />
+        ) : (
+          <StudentStack />
+        )
+      ) : (
+        <AuthStack />
+      )}
     </NavigationContainer>
   );
 }

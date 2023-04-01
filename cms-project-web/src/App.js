@@ -19,6 +19,9 @@ import Teacher from "./pages/dashPages/teacher/Teacher";
 import Departments from "./pages/dashPages/department/Departments";
 import Settings from "./pages/dashPages/Settings";
 import Dash from "./pages/dashPages/dashboard/Dash";
+import Students from "./pages/dashPages/students/Students";
+import Management from "./pages/dashPages/management/Management";
+import Staff from "./pages/dashPages/staff/Staff";
 
 import { useAuthContext } from "./Hook/contextHooks/useAuthContext";
 
@@ -54,6 +57,9 @@ function App() {
               <Route path="teacher" element={<Teacher />} />
               <Route path="settings" element={<Settings />} />
               <Route path="departments" element={<Departments />} />
+              <Route path="students" element={<Students />} />
+              <Route path="management" element={<Management />} />
+              <Route path="staff" element={<Staff />} />
             </Route>
             <Route path="contact" element={<ContactHome />} />
             <Route path="about" element={<AboutPage />} />

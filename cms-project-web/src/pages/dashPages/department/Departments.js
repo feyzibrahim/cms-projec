@@ -65,9 +65,9 @@ const Departments = () => {
             <span className="material-symbols-outlined">notifications</span>
           </div>
         </div>
-        {isPending && <Loader />}
-
-        {isNotForm ? (
+        {isPending ? (
+          <Loader />
+        ) : isNotForm ? (
           department != null && department.length > 0 ? (
             <Row gutter={[24, 32]} className="departmentRow">
               {department &&

@@ -64,9 +64,9 @@ const Teacher = () => {
           </div>
         </div>
         <div className="teacherContainer">
-          {isPending && <Loader />}
-
-          {isNotForm ? (
+          {isPending ? (
+            <Loader />
+          ) : isNotForm ? (
             teacher != null && teacher.length > 0 ? (
               <div>
                 <div>

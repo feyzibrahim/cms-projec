@@ -5,9 +5,13 @@ import {
   TouchableOpacity,
   Dimensions,
   ScrollView,
+  Pressable,
 } from "react-native";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function Studentspage({ navigation }) {
+  const { logout } = useAuthContext();
   const gotoattendace = () => {
     navigation.navigate("Attendencepage");
   };
@@ -86,6 +90,28 @@ export default function Studentspage({ navigation }) {
           <TouchableOpacity onPress={gotosetting}>
             <Text>Settings</Text>
           </TouchableOpacity>
+        </View>
+        <View
+          style={{ padding: 20, borderTopWidth: 1, borderTopColor: "#ccc" }}
+        >
+          <Pressable
+            style={{
+              backgroundColor: "#A38ED1",
+              justifyContent: "center",
+              alignItems: "center",
+              elevation: 4,
+              padding: 20,
+            }}
+            android_ripple={{
+              color: "black",
+            }}
+            onPress={() => logout()}
+          >
+            <View style={{ flexDirection: "row" }}>
+              <Ionicons name="log-out-outline" size={22} />
+              <Text style={{ textAlign: "center" }}>Log Out</Text>
+            </View>
+          </Pressable>
         </View>
       </View>
     </ScrollView>
