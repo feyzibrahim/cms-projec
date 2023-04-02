@@ -9,6 +9,7 @@ import Setting from "../pages/Setting";
 import Privacy from "../pages/Privacy";
 import Terms from "../pages/Terms";
 import Help from "../pages/Help";
+import StudentsList from "../pages/StudentsList";
 import CustomDrawer from "../globalClasses/CustomDrawer";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
@@ -48,6 +49,13 @@ export default function TeacherDrawer() {
           drawerIcon: ({ color }) => (
             <Ionicons name="book-outline" size={22} color={color} />
           ),
+        }}
+      />
+      <Drawer.Screen
+        name="studentsList"
+        component={StudentsList}
+        options={{
+          title: "Students List",
         }}
       />
       <Drawer.Screen

@@ -40,7 +40,6 @@ const DashEvents = () => {
   return (
     <div className="dashTodos">
       <div className="dashEventsDiv specialScroll">
-        {isPending && <Loader />}
         {showDashCreateForm && (
           <DashEventForm
             showDashCreateFormOnClick={showDashCreateFormOnClick}
@@ -57,13 +56,13 @@ const DashEvents = () => {
             Create New Event
           </button>
         </div>
-        <div>
-          {events != null && events.length > 0 ? (
-            events.map((e) => <EventTile e={e} key={e._id} />)
-          ) : (
-            <p> Events are empty</p>
-          )}
-        </div>
+        {isPending ? (
+          <Loader />
+        ) : events != null && events.length > 0 ? (
+          events.map((e) => <EventTile e={e} key={e._id} />)
+        ) : (
+          <p> Events are empty</p>
+        )}
       </div>
     </div>
   );

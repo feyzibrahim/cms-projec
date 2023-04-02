@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuthContext } from "../../../Hook/contextHooks/useAuthContext";
 import { useDepartmentContext } from "../../../Hook/contextHooks/useDepartmentContext";
+import { NavLink } from "react-router-dom";
 
 const DepartmentTile = ({ department }) => {
   const { user } = useAuthContext();
@@ -25,16 +26,18 @@ const DepartmentTile = ({ department }) => {
   };
 
   return (
-    <div className="departmentTile">
-      <span className="material-symbols-outlined" onClick={handleClick}>
-        Delete
-      </span>
-      <h2>{department.department_name}</h2>
-      <p>Years: {department.year_count}</p>
-      <p>HOD: {department.hod}</p>
-      <p>Teachers: {department.teacher_count}</p>
-      <p>Students: {department.students_count}</p>
-    </div>
+    <NavLink to={"/dash/departments/" + department._id} state={{ department }}>
+      <div className="departmentTile">
+        <span className="material-symbols-outlined" onClick={handleClick}>
+          Delete
+        </span>
+        <h2>{department.department_name}</h2>
+        <p>Years: {department.year_count}</p>
+        <p>HOD: {department.hod}</p>
+        <p>Teachers: {department.teacher_count}</p>
+        <p>Students: {department.students_count}</p>
+      </div>
+    </NavLink>
   );
 };
 

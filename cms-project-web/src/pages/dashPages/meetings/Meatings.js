@@ -65,9 +65,9 @@ const Meatings = () => {
           </div>
         </div>
         <div className="meetingsContainer">
-          {isPending && <Loader />}
-
-          {isNotForm ? (
+          {isPending ? (
+            <Loader />
+          ) : isNotForm ? (
             meetings != null && meetings.length > 0 ? (
               <div>
                 <div className="meetingRowsHeader">

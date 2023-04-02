@@ -40,10 +40,10 @@ const DashAnnouncements = () => {
   return (
     <div className="dashCollegeDetailRight">
       <div className="dashScollable specialScroll">
-        {isPending && <Loader />}
         {showAnnouForm && (
           <DashAnnounceForm showAnnouFormOnClick={showAnnouFormOnClick} />
         )}
+
         <div className="dashAnnounNav">
           <h3>Announcements</h3>
           <button
@@ -55,7 +55,9 @@ const DashAnnouncements = () => {
             New Announcement
           </button>
         </div>
-        {announcements != null && announcements.length > 0 ? (
+        {isPending ? (
+          <Loader />
+        ) : announcements != null && announcements.length > 0 ? (
           announcements.map((e) => <AnnouncementTile key={e._id} annouce={e} />)
         ) : (
           <p>{">"} No New Announcements</p>

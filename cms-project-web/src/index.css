@@ -722,7 +722,11 @@ padding-left: 20px;
   border: 1px solid #ddd;
   border-radius: 4px;
   box-sizing: border-box;
-  
+}
+
+.selectInput {
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .collegeNewForm label, .collegeNewForm input {
@@ -835,6 +839,45 @@ padding-left: 20px;
 
 }
 
+/* Department */
+
+.depHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: #000 2px solid;
+}
+
+.depBottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 10px;
+}
+
+.depTeachers, .depSubjects {
+  padding: 10px 20px;
+  background-color: #f1f1f1;
+}
+
+.depTeachers h2 {
+  margin-bottom: 10px;
+}
+
+.depTeacherRow {
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.depTeacherRow:hover {
+  background-color: #A38ED1;
+  cursor: pointer;
+}
+
+.depTeacherRow:active {
+  background-color: #8b79b0;
+}
 /* Meetings Page */
 
 .meetingsContainer {

@@ -24,11 +24,34 @@ const Navbar = () => {
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? "active" : "inactive")}
+            to="/dash/management"
+          >
+            <span className="material-symbols-outlined">
+              Supervisor_Account
+            </span>
+            Management
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            className={({ isActive }) => (isActive ? "active" : "inactive")}
+            to="/dash/staff"
+          >
+            <span className="material-symbols-outlined">
+              Admin_Panel_Settings
+            </span>
+            Staff
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            className={({ isActive }) => (isActive ? "active" : "inactive")}
             to="/dash/departments"
           >
             <span className="material-symbols-outlined">Class</span>Departments
           </NavLink>
         </li>
+
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? "active" : "inactive")}
@@ -37,7 +60,15 @@ const Navbar = () => {
             <span className="material-symbols-outlined">Groups</span>Teachers
           </NavLink>
         </li>
-
+        <li>
+          <NavLink
+            className={({ isActive }) => (isActive ? "active" : "inactive")}
+            to="/dash/students"
+          >
+            <span className="material-symbols-outlined">Person</span>
+            Students
+          </NavLink>
+        </li>
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? "active" : "inactive")}
@@ -46,15 +77,7 @@ const Navbar = () => {
             <span className="material-symbols-outlined">Hearing</span>Meatings
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            className={({ isActive }) => (isActive ? "active" : "inactive")}
-            to="/dash/dues"
-          >
-            <span className="material-symbols-outlined">Hourglass_Empty</span>
-            Dues
-          </NavLink>
-        </li>
+
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? "active" : "inactive")}

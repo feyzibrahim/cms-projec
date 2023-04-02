@@ -1,4 +1,4 @@
-import Profile from "../pages/Profile";
+import Profile from "../pages/TeacherProfile";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Studentspage from "../pages/Studentspage";
 import Attendence from "../pages/Attendence";
@@ -9,7 +9,6 @@ import Setting from "../pages/Setting";
 import Privacy from "../pages/Privacy";
 import Terms from "../pages/Terms";
 import Help from "../pages/Help";
-import Logout from "../pages/Logout";
 
 const Stack = createNativeStackNavigator();
 
@@ -44,11 +43,6 @@ export default function StudentStack() {
       <Stack.Screen
         name="help"
         component={Help}
-        options={{ title: "Ecampus" }}
-      />
-      <Stack.Screen
-        name="logout"
-        component={Logout}
         options={{ title: "Ecampus" }}
       />
     </Stack.Navigator>
