@@ -1,7 +1,8 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuthContext } from "../../../Hook/contextHooks/useAuthContext";
 import { useTeacherContext } from "../../../Hook/contextHooks/useTeacherContext";
+import Select from "react-select";
 
 const TeacherForm = (props) => {
   const { user } = useAuthContext();
@@ -13,7 +14,7 @@ const TeacherForm = (props) => {
   const [password, setPassword] = useState();
   const [registrationNumber, setRegistrationNumber] = useState();
   const [gender, setGender] = useState();
-  const [designation, setDesignation] = useState();
+  const [designation, setDesignation] = useState("Teacher");
   const [department, setDepartment] = useState();
   const [facultyMobileNumber, setFacultyMobileNumber] = useState();
   const [dob, setDob] = useState();
@@ -23,7 +24,40 @@ const TeacherForm = (props) => {
 
   const { dispatch } = useTeacherContext();
 
-  const userTypeG = "teacher";
+  const userTypeG = "Teacher";
+
+  const [departmentList, setDepartmentList] = useState();
+  const [isDepListLoading, setIsDepListLoading] = useState(true);
+  const handleDepartment = (selectedOptions) => {
+    setDepartment(selectedOptions.value);
+  };
+
+  const loadDepartment = async () => {
+    const res = await fetch("/api/department", {
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
+
+    const json = await res.json();
+
+    if (res.ok) {
+      var dummy = [];
+      json.map((data) => {
+        dummy.push({
+          value: data.department_name,
+          label: data.department_name,
+        });
+        return null;
+      });
+      setDepartmentList(dummy);
+      setIsDepListLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadDepartment();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -66,7 +100,6 @@ const TeacherForm = (props) => {
 
     if (response.ok) {
       console.log("New Teacher Added", json);
-      // console.log(json._id);
       signup(email, password, userTypeG, json.user_id, json._id);
       setTeacherName("");
       setEmail("");
@@ -109,6 +142,12 @@ const TeacherForm = (props) => {
     }
   };
 
+  const genderList = [
+    { value: "Male", label: "Male" },
+    { value: "Female", label: "Female" },
+    { value: "Other", label: "Other" },
+  ];
+
   return (
     <form className="collegeNewForm">
       <div className="collegeNewFormTitle">
@@ -141,24 +180,28 @@ const TeacherForm = (props) => {
             value={registrationNumber}
           />
           <label>Gender</label>
-          <input
-            type="text"
-            onChange={(e) => setGender(e.target.value)}
-            value={gender}
+          <Select
+            className="selectInput"
+            options={genderList}
+            onChange={(selected) => {
+              setGender(selected.value);
+            }}
           />
           <label>Designation</label>
           <input
             type="text"
             onChange={(e) => setDesignation(e.target.value)}
             value={designation}
+            defaultValue="Teacher"
           />
         </div>
         <div>
           <label>Department</label>
-          <input
-            type="text"
-            onChange={(e) => setDepartment(e.target.value)}
-            value={department}
+          <Select
+            options={departmentList}
+            className="selectInput"
+            onChange={handleDepartment}
+            isLoading={isDepListLoading}
           />
           <label>Mobile Number</label>
           <input
@@ -194,7 +237,7 @@ const TeacherForm = (props) => {
       </div>
       <div className="collegeFormButton">
         <button className="fullColeredButton" onClick={handleSubmit}>
-          {isloading ? "Loading..." : "Add Department"}
+          {isloading ? "Loading..." : "Add Teacher"}
         </button>
       </div>
 

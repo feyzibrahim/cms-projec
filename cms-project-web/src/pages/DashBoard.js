@@ -6,9 +6,9 @@ const DashBoard = () => {
   return (
     <div className="DashBoardhome">
       <VerticalNavbar />
-      <div className="dHome">
+      <>
         <Outlet />
-      </div>
+      </>
     </div>
   );
 };

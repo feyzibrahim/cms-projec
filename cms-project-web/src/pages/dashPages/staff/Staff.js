@@ -1,55 +1,84 @@
+import { useTable } from "react-table";
 import React from "react";
-import ReactTable from "react-table";
 
-const Staff = () => {
-  const data = [
-    {
-      name: "Ayaan",
-      age: 26,
-    },
-    {
-      name: "Ahana",
-      age: 22,
-    },
-    {
-      name: "Peter",
-      age: 40,
-    },
-    {
-      name: "Virat",
-      age: 30,
-    },
-    {
-      name: "Rohit",
-      age: 32,
-    },
-    {
-      name: "Dhoni",
-      age: 37,
-    },
-  ];
+function Staff() {
+  const data = React.useMemo(
+    () => [
+      {
+        col1: "Hello",
+        col2: "World",
+      },
+      {
+        col1: "react-table",
+        col2: "rocks",
+      },
+      {
+        col1: "whatever",
+        col2: "you want",
+      },
+    ],
+    []
+  );
 
-  const columns = [
-    {
-      Header: "Name",
-      accessor: "name",
-    },
-    {
-      Header: "Age",
-      accessor: "age",
-    },
-  ];
+  const columns = React.useMemo(
+    () => [
+      {
+        Header: "Column 1",
+        accessor: "col1",
+      },
+      {
+        Header: "Column 2",
+        accessor: "col2",
+      },
+    ],
+    []
+  );
+
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable({ columns, data });
 
   return (
-    <div>
-      <ReactTable
-        data={data}
-        columns={columns}
-        defaultPageSize={2}
-        pageSizeOptions={[2, 4, 6]}
-      />
-    </div>
+    <table {...getTableProps()}>
+      <thead>
+        {headerGroups.map((headerGroup) => (
+          <tr {...headerGroup.getHeaderGroupProps()}>
+            {headerGroup.headers.map((column) => (
+              <th
+                {...column.getHeaderProps()}
+                style={{
+                  color: "black",
+                  fontWeight: "bold",
+                }}
+              >
+                {column.render("Header")}
+              </th>
+            ))}
+          </tr>
+        ))}
+      </thead>
+      <tbody {...getTableBodyProps()}>
+        {rows.map((row) => {
+          prepareRow(row);
+          return (
+            <tr {...row.getRowProps()}>
+              {row.cells.map((cell) => {
+                return (
+                  <td
+                    {...cell.getCellProps()}
+                    style={{
+                      padding: "10px",
+                    }}
+                  >
+                    {cell.render("Cell")}
+                  </td>
+                );
+              })}
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
   );
-};
+}
 
 export default Staff;

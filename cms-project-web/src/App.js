@@ -16,7 +16,8 @@ import Dues from "./pages/dashPages/Dues";
 import Meatings from "./pages/dashPages/meetings/Meatings";
 import Teachers from "./pages/dashPages/workouts/Teachers";
 import Teacher from "./pages/dashPages/teacher/Teacher";
-import Departments from "./pages/dashPages/department/Departments";
+import Department from "./pages/dashPages/departments/department/Department";
+import Departments from "./pages/dashPages/departments/Departments";
 import Settings from "./pages/dashPages/Settings";
 import Dash from "./pages/dashPages/dashboard/Dash";
 import Students from "./pages/dashPages/students/Students";
@@ -57,6 +58,7 @@ function App() {
               <Route path="teacher" element={<Teacher />} />
               <Route path="settings" element={<Settings />} />
               <Route path="departments" element={<Departments />} />
+              <Route path="departments/:id" element={<Department />} />
               <Route path="students" element={<Students />} />
               <Route path="management" element={<Management />} />
               <Route path="staff" element={<Staff />} />
