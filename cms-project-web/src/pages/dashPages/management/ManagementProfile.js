@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useManagementContext } from "../../../Hook/contextHooks/useManagementContext";
 import { useAuthContext } from "../../../Hook/contextHooks/useAuthContext";
+import Select from "react-select";
+import Creatable from "react-select/creatable";
 
 const ManagementProfile = (props) => {
   const management = props.management;
-  const [canBeEdited, setCanBeEdited] = useState(true);
+  const [isInputDisabled, setIsInputDisabled] = useState(true);
 
   const { user } = useAuthContext();
   const { dispatch } = useManagementContext();
@@ -16,6 +18,20 @@ const ManagementProfile = (props) => {
     var date = curr.toISOString().substring(0, 10);
     return date;
   };
+
+  const genderList = [
+    { value: "Male", label: "Male" },
+    { value: "Female", label: "Female" },
+    { value: "Other", label: "Other" },
+  ];
+
+  const rollList = [
+    { value: "Provincial Superior", label: "Provincial Superior" },
+    { value: "Education Counsellor", label: "Education Counsellor" },
+    { value: "Former Director", label: "Former Director" },
+    { value: "Director", label: "Director" },
+    { value: "Manager", label: "Manager" },
+  ];
 
   const handleDelete = () => {
     const deleteData = async () => {
@@ -32,7 +48,6 @@ const ManagementProfile = (props) => {
         dispatch({ type: "DELETE_MANAGEMENT", payload: json });
         setIsPending(false);
         setError(null);
-        setCanBeEdited();
       }
 
       if (!response.ok) {
@@ -43,6 +58,26 @@ const ManagementProfile = (props) => {
 
     if (user) {
       deleteData();
+    }
+  };
+
+  const handleUpdation = async () => {
+    const res = await fetch("/api/management/" + management._id, {
+      method: "PATCH",
+      body: JSON.stringify(management),
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+        "Content-Type": "application/json",
+      },
+    });
+    const json = await res.json();
+    if (res.ok) {
+      dispatch({ type: "UPDATE_MANAGEMENT", payload: json });
+      props.showProfileOnClick();
+    }
+
+    if (!res.ok) {
+      console.log(res.error);
     }
   };
 
@@ -64,63 +99,109 @@ const ManagementProfile = (props) => {
               <input
                 type="text"
                 defaultValue={management.managerName}
-                disabled={canBeEdited}
+                disabled={isInputDisabled}
+                onChange={(e) => {
+                  management.managerName = e.target.value;
+                }}
               />
               <label>Email</label>
               <input
                 type="email"
                 defaultValue={management.email}
-                disabled={canBeEdited}
+                disabled={isInputDisabled}
+                onChange={(e) => {
+                  management.email = e.target.value;
+                }}
               />
               <label>Password</label>
               <input
                 type="password"
                 defaultValue={management.password}
-                disabled={canBeEdited}
+                disabled={isInputDisabled}
+                onChange={(e) => {
+                  management.password = e.target.value;
+                }}
               />
               <label>Registration Number</label>
               <input
                 type="number"
                 defaultValue={management.registrationNumber}
-                disabled={canBeEdited}
+                disabled={isInputDisabled}
+                onChange={(e) => {
+                  management.registrationNumber = e.target.value;
+                }}
               />
               <label>Gendar</label>
-              <input
-                type="text"
-                defaultValue={management.gender}
-                disabled={canBeEdited}
-              />
+              {isInputDisabled ? (
+                <input
+                  type="text"
+                  defaultValue={management.gender}
+                  disabled={isInputDisabled}
+                />
+              ) : (
+                <Select
+                  className="selectInput"
+                  options={genderList}
+                  onChange={(selected) => {
+                    management.gender = selected.value;
+                  }}
+                  defaultInputValue={management.gender}
+                />
+              )}
             </div>
             <div>
               <label>Roll</label>
-              <input
-                type="text"
-                defaultValue={management.roll}
-                disabled={canBeEdited}
-              />
+              {isInputDisabled ? (
+                <input
+                  type="text"
+                  defaultValue={management.roll}
+                  disabled={isInputDisabled}
+                />
+              ) : (
+                <Creatable
+                  className="selectInput"
+                  options={rollList}
+                  onChange={(selected) => {
+                    management.roll = selected.value;
+                  }}
+                  defaultInputValue={management.roll}
+                />
+              )}
               <label>Mobile Number</label>
               <input
                 type="number"
                 defaultValue={management.mobileNumber}
-                disabled={canBeEdited}
+                disabled={isInputDisabled}
+                onChange={(e) => {
+                  management.mobileNumber = e.target.value;
+                }}
               />
               <label>Date of Birth</label>
               <input
                 type="date"
                 defaultValue={getDatefrom(management.dob)}
-                disabled={canBeEdited}
+                disabled={isInputDisabled}
+                onChange={(e) => {
+                  management.dob = e.target.value;
+                }}
               />
               <label>Joining Date</label>
               <input
                 type="date"
                 defaultValue={getDatefrom(management.joiningDate)}
-                disabled={canBeEdited}
+                disabled={isInputDisabled}
+                onChange={(e) => {
+                  management.joiningDate = e.target.value;
+                }}
               />
               <label>Salary</label>
               <input
                 type="text"
                 defaultValue={management.salary}
-                disabled={canBeEdited}
+                disabled={isInputDisabled}
+                onChange={(e) => {
+                  management.salary = e.target.value;
+                }}
               />
             </div>
           </form>
@@ -132,6 +213,20 @@ const ManagementProfile = (props) => {
             }}
           >
             {!isPending ? "Delete Member" : "Loading"}
+          </button>
+          <button
+            className="fullColeredButton"
+            onClick={(e) => {
+              e.preventDefault();
+              if (isInputDisabled) {
+                setIsInputDisabled(false);
+              } else {
+                handleUpdation();
+                setIsInputDisabled(true);
+              }
+            }}
+          >
+            {isInputDisabled ? "Enable Editing" : "Update Details"}
           </button>
           {error && "Something went wrong"}
         </div>
