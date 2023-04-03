@@ -46,6 +46,30 @@ const StaffProfile = (props) => {
     }
   };
 
+  const handleUpdation = async () => {
+    setIsPending(true);
+    const res = await fetch("/api/staff/" + staff._id, {
+      method: "PATCH",
+      body: JSON.stringify(staff),
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+        "Content-Type": "application/json",
+      },
+    });
+    const json = await res.json();
+    if (res.ok) {
+      dispatch({ type: "UPDATE_STAFF", payload: json });
+      props.showProfileOnClick();
+      setIsPending(false);
+      setError(null);
+    }
+
+    if (!res.ok) {
+      setIsPending(false);
+      setError(res.error);
+    }
+  };
+
   return (
     <div className="fullScreenDiv">
       <div className="teacherProfileContainer">
@@ -132,6 +156,19 @@ const StaffProfile = (props) => {
             }}
           >
             {!isPending ? "Delete Staff" : "Loading"}
+          </button>
+          <button
+            className="fullColeredButton"
+            onClick={(e) => {
+              e.preventDefault();
+              handleUpdation();
+            }}
+          >
+            {!isPending
+              ? canBeEdited
+                ? "Enable Editing"
+                : "Update Details"
+              : "Loading"}
           </button>
           {error && "Something went wrong"}
         </div>
