@@ -711,7 +711,7 @@ padding-left: 20px;
 
 .collegeNewForm {
   margin: 0 10%;
-  padding-top: 40px;
+  /* padding-top: 10px; */
 }
 
 .collegeNewForm input {
@@ -878,6 +878,7 @@ padding-left: 20px;
 .depTeacherRow:active {
   background-color: #8b79b0;
 }
+
 /* Meetings Page */
 
 .meetingsContainer {

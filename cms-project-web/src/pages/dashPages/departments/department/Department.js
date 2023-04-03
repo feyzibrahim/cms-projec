@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { useAuthContext } from "../../../../Hook/contextHooks/useAuthContext";
+import YearRow from "./YearRow";
 
 const Department = () => {
   const { state } = useLocation();
@@ -11,11 +12,7 @@ const Department = () => {
 
   const listYear = [];
   for (let i = 1; i <= department.year_count; i++) {
-    listYear.push(
-      <div className="depTeacherRow">
-        <p>Year {i}</p>
-      </div>
-    );
+    listYear.push(<YearRow i={i} />);
   }
 
   const loadTeachers = async () => {
@@ -62,6 +59,8 @@ const Department = () => {
                       <p>{t.teacherName}</p>
                     </div>
                   );
+                } else {
+                  return null;
                 }
               })}
             </div>
