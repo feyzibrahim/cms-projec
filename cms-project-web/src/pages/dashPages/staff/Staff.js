@@ -1,84 +1,122 @@
-import { useTable } from "react-table";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import img from "../../../img/noCollegeData.png";
+import Loader from "../../../globalClasses/Loader";
+import StaffForm from "./StaffForm";
+import { useAuthContext } from "../../../Hook/contextHooks/useAuthContext";
+import { useStaffContext } from "../../../Hook/contextHooks/useStaffContext";
+import StaffRows from "./StaffRows";
 
-function Staff() {
-  const data = React.useMemo(
-    () => [
-      {
-        col1: "Hello",
-        col2: "World",
-      },
-      {
-        col1: "react-table",
-        col2: "rocks",
-      },
-      {
-        col1: "whatever",
-        col2: "you want",
-      },
-    ],
-    []
-  );
+const Staff = () => {
+  var today = new Date(),
+    date = today.toTimeString();
 
-  const columns = React.useMemo(
-    () => [
-      {
-        Header: "Column 1",
-        accessor: "col1",
-      },
-      {
-        Header: "Column 2",
-        accessor: "col2",
-      },
-    ],
-    []
-  );
+  const { user } = useAuthContext();
+  const { staff, dispatch } = useStaffContext();
+  const [isPending, setIsPending] = useState(true);
+  const [isNotForm, setIsNotForm] = useState(true);
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data });
+  const showForm = () => {
+    setIsNotForm(!isNotForm);
+  };
+
+  useEffect(() => {
+    const abortConst = new AbortController();
+    const fetchData = async () => {
+      const response = await fetch("/api/staff", {
+        signal: abortConst.signal,
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      const json = await response.json();
+
+      if (response.ok) {
+        dispatch({ type: "SET_STAFF", payload: json });
+        setIsPending(false);
+      }
+      if (!response.ok) {
+        console.log(json.error);
+      }
+    };
+
+    fetchData();
+    return () => abortConst.abort();
+  }, []);
 
   return (
-    <table {...getTableProps()}>
-      <thead>
-        {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <th
-                {...column.getHeaderProps()}
-                style={{
-                  color: "black",
-                  fontWeight: "bold",
-                }}
-              >
-                {column.render("Header")}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row) => {
-          prepareRow(row);
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => {
-                return (
-                  <td
-                    {...cell.getCellProps()}
-                    style={{
-                      padding: "10px",
-                    }}
+    <div className="Meatingshome addSomeMargin">
+      <div className="dHome">
+        <div className="dHomeNav">
+          <div className="dHomeNavLeft">
+            <h1>Staff</h1>
+            <p>{date}</p>
+          </div>
+          <div className="depHomeNavRight">
+            <button
+              className="fullColeredButton"
+              onClick={() => {
+                showForm();
+              }}
+            >
+              {isNotForm ? "Add New Staff" : "Go back"}
+            </button>
+            <span className="material-symbols-outlined">notifications</span>
+          </div>
+        </div>
+        <div className="teacherContainer">
+          {isPending ? (
+            <Loader />
+          ) : isNotForm ? (
+            staff != null && staff.length > 0 ? (
+              <div>
+                <div>
+                  <div className="teacherRowsHeader">
+                    <div>
+                      <p>Name</p>
+                    </div>
+                    <div>
+                      <p>Email Id</p>
+                    </div>
+                    <div>
+                      <p>Gender</p>
+                    </div>
+                    <div>
+                      <p>Duty</p>
+                    </div>
+                    <div>
+                      <p>Mobile Number</p>
+                    </div>
+                  </div>
+                  {staff.map((m) => (
+                    <StaffRows staff={m} key={m._id} />
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div className="collegeDataNotFound">
+                <div className="collegeDataNotFoundContainer">
+                  <img src={img} alt="No data found" />
+                  <h2>Staffs are not Added</h2>
+                  <h5>
+                    Please Click below button and fill up the form in order to
+                    New Staff.
+                  </h5>
+                  <button
+                    className="fullColeredButton"
+                    onClick={() => showForm()}
                   >
-                    {cell.render("Cell")}
-                  </td>
-                );
-              })}
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+                    Click Here
+                  </button>
+                </div>
+              </div>
+            )
+          ) : (
+            <StaffForm showForm={showForm} />
+          )}
+        </div>
+      </div>
+    </div>
   );
-}
+};
 
 export default Staff;
