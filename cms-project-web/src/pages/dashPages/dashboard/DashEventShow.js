@@ -8,7 +8,7 @@ const DashEventShow = (props) => {
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(null);
 
-  const getDatefrom = (dd) => {
+  const getDateFrom = (dd) => {
     var curr = new Date(dd);
     var date = curr.toISOString().substring(0, 10);
     return date;
@@ -67,11 +67,11 @@ const DashEventShow = (props) => {
           <label>Date</label>
           <input
             type="date"
-            defaultValue={getDatefrom(props.e.eventDateAndTime)}
+            defaultValue={getDateFrom(props.e.eventDateAndTime)}
           />
           {/* <label>Time</label>
           <input type="text" defaultValue={getTimefrom(props.e.eventTime)} /> */}
-          <label>Oraganized By</label>
+          <label>Organized By</label>
           <input
             type="text"
             placeholder="Organizers Name Here"

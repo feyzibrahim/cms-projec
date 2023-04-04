@@ -908,6 +908,10 @@ padding-left: 20px;
   cursor: pointer;
 }
 
+.meetingRows:active {
+  background-color: #bbbbbb;
+}
+
 .meetingRows div, .meetingRowsHeader div {
   width: 100%;
   padding: 10px;
@@ -926,13 +930,27 @@ padding-left: 20px;
 
 .meetingComplete button {
   display: flex;
-  padding: 5px;
+  padding: 0 10px;
   margin: 0;
+  align-items: center;
+  background-color: #e9e9e9;
 }
 
 .meetingComplete button:hover {
   color: #e7195a;
+  cursor: pointer;
+  background-color: #A38ED1;
 }
+
+.meetingShowButtons {
+  display: flex;
+  flex-direction: row;
+}
+
+.someSpecialMargin {
+  margin-right: 20px;
+}
+
 
 /* Teacher Page */
 

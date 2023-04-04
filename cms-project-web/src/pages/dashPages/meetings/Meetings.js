@@ -6,7 +6,7 @@ import MeetingForm from "./MeetingForm";
 import { useAuthContext } from "../../../Hook/contextHooks/useAuthContext";
 import { useMeetingContext } from "../../../Hook/contextHooks/useMeetingContext";
 
-const Meatings = () => {
+const Meetings = () => {
   var today = new Date(),
     date = today.toTimeString();
 
@@ -45,11 +45,11 @@ const Meatings = () => {
   }, []);
 
   return (
-    <div className="Meatingshome addSomeMargin">
+    <div className="addSomeMargin">
       <div className="dHome">
         <div className="dHomeNav">
           <div className="dHomeNavLeft">
-            <h1>Meatings</h1>
+            <h1>Meetings</h1>
             <p>{date}</p>
           </div>
           <div className="depHomeNavRight">
@@ -59,7 +59,7 @@ const Meatings = () => {
                 showForm();
               }}
             >
-              {isNotForm ? "Add New Department" : "Go back"}
+              {isNotForm ? "Create New Meeting" : "Go back"}
             </button>
             <span className="material-symbols-outlined">notifications</span>
           </div>
@@ -81,7 +81,7 @@ const Meatings = () => {
                     <p>Location</p>
                   </div>
                   <div>
-                    <p>Time and Date</p>
+                    <p>Date</p>
                   </div>
                   <div>
                     <p>Status</p>
@@ -121,4 +121,4 @@ const Meatings = () => {
   );
 };
 
-export default Meatings;
+export default Meetings;

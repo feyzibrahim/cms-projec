@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuthContext } from "../../../Hook/contextHooks/useAuthContext";
 import { useMeetingContext } from "../../../Hook/contextHooks/useMeetingContext";
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import MeetingShow from "./MeetingShow";
 
 const MeetingRows = ({ meeting }) => {
   const { user } = useAuthContext();
   const { dispatch } = useMeetingContext();
+
+  const [showMeeting, setShowMeeting] = useState(false);
+
+  const showMeetingOnClick = () => {
+    setShowMeeting(!showMeeting);
+  };
 
   const handleUpdate = async () => {
     const isOver = true;
@@ -13,13 +21,13 @@ const MeetingRows = ({ meeting }) => {
       return;
     }
 
-    const meetinghere = {
+    const meetingHere = {
       isOver,
     };
 
     const response = await fetch("/api/meetings/" + meeting._id, {
       method: "PATCH",
-      body: JSON.stringify(meetinghere),
+      body: JSON.stringify(meetingHere),
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${user.token}`,
@@ -52,7 +60,6 @@ const MeetingRows = ({ meeting }) => {
     const json = await response.json();
     if (response.ok) {
       dispatch({ type: "DELETE_MEETING", payload: json });
-      console.log("Data updated" + json);
     }
 
     if (!response.ok) {
@@ -61,36 +68,48 @@ const MeetingRows = ({ meeting }) => {
   };
 
   return (
-    <div className="meetingRows">
-      <div>
-        <p>{meeting.meeting_name}</p>
+    <>
+      {showMeeting && (
+        <MeetingShow
+          showMeetingOnClick={showMeetingOnClick}
+          meeting={meeting}
+        />
+      )}
+      <div className="meetingRows" onClick={() => showMeetingOnClick()}>
+        <div>
+          <p>{meeting.meeting_name}</p>
+        </div>
+        <div>
+          <p>{meeting.organized_by}</p>
+        </div>
+        <div>
+          <p>{meeting.location}</p>
+        </div>
+        <div>
+          <p>
+            {formatDistanceToNow(new Date(meeting.timestamps), {
+              addSuffix: true,
+            })}
+          </p>
+        </div>
+        <div>
+          <p>{meeting.isOver ? "Completed" : "Coming"}</p>
+        </div>
+        <div className="meetingComplete">
+          {meeting.isOver ? (
+            <button className="borderColoredButton" onClick={handleDelete}>
+              <span className="material-symbols-outlined">Delete</span>
+              <p>Delete</p>
+            </button>
+          ) : (
+            <button className="borderColoredButton" onClick={handleUpdate}>
+              <span className="material-symbols-outlined">Check</span>
+              <p>Mark As Done</p>
+            </button>
+          )}
+        </div>
       </div>
-      <div>
-        <p>{meeting.organized_by}</p>
-      </div>
-      <div>
-        <p>{meeting.location}</p>
-      </div>
-      <div>
-        <p>{meeting.timestamps}</p>
-      </div>
-      <div>
-        <p>{meeting.isOver ? "Completed" : "Coming"}</p>
-      </div>
-      <div className="meetingComplete">
-        {meeting.isOver ? (
-          <button className="fullColeredButton" onClick={handleDelete}>
-            <span className="material-symbols-outlined">Delete</span>
-            <p>Delete</p>
-          </button>
-        ) : (
-          <button className="fullColeredButton" onClick={handleUpdate}>
-            <span className="material-symbols-outlined">Check</span>
-            <p>Mark As Done</p>
-          </button>
-        )}
-      </div>
-    </div>
+    </>
   );
 };
 
