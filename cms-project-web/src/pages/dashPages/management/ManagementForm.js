@@ -8,7 +8,7 @@ import Creatable from "react-select/creatable";
 const ManagementForm = (props) => {
   const { user } = useAuthContext();
   const [error, setError] = useState();
-  const [isloading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [managerName, setManagerName] = useState();
   const [email, setEmail] = useState();
@@ -200,8 +200,8 @@ const ManagementForm = (props) => {
         </div>
       </div>
       <div className="collegeFormButton">
-        <button className="fullColeredButton" onClick={handleSubmit}>
-          {isloading ? "Loading..." : "Add Member"}
+        <button className="fullColoredButton" onClick={handleSubmit}>
+          {isLoading ? "Loading..." : "Add Member"}
         </button>
       </div>
 

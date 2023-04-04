@@ -54,7 +54,7 @@ const Meetings = () => {
           </div>
           <div className="depHomeNavRight">
             <button
-              className="fullColeredButton"
+              className="fullColoredButton"
               onClick={() => {
                 showForm();
               }}
@@ -104,7 +104,7 @@ const Meetings = () => {
                     button to add one
                   </h5>
                   <button
-                    className="fullColeredButton"
+                    className="fullColoredButton"
                     onClick={() => showForm()}
                   >
                     Click Here

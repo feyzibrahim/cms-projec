@@ -44,7 +44,7 @@ const Management = () => {
   }, []);
 
   return (
-    <div className="Meatingshome addSomeMargin">
+    <div className="addSomeMargin">
       <div className="dHome">
         <div className="dHomeNav">
           <div className="dHomeNavLeft">
@@ -53,7 +53,7 @@ const Management = () => {
           </div>
           <div className="depHomeNavRight">
             <button
-              className="fullColeredButton"
+              className="fullColoredButton"
               onClick={() => {
                 showForm();
               }}

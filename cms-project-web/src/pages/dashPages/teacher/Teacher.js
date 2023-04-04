@@ -44,7 +44,7 @@ const Teacher = () => {
   }, []);
 
   return (
-    <div className="Meatingshome addSomeMargin">
+    <div className="addSomeMargin">
       <div className="dHome">
         <div className="dHomeNav">
           <div className="dHomeNavLeft">
@@ -53,7 +53,7 @@ const Teacher = () => {
           </div>
           <div className="depHomeNavRight">
             <button
-              className="fullColeredButton"
+              className="fullColoredButton"
               onClick={() => {
                 showForm();
               }}
@@ -84,7 +84,7 @@ const Teacher = () => {
                       <p>Department</p>
                     </div>
                     <div>
-                      <p>Desgination</p>
+                      <p>Designation</p>
                     </div>
                     <div>
                       <p>Mobile Number</p>
@@ -105,7 +105,7 @@ const Teacher = () => {
                     add a teacher.
                   </h5>
                   <button
-                    className="fullColeredButton"
+                    className="fullColoredButton"
                     onClick={() => showForm()}
                   >
                     Click Here

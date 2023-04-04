@@ -9,7 +9,7 @@ const DepartmentForm = (props) => {
   const [year_count, setYearCount] = useState("");
   const [hod, setHod] = useState("");
   const [teacher_count, setTeachersCount] = useState("");
-  const [students_count, setstudents_count] = useState("");
+  const [students_count, setStudents_count] = useState("");
   const [error, setError] = useState("");
 
   const { dispatch } = useDepartmentContext();
@@ -49,7 +49,7 @@ const DepartmentForm = (props) => {
       setYearCount("");
       setHod("");
       setTeachersCount("");
-      setstudents_count("");
+      setStudents_count("");
       dispatch({ type: "CREATE_DEPARTMENT", payload: json });
       setError(null);
 
@@ -86,11 +86,11 @@ const DepartmentForm = (props) => {
       <label>Students Count</label>
       <input
         type="number"
-        onChange={(e) => setstudents_count(e.target.value)}
+        onChange={(e) => setStudents_count(e.target.value)}
         value={students_count}
       />
       <div className="collegeFormButton">
-        <button className="fullColeredButton" onClick={handleSubmit}>
+        <button className="fullColoredButton" onClick={handleSubmit}>
           Add Department
         </button>
       </div>

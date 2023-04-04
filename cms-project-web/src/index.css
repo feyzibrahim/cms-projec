@@ -39,7 +39,7 @@
 
 /* Buttons */
 
-.fullColeredButton {  
+.fullColoredButton {  
   padding: 10px;
   cursor: pointer;
   background-color: #A38ED1;
@@ -49,11 +49,11 @@
   margin: 0;
 }
 
-.fullColeredButton:active {
+.fullColoredButton:active {
   background-color: #9582bf;
 }
 
-.fullColeredButton:hover {
+.fullColoredButton:hover {
   color: #f1356d;
 }
 

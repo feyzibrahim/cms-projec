@@ -227,7 +227,7 @@ const TeacherProfile = (props) => {
             </div>
           </form>
           <button
-            className="fullColeredButton"
+            className="fullColoredButton"
             onClick={(e) => {
               e.preventDefault();
               handleDelete();
@@ -236,7 +236,7 @@ const TeacherProfile = (props) => {
             {!isPending ? "Delete Teacher" : "Loading"}
           </button>
           <button
-            className="fullColeredButton"
+            className="fullColoredButton"
             onClick={(e) => {
               e.preventDefault();
               if (isInputDisabled) {

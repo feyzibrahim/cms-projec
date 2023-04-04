@@ -20,14 +20,14 @@ const StaffProfile = (props) => {
   ];
 
   const staffList = [
-    { value: "Office Attendent", label: "Office Attendent" },
+    { value: "Office Attendant", label: "Office Attendant" },
     { value: "Accounts", label: "Accounts" },
     { value: "IT", label: "IT" },
     { value: "Office Staff", label: "Office Staff" },
     { value: "Cleaning", label: "Cleaning" },
   ];
 
-  const getDatefrom = (dd) => {
+  const getDateFrom = (dd) => {
     var curr = new Date(dd);
     var date = curr.toISOString().substring(0, 10);
     return date;
@@ -75,7 +75,6 @@ const StaffProfile = (props) => {
     const json = await res.json();
     if (res.ok) {
       dispatch({ type: "UPDATE_STAFF", payload: json });
-      // props.showProfileOnClick();
       setIsPending(false);
       setError(null);
     }
@@ -136,7 +135,7 @@ const StaffProfile = (props) => {
                   staff.registrationNumber = e.target.value;
                 }}
               />
-              <label>Gendar</label>
+              <label>Gender</label>
               {canBeEdited ? (
                 <input
                   type="text"
@@ -184,7 +183,7 @@ const StaffProfile = (props) => {
               <label>Date of Birth</label>
               <input
                 type="date"
-                defaultValue={getDatefrom(staff.dob)}
+                defaultValue={getDateFrom(staff.dob)}
                 disabled={canBeEdited}
                 onChange={(e) => {
                   staff.dob = e.target.value;
@@ -193,7 +192,7 @@ const StaffProfile = (props) => {
               <label>Joining Date</label>
               <input
                 type="date"
-                defaultValue={getDatefrom(staff.joiningDate)}
+                defaultValue={getDateFrom(staff.joiningDate)}
                 disabled={canBeEdited}
                 onChange={(e) => {
                   staff.joiningDate = e.target.value;
@@ -211,7 +210,7 @@ const StaffProfile = (props) => {
             </div>
           </form>
           <button
-            className="fullColeredButton"
+            className="fullColoredButton"
             onClick={(e) => {
               e.preventDefault();
               handleDelete();
@@ -220,7 +219,7 @@ const StaffProfile = (props) => {
             {!isPending ? "Delete Staff" : "Loading"}
           </button>
           <button
-            className="fullColeredButton"
+            className="fullColoredButton"
             onClick={(e) => {
               e.preventDefault();
               if (!canBeEdited) {

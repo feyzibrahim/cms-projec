@@ -85,7 +85,7 @@ const MeetingForm = (props) => {
         value={timestamps}
       />
       <div className="collegeFormButton">
-        <button className="fullColeredButton" onClick={handleSubmit}>
+        <button className="fullColoredButton" onClick={handleSubmit}>
           Create Meeting
         </button>
       </div>

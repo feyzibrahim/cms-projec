@@ -125,13 +125,13 @@ const MeetingShow = (props) => {
           {error && <div className="workoutError">{error}</div>}
           <div className="meetingShowButtons">
             <button
-              className="fullColeredButton someSpecialMargin"
+              className="fullColoredButton someSpecialMargin"
               onClick={handleDelete}
             >
               {isPending ? "Loading..." : "Delete"}
             </button>
             <button
-              className="fullColeredButton"
+              className="fullColoredButton"
               onClick={(e) => {
                 e.preventDefault();
                 if (isInputDisabled) {
