@@ -6,6 +6,8 @@ import {
   TouchableOpacity,
   FlatList,
 } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
+
 export default function DueWork() {
   const [dueWork, setClassArray] = useState([
     {
@@ -30,13 +32,14 @@ export default function DueWork() {
       <FlatList
         data={dueWork}
         horizontal={true}
+        showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
           <TouchableOpacity>
             <View style={styles.subjectView}>
               <Text>{item.work}</Text>
               <Text style={styles.subTitle}>{item.subject}</Text>
               <View>
-                {/* <MaterialIcons name="history" size={30} /> */}
+                <MaterialIcons name="schedule" size={30} />
                 <Text>{item.lastSubmitTime}</Text>
               </View>
             </View>
@@ -50,6 +53,7 @@ const styles = StyleSheet.create({
   VerticalScroll: {
     height: 200,
     paddingVertical: 10,
+    paddingLeft: 20,
   },
   subTitle: {
     fontWeight: "bold",

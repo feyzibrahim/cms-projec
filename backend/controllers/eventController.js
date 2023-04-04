@@ -4,6 +4,23 @@ const mongoose = require("mongoose");
 // Get All Event
 
 const getEvents = async (req, res) => {
+  const abc = req.query.q;
+  if (abc === undefined) {
+    const user_id = req.user._id;
+
+    const events = await Event.find({ user_id });
+    res.status(200).json(events);
+  } else {
+    const query = req.query.q;
+    console.log(query);
+    const events = await Event.find({ user_id: { $regex: query } });
+    res.status(200).json(events);
+  }
+};
+
+// Get Events for sub users
+
+const getEventsForSubUsers = async (req, res) => {
   const user_id = req.user._id;
 
   const events = await Event.find({ user_id });
@@ -106,4 +123,5 @@ module.exports = {
   createEvent,
   deleteEvent,
   updateEvent,
+  getEventsForSubUsers,
 };
