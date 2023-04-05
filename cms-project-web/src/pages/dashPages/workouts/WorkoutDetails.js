@@ -33,7 +33,7 @@ const WorkoutDetails = ({ workout }) => {
         {workout.load}
       </p>
       <p>
-        <strong>Condact Number: </strong>
+        <strong>Contact Number: </strong>
         {workout.reps}
       </p>
       <p>

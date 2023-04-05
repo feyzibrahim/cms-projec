@@ -54,7 +54,7 @@ const Departments = () => {
         </div>
         <div className="depHomeNavRight">
           <button
-            className="fullColeredButton"
+            className="fullColoredButton"
             onClick={() => {
               showForm();
             }}
@@ -84,7 +84,7 @@ const Departments = () => {
               <img src={img} alt="No data found" />
               <h2>Department Are Not Added</h2>
               <h5>Please update Department details by Clicking below button</h5>
-              <button className="fullColeredButton" onClick={() => showForm()}>
+              <button className="fullColoredButton" onClick={() => showForm()}>
                 Click Here
               </button>
             </div>

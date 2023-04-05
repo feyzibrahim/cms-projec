@@ -81,7 +81,7 @@ const DashAnnounceForm = (props) => {
           {error && <div className="workoutError">{error}</div>}
           <button
             disabled={isLoading}
-            className="fullColeredButton"
+            className="fullColoredButton"
             onClick={handleSubmit}
           >
             {isLoading ? "Loading..." : "Create Announcement"}

@@ -44,7 +44,7 @@ const Staff = () => {
   }, []);
 
   return (
-    <div className="Meatingshome addSomeMargin">
+    <div className="addSomeMargin">
       <div className="dHome">
         <div className="dHomeNav">
           <div className="dHomeNavLeft">
@@ -53,7 +53,7 @@ const Staff = () => {
           </div>
           <div className="depHomeNavRight">
             <button
-              className="fullColeredButton"
+              className="fullColoredButton"
               onClick={() => {
                 showForm();
               }}
@@ -102,7 +102,7 @@ const Staff = () => {
                     New Staff.
                   </h5>
                   <button
-                    className="fullColeredButton"
+                    className="fullColoredButton"
                     onClick={() => showForm()}
                   >
                     Click Here

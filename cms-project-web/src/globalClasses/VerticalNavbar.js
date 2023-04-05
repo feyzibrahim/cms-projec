@@ -72,9 +72,9 @@ const Navbar = () => {
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? "active" : "inactive")}
-            to="/dash/meatings"
+            to="/dash/meetings"
           >
-            <span className="material-symbols-outlined">Hearing</span>Meatings
+            <span className="material-symbols-outlined">Hearing</span>Meetings
           </NavLink>
         </li>
 

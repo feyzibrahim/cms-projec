@@ -86,7 +86,7 @@ const Dash = () => {
             <h2>College Details Are Not Added</h2>
             <h5>Please update college details by Clicking below button</h5>
             <button
-              className="fullColeredButton"
+              className="fullColoredButton"
               onClick={() => setIsNotForm(false)}
             >
               Click Here

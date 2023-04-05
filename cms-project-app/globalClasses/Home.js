@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <NavigationContainer>
       {user ? (
-        user.userType === "teacher" ? (
+        user.userType === "teacher" || user.userType === "admin" ? (
           <TeacherStack />
         ) : (
           <StudentStack />

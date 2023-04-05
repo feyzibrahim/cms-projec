@@ -73,7 +73,6 @@ const ManagementProfile = (props) => {
     const json = await res.json();
     if (res.ok) {
       dispatch({ type: "UPDATE_MANAGEMENT", payload: json });
-      props.showProfileOnClick();
     }
 
     if (!res.ok) {

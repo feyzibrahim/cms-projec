@@ -7,7 +7,7 @@ import Select from "react-select";
 const TeacherForm = (props) => {
   const { user } = useAuthContext();
   const [error, setError] = useState();
-  const [isloading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [teacherName, setTeacherName] = useState();
   const [email, setEmail] = useState();
@@ -236,8 +236,8 @@ const TeacherForm = (props) => {
         </div>
       </div>
       <div className="collegeFormButton">
-        <button className="fullColeredButton" onClick={handleSubmit}>
-          {isloading ? "Loading..." : "Add Teacher"}
+        <button className="fullColoredButton" onClick={handleSubmit}>
+          {isLoading ? "Loading..." : "Add Teacher"}
         </button>
       </div>
 

@@ -6,6 +6,8 @@ import {
   TouchableOpacity,
   FlatList,
 } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
+
 export default function TimeTable() {
   const [classArray, setClassArray] = useState([
     {
@@ -45,6 +47,7 @@ export default function TimeTable() {
       <FlatList
         data={classArray}
         horizontal={true}
+        showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
           <TouchableOpacity>
             <View style={styles.subjectView}>
@@ -53,9 +56,9 @@ export default function TimeTable() {
               <View style={styles.subjectSubView}>
                 <Text>{item.teacher}</Text>
               </View>
-              <View>
-                {/* <MaterialIcons name="history" size={30} /> */}
-                <Text>{item.duration}</Text>
+              <View style={styles.scheduleAndIcon}>
+                <MaterialIcons name="schedule" size={20} />
+                <Text> {item.duration}</Text>
               </View>
             </View>
           </TouchableOpacity>
@@ -68,6 +71,7 @@ const styles = StyleSheet.create({
   VerticalScroll: {
     height: 200,
     paddingVertical: 10,
+    paddingLeft: 20,
   },
   subTitle: {
     fontWeight: "bold",
@@ -87,5 +91,10 @@ const styles = StyleSheet.create({
     padding: 10,
     marginVertical: 10,
     borderRadius: 10,
+  },
+  scheduleAndIcon: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
   },
 });

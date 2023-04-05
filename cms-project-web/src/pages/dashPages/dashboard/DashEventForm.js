@@ -114,7 +114,7 @@ const DashEventForm = (props) => {
             value={eventRemarks}
           />
           {error && <div className="workoutError">{error}</div>}
-          <button className="fullColeredButton" onClick={handleSubmit}>
+          <button className="fullColoredButton" onClick={handleSubmit}>
             Create Event
           </button>
         </form>

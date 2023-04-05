@@ -21,7 +21,7 @@ const MeetingForm = (props) => {
       return;
     }
 
-    const meating = {
+    const meeting = {
       meeting_name,
       organized_by,
       location,
@@ -31,7 +31,7 @@ const MeetingForm = (props) => {
 
     const response = await fetch("/api/meetings", {
       method: "POST",
-      body: JSON.stringify(meating),
+      body: JSON.stringify(meeting),
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${user.token}`,
@@ -85,8 +85,8 @@ const MeetingForm = (props) => {
         value={timestamps}
       />
       <div className="collegeFormButton">
-        <button className="fullColeredButton" onClick={handleSubmit}>
-          Create Meating
+        <button className="fullColoredButton" onClick={handleSubmit}>
+          Create Meeting
         </button>
       </div>
 

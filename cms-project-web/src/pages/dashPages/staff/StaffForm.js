@@ -8,7 +8,7 @@ import Creatable from "react-select/creatable";
 const StaffForm = (props) => {
   const { user } = useAuthContext();
   const [error, setError] = useState();
-  const [isloading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [staffName, setStaffName] = useState();
   const [email, setEmail] = useState();
@@ -112,7 +112,7 @@ const StaffForm = (props) => {
   ];
 
   const staffList = [
-    { value: "Office Attendent", label: "Office Attendent" },
+    { value: "Office Attendant", label: "Office Attendant" },
     { value: "Accounts", label: "Accounts" },
     { value: "IT", label: "IT" },
     { value: "Office Staff", label: "Office Staff" },
@@ -200,8 +200,8 @@ const StaffForm = (props) => {
         </div>
       </div>
       <div className="collegeFormButton">
-        <button className="fullColeredButton" onClick={handleSubmit}>
-          {isloading ? "Loading..." : "Add Staff"}
+        <button className="fullColoredButton" onClick={handleSubmit}>
+          {isLoading ? "Loading..." : "Add Staff"}
         </button>
       </div>
 

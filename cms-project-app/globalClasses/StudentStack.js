@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Studentspage from "../pages/Studentspage";
 import Attendence from "../pages/Attendence";
 import Internal from "../pages/Internal";
-import Sub from "../pages/componants/Sub";
+import Sub from "../pages/components/Sub";
 import StudentMarksheet from "../pages/StudentMarksheet";
 import Setting from "../pages/Setting";
 import Privacy from "../pages/Privacy";

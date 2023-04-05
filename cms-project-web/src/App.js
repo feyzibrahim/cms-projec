@@ -13,7 +13,7 @@ import ContactHome from "./pages/ContactHome";
 import ProjectHome from "./pages/ProjectHome";
 import DashBoard from "./pages/DashBoard";
 import Dues from "./pages/dashPages/Dues";
-import Meatings from "./pages/dashPages/meetings/Meatings";
+import Meetings from "./pages/dashPages/meetings/Meetings";
 import Teachers from "./pages/dashPages/workouts/Teachers";
 import Teacher from "./pages/dashPages/teacher/Teacher";
 import Department from "./pages/dashPages/departments/department/Department";
@@ -53,7 +53,7 @@ function App() {
             >
               <Route index element={<Dash />} />
               <Route path="dues" element={<Dues />} />
-              <Route path="meatings" element={<Meatings />} />
+              <Route path="meetings" element={<Meetings />} />
               <Route path="teachers" element={<Teachers />} />
               <Route path="teacher" element={<Teacher />} />
               <Route path="settings" element={<Settings />} />

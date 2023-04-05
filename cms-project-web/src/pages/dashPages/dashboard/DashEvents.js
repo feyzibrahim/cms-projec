@@ -48,7 +48,7 @@ const DashEvents = () => {
         <div className="dashTodosNav ">
           <h3>Events</h3>
           <button
-            className="fullColeredButton"
+            className="fullColoredButton"
             onClick={() => {
               showDashCreateFormOnClick();
             }}

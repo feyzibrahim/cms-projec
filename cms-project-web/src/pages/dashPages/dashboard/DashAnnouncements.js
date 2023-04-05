@@ -47,7 +47,7 @@ const DashAnnouncements = () => {
         <div className="dashAnnounNav">
           <h3>Announcements</h3>
           <button
-            className="fullColeredButton"
+            className="fullColoredButton"
             onClick={() => {
               showAnnouFormOnClick();
             }}
