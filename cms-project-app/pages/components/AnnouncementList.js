@@ -1,16 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import {
-  StyleSheet,
-  View,
-  Text,
-  TouchableOpacity,
-  FlatList,
-} from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { BASE_URL } from "../../globalClasses/Config";
 
-export default function EventsList() {
+export default function AnnouncementList() {
   const { user } = useAuthContext();
   const [events, setEvents] = useState();
   const [isLoading, setIsLoading] = useState(false);
@@ -18,7 +12,7 @@ export default function EventsList() {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(`${BASE_URL}/api/event?q=` + user.collegeId, {
+      .get(`${BASE_URL}/api/announcement?q=` + user.collegeId, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -35,11 +29,11 @@ export default function EventsList() {
 
   return (
     <View style={styles.eventText}>
-      <Text>Events</Text>
+      <Text>Announcement</Text>
       {isLoading && <Text>Loading...</Text>}
       {events &&
         events.map((item) => {
-          return <Text key={item._id}>{item.eventName}</Text>;
+          return <Text key={item._id}>{item.announcementTitle}</Text>;
         })}
     </View>
   );
