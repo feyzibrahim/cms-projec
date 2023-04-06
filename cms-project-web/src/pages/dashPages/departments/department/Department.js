@@ -12,7 +12,7 @@ const Department = () => {
 
   const listYear = [];
   for (let i = 1; i <= department.year_count; i++) {
-    listYear.push(<YearRow i={i} />);
+    listYear.push(i);
   }
 
   const loadTeachers = async () => {
@@ -55,7 +55,7 @@ const Department = () => {
               {teachers.map((t) => {
                 if (t.department === department.department_name) {
                   return (
-                    <div className="depTeacherRow">
+                    <div className="depTeacherRow" key={t._id}>
                       <p>{t.teacherName}</p>
                     </div>
                   );
@@ -70,7 +70,13 @@ const Department = () => {
         </div>
         <div className="depSubjects">
           <h2>Year</h2>
-          {listYear}
+          {listYear.map((item) => {
+            return (
+              <div key={item}>
+                <YearRow i={item} department={department} />
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

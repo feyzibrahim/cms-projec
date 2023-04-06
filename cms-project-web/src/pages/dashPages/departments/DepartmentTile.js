@@ -26,7 +26,10 @@ const DepartmentTile = ({ department }) => {
   };
 
   return (
-    <NavLink to={"/dash/departments/" + department._id} state={{ department }}>
+    <NavLink
+      to={department.department_name.replace(/ /g, "")}
+      state={{ department }}
+    >
       <div className="departmentTile">
         <span className="material-symbols-outlined" onClick={handleClick}>
           Delete

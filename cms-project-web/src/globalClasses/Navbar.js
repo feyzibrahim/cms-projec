@@ -14,7 +14,7 @@ const Navbar = () => {
         <Link to="/contact">Contact</Link>
         {!user && (
           <div>
-            <Link to="/signup" className="fullColeredButton">
+            <Link to="/signup" className="fullColoredButton">
               Sign Up
             </Link>
             <Link to="/login" className="borderColoredButton">

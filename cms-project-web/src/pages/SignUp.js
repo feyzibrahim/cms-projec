@@ -58,7 +58,7 @@ const SignUp = () => {
               ></input>
             </p>
             <p>
-              <button className="fullColeredButton" disabled={isLoading}>
+              <button className="fullColoredButton" disabled={isLoading}>
                 Signup
               </button>
             </p>
