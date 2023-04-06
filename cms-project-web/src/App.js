@@ -8,23 +8,23 @@ import React from "react";
 import SignUp from "./pages/SignUp";
 import AboutPage from "./pages/AboutPage";
 import LoginPage from "./pages/LoginPage";
+import DashBoard from "./pages/DashBoard";
+import Dues from "./pages/dashPages/Dues";
 import Navbar from "./globalClasses/Navbar";
 import ContactHome from "./pages/ContactHome";
 import ProjectHome from "./pages/ProjectHome";
-import DashBoard from "./pages/DashBoard";
-import Dues from "./pages/dashPages/Dues";
+import Settings from "./pages/dashPages/Settings";
+import Staff from "./pages/dashPages/staff/Staff";
+import Dash from "./pages/dashPages/dashboard/Dash";
+import Teacher from "./pages/dashPages/teacher/Teacher";
+import Students from "./pages/dashPages/students/Students";
 import Meetings from "./pages/dashPages/meetings/Meetings";
 import Teachers from "./pages/dashPages/workouts/Teachers";
-import Teacher from "./pages/dashPages/teacher/Teacher";
-import Department from "./pages/dashPages/departments/department/Department";
-import Departments from "./pages/dashPages/departments/Departments";
-import Settings from "./pages/dashPages/Settings";
-import Dash from "./pages/dashPages/dashboard/Dash";
-import Students from "./pages/dashPages/students/Students";
 import Management from "./pages/dashPages/management/Management";
-import Staff from "./pages/dashPages/staff/Staff";
-
+import Year from "./pages/dashPages/departments/department/Year";
+import Departments from "./pages/dashPages/departments/Departments";
 import { useAuthContext } from "./Hook/contextHooks/useAuthContext";
+import Department from "./pages/dashPages/departments/department/Department";
 
 function App() {
   const { user } = useAuthContext();
@@ -59,6 +59,7 @@ function App() {
               <Route path="settings" element={<Settings />} />
               <Route path="departments" element={<Departments />} />
               <Route path="departments/:id" element={<Department />} />
+              <Route path="departments/:id/:id" element={<Year />} />
               <Route path="students" element={<Students />} />
               <Route path="management" element={<Management />} />
               <Route path="staff" element={<Staff />} />

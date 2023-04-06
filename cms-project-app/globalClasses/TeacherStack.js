@@ -1,5 +1,5 @@
-import TeacherProfile from "../pages/TeacherProfile";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import TeacherProfile from "../pages/TeacherProfile";
 import TeacherPage from "../pages/TeacherPage";
 import Attendence from "../pages/Attendence";
 import Internal from "../pages/Internal";

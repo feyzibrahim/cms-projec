@@ -48,7 +48,7 @@ const LoginPage = () => {
                   ></input>
                 </p>
                 <p>
-                  <button disabled={isLoading} className="fullColeredButton">
+                  <button disabled={isLoading} className="fullColoredButton">
                     {isLoading ? "Loading" : "Login"}
                   </button>
                 </p>

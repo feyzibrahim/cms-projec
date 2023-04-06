@@ -28,7 +28,7 @@ const ContactHome = () => {
               <textarea placeholder="Message" rows="20"></textarea>
             </p>
             <p>
-              <button>Send message</button>
+              <button className="fullColoredButton">Send message</button>
             </p>
           </div>
         </div>
