@@ -30,14 +30,17 @@ const CollegeForm = () => {
 
     console.log(college);
 
-    const response = await fetch("/api/college", {
-      method: "POST",
-      body: JSON.stringify(college),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
+    const response = await fetch(
+      "https://cms-server-80fv.onrender.com/api/college",
+      {
+        method: "POST",
+        body: JSON.stringify(college),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
 
     const json = await response.json();
 
@@ -94,7 +97,7 @@ const CollegeForm = () => {
         value={students_count}
       />
       <div className="collegeFormButton">
-        <button className="fullColeredButton" onClick={handleSubmit}>
+        <button className="fullColoredButton" onClick={handleSubmit}>
           Update
         </button>
       </div>

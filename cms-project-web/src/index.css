@@ -540,9 +540,6 @@ input.error {
 
 /* Dashboard new */
 
-.dashHomee {
-  padding: 30px;
-}
 
 .DashBoardhome {
   margin: 0;
@@ -714,6 +711,10 @@ padding-left: 20px;
   /* padding-top: 10px; */
 }
 
+.collegeProfile {
+  margin: 30px 20%;
+}
+
 .collegeNewForm input {
   padding: 10px;
   margin-top: 10px;
@@ -858,9 +859,10 @@ padding-left: 20px;
 .depTeachers, .depSubjects {
   padding: 10px 20px;
   background-color: #f1f1f1;
+  height: 72vh;
 }
 
-.depTeachers h2 {
+.depTeachers h2, .depSubjects h2 {
   margin-bottom: 10px;
 }
 
@@ -1154,6 +1156,19 @@ padding-left: 20px;
 
 .annP {
   cursor: pointer;
+}
+
+.dashEventButton {
+  display: flex;
+  flex-direction: row;
+}
+
+.dashEventButton button:nth-child(1) {
+  margin-right: 5px;
+}
+
+.dashEventButton button:nth-child(2) {
+  margin-left: 5px;
 }
 
 /* Year */

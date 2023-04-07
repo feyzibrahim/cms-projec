@@ -12,6 +12,7 @@ import { AnnouncementContextProvider } from "./context/AnnouncementContext";
 import { ManagementContextProvider } from "./context/ManagementContext";
 import { StaffContextProvider } from "./context/StaffContext";
 import { StudentContextProvider } from "./context/StudentContext";
+import { SubjectContextProvider } from "./context/SubjectContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -25,7 +26,9 @@ root.render(
                 <ManagementContextProvider>
                   <StaffContextProvider>
                     <StudentContextProvider>
-                      <App />
+                      <SubjectContextProvider>
+                        <App />
+                      </SubjectContextProvider>
                     </StudentContextProvider>
                   </StaffContextProvider>
                 </ManagementContextProvider>

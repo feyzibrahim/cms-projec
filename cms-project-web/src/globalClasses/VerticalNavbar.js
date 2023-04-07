@@ -81,7 +81,7 @@ const Navbar = () => {
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? "active" : "inactive")}
-            to="/dash/settings"
+            to="/dash/profile"
           >
             <span className="material-symbols-outlined">manage_accounts</span>
             Profile
