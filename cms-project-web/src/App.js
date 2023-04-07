@@ -13,7 +13,7 @@ import Dues from "./pages/dashPages/Dues";
 import Navbar from "./globalClasses/Navbar";
 import ContactHome from "./pages/ContactHome";
 import ProjectHome from "./pages/ProjectHome";
-import Settings from "./pages/dashPages/Settings";
+import Profile from "./pages/dashPages/Profile";
 import Staff from "./pages/dashPages/staff/Staff";
 import Dash from "./pages/dashPages/dashboard/Dash";
 import Teacher from "./pages/dashPages/teacher/Teacher";
@@ -56,7 +56,7 @@ function App() {
               <Route path="meetings" element={<Meetings />} />
               <Route path="teachers" element={<Teachers />} />
               <Route path="teacher" element={<Teacher />} />
-              <Route path="settings" element={<Settings />} />
+              <Route path="profile" element={<Profile />} />
               <Route path="departments" element={<Departments />} />
               <Route path="departments/:id" element={<Department />} />
               <Route path="departments/:id/:id" element={<Year />} />

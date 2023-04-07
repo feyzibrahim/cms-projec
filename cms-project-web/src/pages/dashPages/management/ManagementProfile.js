@@ -36,12 +36,15 @@ const ManagementProfile = (props) => {
   const handleDelete = () => {
     const deleteData = async () => {
       setIsPending(true);
-      const response = await fetch("/api/management/" + management._id, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
+      const response = await fetch(
+        "https://cms-server-80fv.onrender.com/api/management/" + management._id,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
       const json = await response.json();
 
       if (response.ok) {
@@ -62,14 +65,17 @@ const ManagementProfile = (props) => {
   };
 
   const handleUpdation = async () => {
-    const res = await fetch("/api/management/" + management._id, {
-      method: "PATCH",
-      body: JSON.stringify(management),
-      headers: {
-        Authorization: `Bearer ${user.token}`,
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      "https://cms-server-80fv.onrender.com/api/management/" + management._id,
+      {
+        method: "PATCH",
+        body: JSON.stringify(management),
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const json = await res.json();
     if (res.ok) {
       dispatch({ type: "UPDATE_MANAGEMENT", payload: json });
@@ -130,7 +136,7 @@ const ManagementProfile = (props) => {
                   management.registrationNumber = e.target.value;
                 }}
               />
-              <label>Gendar</label>
+              <label>Gender</label>
               {isInputDisabled ? (
                 <input
                   type="text"
@@ -205,7 +211,7 @@ const ManagementProfile = (props) => {
             </div>
           </form>
           <button
-            className="fullColeredButton"
+            className="fullColoredButton"
             onClick={(e) => {
               e.preventDefault();
               handleDelete();
@@ -214,7 +220,7 @@ const ManagementProfile = (props) => {
             {!isPending ? "Delete Member" : "Loading"}
           </button>
           <button
-            className="fullColeredButton"
+            className="fullColoredButton"
             onClick={(e) => {
               e.preventDefault();
               if (isInputDisabled) {

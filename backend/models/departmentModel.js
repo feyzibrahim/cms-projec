@@ -2,6 +2,28 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
+const subjectSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  code: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  sem: {
+    type: Number,
+  },
+  year: {
+    type: Number,
+  },
+  user_id: {
+    type: String,
+    required: true,
+  },
+});
+
 const departmentSchema = new Schema(
   {
     department_name: {
@@ -14,7 +36,6 @@ const departmentSchema = new Schema(
     },
     hod: {
       type: String,
-      required: true,
     },
     teacher_count: {
       type: Number,
@@ -22,6 +43,7 @@ const departmentSchema = new Schema(
     students_count: {
       type: String,
     },
+    subjects: [subjectSchema],
     user_id: {
       type: String,
       required: true,
