@@ -31,9 +31,17 @@ export const AuthContextProvider = ({ children }) => {
 
   const logout = () => {
     setIsLoading(true);
-    setUser(null);
-    AsyncStorage.removeItem("user");
-    setIsLoading(false);
+    try {
+      AsyncStorage.removeItem("user").then(() => {
+        setUser(null);
+        setIsLoading(false);
+      });
+    } catch {
+      (e) => {
+        console.log(e);
+        setIsLoading(false);
+      };
+    }
   };
 
   const isLoggedIn = async () => {

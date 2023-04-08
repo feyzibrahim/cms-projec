@@ -29,11 +29,15 @@ export default function AnnouncementList() {
 
   return (
     <View style={styles.eventText}>
-      <Text>Announcement</Text>
+      <Text style={styles.title}>Announcement</Text>
       {isLoading && <Text>Loading...</Text>}
       {events &&
         events.map((item) => {
-          return <Text key={item._id}>{item.announcementTitle}</Text>;
+          return (
+            <Text key={item._id} style={styles.rowText}>
+              {item.announcementTitle}
+            </Text>
+          );
         })}
     </View>
   );
@@ -41,6 +45,18 @@ export default function AnnouncementList() {
 
 const styles = StyleSheet.create({
   eventText: {
-    paddingLeft: 20,
+    marginHorizontal: 20,
+    backgroundColor: "#999",
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 10,
+  },
+  title: {
+    fontSize: 20,
+  },
+  rowText: {
+    borderBottomColor: "#888",
+    borderBottomWidth: 1,
+    paddingVertical: 5,
   },
 });

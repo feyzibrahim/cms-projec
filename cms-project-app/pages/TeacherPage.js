@@ -11,7 +11,7 @@ export default function TeacherPage() {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text>Hello, {user && user.email}</Text>
+        <Text>Hello, {user && user.name}</Text>
       </View>
 
       <View style={styles.classAndClassCount}>

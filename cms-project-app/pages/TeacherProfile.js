@@ -78,7 +78,7 @@ export default function TeacherProfile() {
               <Text
                 style={{ fontSize: 16, fontWeight: "500", paddingVertical: 5 }}
               >
-                Department{" "}
+                Department
               </Text>
               <Text>{teacher && teacher.department}</Text>
             </View>
@@ -94,7 +94,7 @@ export default function TeacherProfile() {
               <Text
                 style={{ fontSize: 16, fontWeight: "500", paddingVertical: 5 }}
               >
-                Joining Date{" "}
+                Joining Date
               </Text>
               <Text>{teacher && teacher.joiningDate}</Text>
             </View>
@@ -104,7 +104,7 @@ export default function TeacherProfile() {
               <Text
                 style={{ fontSize: 16, fontWeight: "500", paddingVertical: 5 }}
               >
-                Email Id{" "}
+                Email Id
               </Text>
               <Text>{teacher && teacher.email}</Text>
             </View>
@@ -112,7 +112,7 @@ export default function TeacherProfile() {
               <Text
                 style={{ fontSize: 16, fontWeight: "500", paddingVertical: 5 }}
               >
-                Contact Number{" "}
+                Contact Number
               </Text>
               <Text>{teacher && teacher.facultyMobileNumber}</Text>
             </View>
