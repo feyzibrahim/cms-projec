@@ -9,7 +9,7 @@ import {
 import axios from "axios";
 import { BASE_URL } from "../globalClasses/Config";
 import { useAuthContext } from "../hooks/useAuthContext";
-import { ActivityIndicator } from "react-native-paper";
+import Loading from "../globalClasses/Loading";
 
 // export default function CollegeTeachers({ navigation }) {
 export default function CollegeTeachers() {
@@ -20,15 +20,11 @@ export default function CollegeTeachers() {
   const loadData = () => {
     setIsLoading(true);
     axios
-      .get(
-        `${BASE_URL}/api/teacher?fromMob=` +
-          user.collegeId +
-          {
-            headers: {
-              Authorization: `Bearer ${user.token}`,
-            },
-          }
-      )
+      .get(`${BASE_URL}/api/teacher?fromMob=` + user.collegeId, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      })
       .then((res) => {
         setTeachers(res.data);
         setIsLoading(false);
@@ -48,11 +44,7 @@ export default function CollegeTeachers() {
   };
 
   if (isLoading) {
-    return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <ActivityIndicator size={"large"} />
-      </View>
-    );
+    return <Loading />;
   }
 
   return (

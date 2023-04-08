@@ -3,7 +3,7 @@ import { BASE_URL } from "../globalClasses/Config";
 import { useState, useEffect } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { useAuthContext } from "../hooks/useAuthContext";
-import { ActivityIndicator } from "react-native-paper";
+import Loading from "../globalClasses/Loading";
 
 export default function TeacherProfile() {
   const { user } = useAuthContext();
@@ -29,11 +29,7 @@ export default function TeacherProfile() {
   }, []);
 
   if (isLoading) {
-    return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <ActivityIndicator size={"large"} />
-      </View>
-    );
+    return <Loading />;
   }
 
   return (

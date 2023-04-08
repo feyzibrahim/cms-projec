@@ -9,7 +9,7 @@ import {
 import axios from "axios";
 import { BASE_URL } from "../globalClasses/Config";
 import { useAuthContext } from "../hooks/useAuthContext";
-import { ActivityIndicator } from "react-native-paper";
+import Loading from "../globalClasses/Loading";
 
 // export default function DepTeachers({ navigation }) {
 export default function DepTeachers() {
@@ -50,11 +50,7 @@ export default function DepTeachers() {
   };
 
   if (isLoading) {
-    return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <ActivityIndicator size={"large"} />
-      </View>
-    );
+    return <Loading />;
   }
 
   return (

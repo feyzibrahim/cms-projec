@@ -9,7 +9,7 @@ import Setting from "../pages/Setting";
 import Privacy from "../pages/Privacy";
 import Terms from "../pages/Terms";
 import Help from "../pages/Help";
-import StudentsList from "../pages/StudentsList";
+import YearList from "../pages/YearList";
 import CustomDrawer from "../globalClasses/CustomDrawer";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import TeacherList from "../pages/TeachersList";
@@ -64,7 +64,7 @@ export default function TeacherDrawer() {
       />
       <Drawer.Screen
         name="studentsList"
-        component={StudentsList}
+        component={YearList}
         options={{
           title: "Students",
           drawerIcon: ({ color }) => (
