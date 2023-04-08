@@ -1,8 +1,8 @@
 import axios from "axios";
+import { BASE_URL } from "../globalClasses/Config";
 import { useState, useEffect } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { useAuthContext } from "../hooks/useAuthContext";
-import { BASE_URL } from "../globalClasses/Config";
 import { ActivityIndicator } from "react-native-paper";
 
 export default function TeacherProfile() {

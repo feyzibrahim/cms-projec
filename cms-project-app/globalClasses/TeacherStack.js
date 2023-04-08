@@ -12,6 +12,7 @@ import Help from "../pages/Help";
 import StudentsList from "../pages/StudentsList";
 import CustomDrawer from "../globalClasses/CustomDrawer";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import TeacherList from "../pages/TeachersList";
 
 const Drawer = createDrawerNavigator();
 
@@ -52,17 +53,30 @@ export default function TeacherDrawer() {
         }}
       />
       <Drawer.Screen
+        name="teachersList"
+        component={TeacherList}
+        options={{
+          title: "Teachers",
+          drawerIcon: ({ color }) => (
+            <Ionicons name="people-circle-outline" size={22} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
         name="studentsList"
         component={StudentsList}
         options={{
-          title: "Students List",
+          title: "Students",
+          drawerIcon: ({ color }) => (
+            <Ionicons name="people-outline" size={22} color={color} />
+          ),
         }}
       />
       <Drawer.Screen
         name="Attendencepage"
         component={Attendence}
         options={{
-          title: "Add Attendence",
+          title: "Add Attendance",
           drawerIcon: ({ color }) => (
             <Ionicons
               name="checkmark-done-circle-outline"
@@ -83,11 +97,6 @@ export default function TeacherDrawer() {
         }}
       />
       <Drawer.Screen
-        name="Studentmarksheet"
-        component={StudentMarksheet}
-        options={{ title: "Marksheet" }}
-      />
-      <Drawer.Screen
         name="Settings"
         component={Setting}
         options={{
@@ -96,6 +105,12 @@ export default function TeacherDrawer() {
           ),
         }}
       />
+      <Drawer.Screen
+        name="Studentmarksheet"
+        component={StudentMarksheet}
+        options={{ title: "Mark Sheet" }}
+      />
+
       <Drawer.Screen
         name="privacypolicy"
         component={Privacy}

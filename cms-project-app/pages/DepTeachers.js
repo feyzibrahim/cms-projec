@@ -11,17 +11,20 @@ import { BASE_URL } from "../globalClasses/Config";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { ActivityIndicator } from "react-native-paper";
 
-// export default function StudentsList({ navigation }) {
-export default function StudentsList() {
+// export default function DepTeachers({ navigation }) {
+export default function DepTeachers() {
   const { user } = useAuthContext();
-  const [students, setStudents] = useState();
+  const [teachers, setTeachers] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
-  const loadStudents = () => {
+  const loadData = () => {
     setIsLoading(true);
     axios
       .get(
-        `${BASE_URL}/api/student?departmentId=` + user.departmentId + "&year=1",
+        `${BASE_URL}/api/teacher?q=` +
+          user.collegeId +
+          "&departmentId=" +
+          user.departmentId,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -29,7 +32,7 @@ export default function StudentsList() {
         }
       )
       .then((res) => {
-        setStudents(res.data);
+        setTeachers(res.data);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -39,7 +42,7 @@ export default function StudentsList() {
   };
 
   useEffect(() => {
-    loadStudents();
+    loadData();
   }, []);
 
   const Separator = () => {
@@ -56,13 +59,13 @@ export default function StudentsList() {
 
   return (
     <>
-      {students != null ? (
+      {teachers != null ? (
         <View style={styles.container}>
           <FlatList
-            data={students}
+            data={teachers}
             keyExtractor={(item) => item._id}
             ItemSeparatorComponent={({ index }) => {
-              if (index !== students.length - 1) {
+              if (index !== teachers.length - 1) {
                 return <Separator />;
               } else {
                 return null;
@@ -71,7 +74,7 @@ export default function StudentsList() {
             renderItem={({ item }) => (
               <TouchableOpacity>
                 <View style={styles.subItem}>
-                  <Text>{item.student_name}</Text>
+                  <Text>{item.teacherName}</Text>
                   <Text>{item.registrationNumber}</Text>
                 </View>
               </TouchableOpacity>
@@ -81,7 +84,7 @@ export default function StudentsList() {
       ) : (
         <View style={styles.emptyMsg}>
           <Text>Students are empty</Text>
-          <Text>Please ask college admin to add students</Text>
+          <Text>Please ask college admin to add teachers</Text>
         </View>
       )}
     </>
@@ -95,6 +98,14 @@ const styles = StyleSheet.create({
   },
   container: {
     // padding: 10,
+  },
+  title: {
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+  },
+  titleText: {
+    fontSize: 20,
+    fontWeight: "600",
   },
   emptyMsg: {
     flex: 1,
