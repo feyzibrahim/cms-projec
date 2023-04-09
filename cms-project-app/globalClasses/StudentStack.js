@@ -1,6 +1,6 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Studentspage from "../pages/Studentspage";
-import Attendence from "../pages/Attendence";
+import ViewSem from "../pages/Students/Attendance/ViewSem";
 import Internal from "../pages/Internal";
 import TTDayList from "../pages/Common/TTDayList";
 import Setting from "../pages/Setting";
@@ -81,7 +81,7 @@ export default function StudentStack() {
       />
       <Drawer.Screen
         name="Attendencepage"
-        component={Attendence}
+        component={ViewSem}
         options={{
           title: "View Attendance",
           drawerIcon: ({ color }) => (

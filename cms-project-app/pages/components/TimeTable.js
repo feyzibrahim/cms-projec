@@ -65,14 +65,15 @@ export default function TimeTable() {
             <View style={styles.subjectView}>
               <Text style={styles.subTitle}>{item.subject}</Text>
               <Text>
-                {item.startTime} - {item.endTime}
+                {moment(item.startTime).format("hh:mm A")} -{" "}
+                {moment(item.endTime).format("hh:mm A")}
               </Text>
               <View style={styles.subjectSubView}>
                 <Text>{item.teacherName}</Text>
               </View>
               <View style={styles.scheduleAndIcon}>
                 <MaterialIcons name="schedule" size={20} />
-                <Text>1 Hr</Text>
+                <Text> 1 Hr</Text>
               </View>
             </View>
           </TouchableOpacity>

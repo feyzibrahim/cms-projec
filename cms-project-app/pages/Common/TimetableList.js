@@ -5,6 +5,7 @@ import { View, Text, FlatList, StyleSheet } from "react-native";
 import Loading from "../../globalClasses/Loading";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import moment from "moment";
+import Separator from "./Separator";
 
 export default function TimetableList(props) {
   const { day } = props;
@@ -16,7 +17,9 @@ export default function TimetableList(props) {
     setIsLoading(true);
     axios
       .get(
-        `${BASE_URL}/api/timetable/${day.toLowerCase()}?departmentId=6431014d0a7f4d7822ca0cb0&year=1`,
+        `${BASE_URL}/api/timetable/${day.toLowerCase()}?departmentId=${
+          user.departmentId
+        }&year=1`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -69,6 +72,9 @@ export default function TimetableList(props) {
       renderItem={renderPeriod}
       keyExtractor={(item, index) => `${item.periodNumber}-${index}`}
       contentContainerStyle={styles.listContainer}
+      ItemSeparatorComponent={({ index }) => (
+        <Separator index={index} length={timetable.length} />
+      )}
     />
   );
 }
@@ -83,8 +89,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingVertical: 12,
     paddingHorizontal: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
   },
   breakItem: {
     backgroundColor: "#f0f0f0",

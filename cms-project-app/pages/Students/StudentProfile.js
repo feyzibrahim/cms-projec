@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import Loading from "../../globalClasses/Loading";
+import moment from "moment";
 
 export default function TeacherProfile() {
   const { user } = useAuthContext();
@@ -70,7 +71,9 @@ export default function TeacherProfile() {
               >
                 Date of Birth
               </Text>
-              <Text>{student && student.dob}</Text>
+              <Text>
+                {student && moment(student.dob).format("dddd, DD/MM/yyyy")}
+              </Text>
             </View>
           </View>
           <View style={styles.styledView}>
@@ -96,7 +99,10 @@ export default function TeacherProfile() {
               >
                 Joining Date
               </Text>
-              <Text>{student && student.joiningDate}</Text>
+              <Text>
+                {student &&
+                  moment(student.joiningDate).format("dddd, DD/MM/yyyy")}
+              </Text>
             </View>
           </View>
           <View style={styles.styledView}>

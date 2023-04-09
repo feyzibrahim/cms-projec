@@ -9,6 +9,7 @@ import {
 import TimetableList from "./TimetableList";
 import { createStackNavigator } from "@react-navigation/stack";
 import TimetableScreen from "./TimetableScreen";
+import Separator from "./Separator";
 
 const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
@@ -51,6 +52,9 @@ const TTNavHome = ({ navigation }) => {
         keyExtractor={(item) => item}
         contentContainerStyle={styles.listContainer}
         extraData={selectedItem}
+        ItemSeparatorComponent={({ index }) => (
+          <Separator index={index} length={daysOfWeek.length} />
+        )}
       />
       <View style={{ margin: 20 }}>
         <TouchableOpacity
@@ -104,8 +108,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingVertical: 12,
     paddingHorizontal: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
   },
   selectedItem: {
     backgroundColor: "#f0f0f0",

@@ -12,6 +12,7 @@ import { BASE_URL } from "../../globalClasses/Config";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import Loading from "../../globalClasses/Loading";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import Separator from "../Common/Separator";
 
 // export default function DepTeachers({ navigation }) {
 export default function DepTeachers() {
@@ -60,10 +61,6 @@ export default function DepTeachers() {
     loadData();
   }, []);
 
-  const Separator = () => {
-    return <View style={{ borderBottomWidth: 1, borderBottomColor: "#ccc" }} />;
-  };
-
   if (isLoading) {
     return <Loading />;
   }
@@ -106,13 +103,9 @@ export default function DepTeachers() {
           <FlatList
             data={teachers}
             keyExtractor={(item) => item._id}
-            ItemSeparatorComponent={({ index }) => {
-              if (index !== teachers.length - 1) {
-                return <Separator />;
-              } else {
-                return null;
-              }
-            }}
+            ItemSeparatorComponent={({ index }) => (
+              <Separator index={index} length={teachers.length} />
+            )}
             // extraData={searchQuery}
             renderItem={({ item }) => (
               <TouchableOpacity>

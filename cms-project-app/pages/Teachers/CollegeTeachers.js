@@ -10,8 +10,8 @@ import axios from "axios";
 import { BASE_URL } from "../../globalClasses/Config";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import Loading from "../../globalClasses/Loading";
+import Separator from "../Common/Separator";
 
-// export default function CollegeTeachers({ navigation }) {
 export default function CollegeTeachers() {
   const { user } = useAuthContext();
   const [teachers, setTeachers] = useState();
@@ -39,10 +39,6 @@ export default function CollegeTeachers() {
     loadData();
   }, []);
 
-  const Separator = () => {
-    return <View style={{ borderBottomWidth: 1, borderBottomColor: "#ccc" }} />;
-  };
-
   if (isLoading) {
     return <Loading />;
   }
@@ -54,13 +50,9 @@ export default function CollegeTeachers() {
           <FlatList
             data={teachers}
             keyExtractor={(item) => item._id}
-            ItemSeparatorComponent={({ index }) => {
-              if (index !== teachers.length - 1) {
-                return <Separator />;
-              } else {
-                return null;
-              }
-            }}
+            ItemSeparatorComponent={({ index }) => (
+              <Separator index={index} length={teachers.length} />
+            )}
             renderItem={({ item }) => (
               <TouchableOpacity>
                 <View style={styles.subItem}>
