@@ -7,17 +7,19 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { BASE_URL } from "../globalClasses/Config";
-import { useAuthContext } from "../hooks/useAuthContext";
-import Loading from "../globalClasses/Loading";
+import { BASE_URL } from "../../globalClasses/Config";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import Loading from "../../globalClasses/Loading";
+import { useNavigation } from "@react-navigation/native";
 
-export default function YearList({ navigation }) {
+export default function YearList() {
   const { user } = useAuthContext();
   const [isLoading, setIsLoading] = useState();
   const [yearButtons, setYearButtons] = useState([]);
+  const navigation = useNavigation();
 
   const gotoNextPage = (year) => {
-    navigation.navigate("yearStudents", year);
+    navigation.navigate("YearStudents", year);
   };
 
   const loadData = () => {
@@ -42,7 +44,10 @@ export default function YearList({ navigation }) {
     const newCom = [];
     for (let i = 0; i < department.year_count; i++) {
       const yearButton = (
-        <TouchableOpacity key={i} onPress={gotoNextPage(year)}>
+        <TouchableOpacity
+          key={i}
+          onPress={() => gotoNextPage(department.year_count)}
+        >
           <View style={styles.yearButton}>
             <Text style={styles.yearText}>Year {i + 1}</Text>
           </View>

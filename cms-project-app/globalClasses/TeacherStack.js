@@ -1,18 +1,17 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import TeacherProfile from "../pages/TeacherProfile";
-import TeacherPage from "../pages/TeacherPage";
+import TeacherProfile from "../pages/Teachers/TeacherProfile";
+import TeacherPage from "../pages/Teachers/TeacherPage";
 import Attendence from "../pages/Attendence";
 import Internal from "../pages/Internal";
-import Sub from "../pages/components/Sub";
-import StudentMarksheet from "../pages/StudentMarksheet";
+import TTDayList from "../pages/Common/TTDayList";
 import Setting from "../pages/Setting";
-import Privacy from "../pages/Privacy";
-import Terms from "../pages/Terms";
 import Help from "../pages/Help";
-import YearList from "../pages/YearList";
+import YearList from "../pages/Teachers/YearList";
 import CustomDrawer from "../globalClasses/CustomDrawer";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import TeacherList from "../pages/TeachersList";
+import TeacherList from "../pages/Common/TeachersList";
+import Events from "../pages/Common/Events";
+import Announcement from "../pages/Common/Announcement";
 
 const Drawer = createDrawerNavigator();
 
@@ -33,6 +32,26 @@ export default function TeacherDrawer() {
         }}
       />
       <Drawer.Screen
+        name="announcement"
+        component={Announcement}
+        options={{
+          title: "Notification",
+          drawerIcon: ({ color }) => (
+            <Ionicons name="notifications-outline" size={22} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="events"
+        component={Events}
+        options={{
+          title: "College Events",
+          drawerIcon: ({ color }) => (
+            <Ionicons name="megaphone-outline" size={22} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
         name="profilepage"
         component={TeacherProfile}
         options={{
@@ -44,7 +63,7 @@ export default function TeacherDrawer() {
       />
       <Drawer.Screen
         name="subject"
-        component={Sub}
+        component={TTDayList}
         options={{
           title: "Time Table",
           drawerIcon: ({ color }) => (
@@ -106,22 +125,15 @@ export default function TeacherDrawer() {
         }}
       />
       <Drawer.Screen
-        name="Studentmarksheet"
-        component={StudentMarksheet}
-        options={{ title: "Mark Sheet" }}
+        name="help"
+        component={Help}
+        options={{
+          title: "Help",
+          drawerIcon: ({ color }) => (
+            <Ionicons name="help-circle-outline" size={22} color={color} />
+          ),
+        }}
       />
-
-      <Drawer.Screen
-        name="privacypolicy"
-        component={Privacy}
-        options={{ title: "Privacy Policy" }}
-      />
-      <Drawer.Screen
-        name="termsandconditions"
-        component={Terms}
-        options={{ title: "Terms & Conditions" }}
-      />
-      <Drawer.Screen name="help" component={Help} options={{ title: "Help" }} />
     </Drawer.Navigator>
   );
 }

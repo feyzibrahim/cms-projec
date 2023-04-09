@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Dimensions } from "react-native";
 import { TabView, SceneMap, TabBar } from "react-native-tab-view";
-import DepTeachers from "./DepTeachers";
-import CollegeTeachers from "./CollegeTeachers";
+import DepTeachers from "../Teachers/DepTeachers";
+import CollegeTeachers from "../Teachers/CollegeTeachers";
 
 const renderScene = SceneMap({
   department: DepTeachers,

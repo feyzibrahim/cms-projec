@@ -5,26 +5,47 @@ import {
   Text,
   TouchableOpacity,
   View,
+  TextInput,
 } from "react-native";
 import axios from "axios";
-import { BASE_URL } from "../globalClasses/Config";
-import { useAuthContext } from "../hooks/useAuthContext";
-import Loading from "../globalClasses/Loading";
+import { BASE_URL } from "../../globalClasses/Config";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import Loading from "../../globalClasses/Loading";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
-// export default function CollegeTeachers({ navigation }) {
-export default function CollegeTeachers() {
+// export default function DepTeachers({ navigation }) {
+export default function DepTeachers() {
   const { user } = useAuthContext();
   const [teachers, setTeachers] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
+  // const [isFocused, setIsFocused] = useState(false);
+
+  // const handleFocus = () => setIsFocused(true);
+  // const handleBlur = () => setIsFocused(false);
+
+  // const borderColor = isFocused ? "#777" : "#ccc";
+
+  // const [searchQuery, setSearchQuery] = useState('');
+
+  // const handleSearch = (query) => {
+  //   setSearchQuery(query);
+  // };
+
   const loadData = () => {
     setIsLoading(true);
     axios
-      .get(`${BASE_URL}/api/teacher?fromMob=` + user.collegeId, {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      })
+      .get(
+        `${BASE_URL}/api/teacher?q=` +
+          user.collegeId +
+          "&departmentId=" +
+          user.departmentId,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      )
       .then((res) => {
         setTeachers(res.data);
         setIsLoading(false);
@@ -49,6 +70,37 @@ export default function CollegeTeachers() {
 
   return (
     <>
+      {/* <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          marginVertical: 10,
+          marginHorizontal: 20,
+          borderColor: borderColor,
+          borderWidth: 1,
+          borderRadius: 10,
+        }}
+      >
+        <Ionicons
+          name="search-outline"
+          size={22}
+          color={borderColor}
+          style={{ paddingLeft: 5 }}
+        />
+        <TextInput
+          placeholder="Search"
+          value={searchQuery}
+          onChangeText={handleSearch}
+          style={{
+            paddingVertical: 10,
+            paddingHorizontal: 10,
+            width: "90%",
+          }}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          b
+        />
+      </View> */}
       {teachers != null ? (
         <View style={styles.container}>
           <FlatList
@@ -61,6 +113,7 @@ export default function CollegeTeachers() {
                 return null;
               }
             }}
+            // extraData={searchQuery}
             renderItem={({ item }) => (
               <TouchableOpacity>
                 <View style={styles.subItem}>

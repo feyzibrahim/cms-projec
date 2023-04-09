@@ -1,25 +1,25 @@
 import axios from "axios";
-import { BASE_URL } from "../globalClasses/Config";
+import { BASE_URL } from "../../globalClasses/Config";
 import { useState, useEffect } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import { useAuthContext } from "../hooks/useAuthContext";
-import Loading from "../globalClasses/Loading";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import Loading from "../../globalClasses/Loading";
 
 export default function TeacherProfile() {
   const { user } = useAuthContext();
-  const [teacher, setTeacher] = useState("");
+  const [student, setStudent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(`${BASE_URL}/api/teacher/${user.dataAccessId}`, {
+      .get(`${BASE_URL}/api/student/${user.dataAccessId}`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
       })
       .then((res) => {
-        setTeacher(res.data);
+        setStudent(res.data);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -39,10 +39,6 @@ export default function TeacherProfile() {
           <Text style={{ fontSize: 30, fontWeight: "600" }}>
             Personal Information
           </Text>
-          <Text style={{ fontSize: 15 }}>
-            View your personal Details here. Not much to say just typed out some
-            words...
-          </Text>
           <View style={styles.styledView}>
             <View style={styles.borderRows}>
               <Text
@@ -50,7 +46,15 @@ export default function TeacherProfile() {
               >
                 Full Name
               </Text>
-              <Text>{teacher && teacher.teacherName}</Text>
+              <Text>{student && student.student_name}</Text>
+            </View>
+            <View style={styles.borderRows}>
+              <Text
+                style={{ fontSize: 16, fontWeight: "500", paddingVertical: 5 }}
+              >
+                Registration Number
+              </Text>
+              <Text>{student && student.registrationNumber}</Text>
             </View>
             <View style={styles.borderRows}>
               <Text
@@ -58,7 +62,7 @@ export default function TeacherProfile() {
               >
                 Gender
               </Text>
-              <Text>{teacher && teacher.gender}</Text>
+              <Text>{student && student.gender}</Text>
             </View>
             <View style={styles.nonBorderRows}>
               <Text
@@ -66,7 +70,7 @@ export default function TeacherProfile() {
               >
                 Date of Birth
               </Text>
-              <Text>{teacher && teacher.dob}</Text>
+              <Text>{student && student.dob}</Text>
             </View>
           </View>
           <View style={styles.styledView}>
@@ -76,15 +80,15 @@ export default function TeacherProfile() {
               >
                 Department
               </Text>
-              <Text>{teacher && teacher.department}</Text>
+              <Text>{student && student.department}</Text>
             </View>
             <View style={styles.borderRows}>
               <Text
                 style={{ fontSize: 16, fontWeight: "500", paddingVertical: 5 }}
               >
-                Designation
+                Year
               </Text>
-              <Text>{teacher && teacher.designation}</Text>
+              <Text>{student && student.year}</Text>
             </View>
             <View style={styles.nonBorderRows}>
               <Text
@@ -92,7 +96,7 @@ export default function TeacherProfile() {
               >
                 Joining Date
               </Text>
-              <Text>{teacher && teacher.joiningDate}</Text>
+              <Text>{student && student.joiningDate}</Text>
             </View>
           </View>
           <View style={styles.styledView}>
@@ -102,7 +106,7 @@ export default function TeacherProfile() {
               >
                 Email Id
               </Text>
-              <Text>{teacher && teacher.email}</Text>
+              <Text>{student && student.email}</Text>
             </View>
             <View style={styles.nonBorderRows}>
               <Text
@@ -110,7 +114,55 @@ export default function TeacherProfile() {
               >
                 Contact Number
               </Text>
-              <Text>{teacher && teacher.facultyMobileNumber}</Text>
+              <Text>{student && student.mobileNumber}</Text>
+            </View>
+          </View>
+          <View style={styles.styledView}>
+            <View style={styles.borderRows}>
+              <Text
+                style={{ fontSize: 16, fontWeight: "500", paddingVertical: 5 }}
+              >
+                Father Name
+              </Text>
+              <Text>{student && student.parents.father_name}</Text>
+            </View>
+            <View style={styles.borderRows}>
+              <Text
+                style={{ fontSize: 16, fontWeight: "500", paddingVertical: 5 }}
+              >
+                Father Contact Number
+              </Text>
+              <Text>{student && student.parents.father_contact}</Text>
+            </View>
+            <View style={styles.borderRows}>
+              <Text
+                style={{ fontSize: 16, fontWeight: "500", paddingVertical: 5 }}
+              >
+                Mother Name
+              </Text>
+              <Text>{student && student.parents.mother_name}</Text>
+            </View>
+            <View style={styles.nonBorderRows}>
+              <Text
+                style={{ fontSize: 16, fontWeight: "500", paddingVertical: 5 }}
+              >
+                Mother Contact Number
+              </Text>
+              <Text>{student && student.parents.mother_contact}</Text>
+            </View>
+          </View>
+          <View style={styles.styledView}>
+            <View style={styles.nonBorderRows}>
+              <Text
+                style={{ fontSize: 16, fontWeight: "500", paddingVertical: 5 }}
+              >
+                Address
+              </Text>
+              <Text>{student && student.address.street}</Text>
+              <Text>{student && student.address.city}</Text>
+              <Text>{student && student.address.state}</Text>
+              <Text>{student && student.address.pin}</Text>
+              <Text>{student && student.address.country}</Text>
             </View>
           </View>
         </View>
@@ -123,7 +175,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#DFDFDf",
-    padding: 40,
+    paddingHorizontal: 40,
+    paddingVertical: 20,
   },
   borderRows: {
     borderBottomWidth: 3,

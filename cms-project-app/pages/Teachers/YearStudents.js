@@ -7,24 +7,27 @@ import {
   View,
 } from "react-native";
 import axios from "axios";
-import { BASE_URL } from "../globalClasses/Config";
-import { useAuthContext } from "../hooks/useAuthContext";
-import Loading from "../globalClasses/Loading";
+import { BASE_URL } from "../../globalClasses/Config";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import Loading from "../../globalClasses/Loading";
 
-// export default function DepTeachers({ navigation }) {
-export default function DepTeachers() {
+// export default function YearStudents({ navigation }) {
+export default function YearStudents({ route }) {
+  const { year } = route.params;
   const { user } = useAuthContext();
-  const [teachers, setTeachers] = useState();
+  const [students, setStudents] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
-  const loadData = () => {
+  const loadStudents = () => {
+    console.log(year);
+
     setIsLoading(true);
     axios
       .get(
-        `${BASE_URL}/api/teacher?q=` +
-          user.collegeId +
-          "&departmentId=" +
-          user.departmentId,
+        `${BASE_URL}/api/student?departmentId=` +
+          user.departmentId +
+          "&year=" +
+          year,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -32,7 +35,7 @@ export default function DepTeachers() {
         }
       )
       .then((res) => {
-        setTeachers(res.data);
+        setStudents(res.data);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -42,7 +45,7 @@ export default function DepTeachers() {
   };
 
   useEffect(() => {
-    loadData();
+    loadStudents();
   }, []);
 
   const Separator = () => {
@@ -55,13 +58,13 @@ export default function DepTeachers() {
 
   return (
     <>
-      {teachers != null ? (
+      {students != null ? (
         <View style={styles.container}>
           <FlatList
-            data={teachers}
+            data={students}
             keyExtractor={(item) => item._id}
             ItemSeparatorComponent={({ index }) => {
-              if (index !== teachers.length - 1) {
+              if (index !== students.length - 1) {
                 return <Separator />;
               } else {
                 return null;
@@ -70,7 +73,7 @@ export default function DepTeachers() {
             renderItem={({ item }) => (
               <TouchableOpacity>
                 <View style={styles.subItem}>
-                  <Text>{item.teacherName}</Text>
+                  <Text>{item.student_name}</Text>
                   <Text>{item.registrationNumber}</Text>
                 </View>
               </TouchableOpacity>
@@ -80,7 +83,7 @@ export default function DepTeachers() {
       ) : (
         <View style={styles.emptyMsg}>
           <Text>Students are empty</Text>
-          <Text>Please ask college admin to add teachers</Text>
+          <Text>Please ask college admin to add students</Text>
         </View>
       )}
     </>
@@ -94,14 +97,6 @@ const styles = StyleSheet.create({
   },
   container: {
     // padding: 10,
-  },
-  title: {
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-  },
-  titleText: {
-    fontSize: 20,
-    fontWeight: "600",
   },
   emptyMsg: {
     flex: 1,

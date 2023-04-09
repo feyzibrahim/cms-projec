@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   StyleSheet,
   View,
@@ -7,58 +6,73 @@ import {
   FlatList,
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { BASE_URL } from "../../globalClasses/Config";
+import Loading from "../../globalClasses/Loading";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import moment from "moment";
 
 export default function TimeTable() {
-  const [classArray, setClassArray] = useState([
-    {
-      subject: "Java",
-      time: "09:00 - 10:00",
-      duration: "1Hr",
-      teacher: "Neethu Prakash",
-    },
-    {
-      subject: "Android",
-      time: "10:00 - 11:00",
-      duration: "1Hr",
-      teacher: "Sumesh Babu",
-    },
-    {
-      subject: "Lab - Java",
-      time: "11:15 - 12:15",
-      duration: "1Hr",
-      teacher: "Neethu Prakash",
-    },
-    {
-      subject: "Operating System",
-      time: "01:30 - 02:30",
-      duration: "1Hr",
-      teacher: "Alanta Alphonse",
-    },
-    {
-      subject: "Data Structure",
-      time: "02:30 - 03:130",
-      duration: "1Hr",
-      teacher: "Sumesh Babu",
-    },
-  ]);
+  const { user } = useAuthContext();
+  const [timetable, setTimeTable] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
+  function getCurrentDay() {
+    const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+    const date = new Date();
+    const day = date.getDay();
+
+    if (day === 6 || day === 0) {
+      return "Monday";
+    } else {
+      return daysOfWeek[day];
+    }
+  }
+  useEffect(() => {
+    setIsLoading(true);
+    const day = getCurrentDay();
+    axios
+      .get(
+        `${BASE_URL}/api/timetable/${day.toLowerCase()}?departmentId=6431014d0a7f4d7822ca0cb0&year=1`,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      )
+      .then((res) => {
+        setTimeTable(res.data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsLoading(false);
+      });
+  }, []);
+
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <View style={styles.VerticalScroll}>
       <FlatList
-        data={classArray}
+        data={timetable}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
           <TouchableOpacity>
             <View style={styles.subjectView}>
               <Text style={styles.subTitle}>{item.subject}</Text>
-              <Text>{item.time}</Text>
+              <Text>
+                {item.startTime} - {item.endTime}
+              </Text>
               <View style={styles.subjectSubView}>
-                <Text>{item.teacher}</Text>
+                <Text>{item.teacherName}</Text>
               </View>
               <View style={styles.scheduleAndIcon}>
                 <MaterialIcons name="schedule" size={20} />
-                <Text> {item.duration}</Text>
+                <Text>1 Hr</Text>
               </View>
             </View>
           </TouchableOpacity>

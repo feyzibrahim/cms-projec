@@ -1,50 +1,117 @@
-import Profile from "../pages/TeacherProfile";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import Studentspage from "../pages/Studentspage";
 import Attendence from "../pages/Attendence";
 import Internal from "../pages/Internal";
-import Sub from "../pages/components/Sub";
-import StudentMarksheet from "../pages/StudentMarksheet";
+import TTDayList from "../pages/Common/TTDayList";
 import Setting from "../pages/Setting";
-import Privacy from "../pages/Privacy";
-import Terms from "../pages/Terms";
-import Help from "../pages/Help";
+import CustomDrawer from "../globalClasses/CustomDrawer";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import TeacherList from "../pages/Common/TeachersList";
+import StudentProfile from "../pages/Students/StudentProfile";
+import Announcement from "../pages/Common/Announcement";
+import Events from "../pages/Common/Events";
 
-const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function StudentStack() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen
+    <Drawer.Navigator
+      initialRouteName="students"
+      drawerContent={(props) => <CustomDrawer {...props} />}
+    >
+      <Drawer.Screen
         name="students"
         component={Studentspage}
-        options={{ title: "Ecampus" }}
+        options={{
+          title: "Home",
+          drawerIcon: ({ color }) => (
+            <Ionicons name="home-outline" size={22} color={color} />
+          ),
+        }}
       />
-      <Stack.Screen name="profilepage" component={Profile} />
-      <Stack.Screen name="subject" component={Sub} />
-      <Stack.Screen name="Attendencepage" component={Attendence} />
-      <Stack.Screen name="internal" component={Internal} />
-      <Stack.Screen name="Studentmarksheet" component={StudentMarksheet} />
-      <Stack.Screen
-        name="Setting"
+      <Drawer.Screen
+        name="announcement"
+        component={Announcement}
+        options={{
+          title: "Notification",
+          drawerIcon: ({ color }) => (
+            <Ionicons name="notifications-outline" size={22} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="events"
+        component={Events}
+        options={{
+          title: "College Events",
+          drawerIcon: ({ color }) => (
+            <Ionicons name="megaphone-outline" size={22} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="profilepage"
+        component={StudentProfile}
+        options={{
+          title: "Profile",
+          drawerIcon: ({ color }) => (
+            <Ionicons name="person-circle-outline" size={22} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="subject"
+        component={TTDayList}
+        options={{
+          title: "Time Table",
+          drawerIcon: ({ color }) => (
+            <Ionicons name="book-outline" size={22} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="teachersList"
+        component={TeacherList}
+        options={{
+          title: "Teachers",
+          drawerIcon: ({ color }) => (
+            <Ionicons name="people-circle-outline" size={22} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Attendencepage"
+        component={Attendence}
+        options={{
+          title: "View Attendance",
+          drawerIcon: ({ color }) => (
+            <Ionicons
+              name="checkmark-done-circle-outline"
+              size={22}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="internal"
+        component={Internal}
+        options={{
+          title: "Internal Marks",
+          drawerIcon: ({ color }) => (
+            <Ionicons name="school-outline" size={22} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Settings"
         component={Setting}
-        options={{ title: "Ecampus" }}
+        options={{
+          drawerIcon: ({ color }) => (
+            <Ionicons name="settings-outline" size={22} color={color} />
+          ),
+        }}
       />
-      <Stack.Screen
-        name="privacypolicy"
-        component={Privacy}
-        options={{ title: "Ecampus" }}
-      />
-      <Stack.Screen
-        name="termsandconditions"
-        component={Terms}
-        options={{ title: "Ecampus" }}
-      />
-      <Stack.Screen
-        name="help"
-        component={Help}
-        options={{ title: "Ecampus" }}
-      />
-    </Stack.Navigator>
+    </Drawer.Navigator>
   );
 }
