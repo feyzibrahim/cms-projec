@@ -157,3 +157,26 @@ exports.getDistinctDates = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
+exports.getAttendanceByDate = async (req, res) => {
+  try {
+    const { studentId, semester, date } = req.params;
+
+    // Parse the date parameter to a Date object
+    const searchDate = new Date(date);
+
+    // Find all attendance records for the given student, semester, and date
+    const attendance = await Attendance.find({
+      studentId,
+      semester,
+      date: searchDate,
+    });
+
+    // Return the attendance records for the given date
+
+    res.status(200).json(attendance);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};

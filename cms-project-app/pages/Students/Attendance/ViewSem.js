@@ -4,7 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import AttendancePage from "./AttendancePage";
 import SemRows from "./SemRows";
 
-const daysOfWeek = [
+const data = [
   { label: "Sem 1", value: 1 },
   { label: "Sem 2", value: 2 },
   { label: "Sem 3", value: 3 },
@@ -22,7 +22,7 @@ const Sem = ({ navigation }) => {
       }}
     >
       <FlatList
-        data={daysOfWeek}
+        data={data}
         renderItem={({ item }) => (
           <SemRows item={item} navigation={navigation} />
         )}

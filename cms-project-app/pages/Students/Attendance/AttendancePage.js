@@ -12,6 +12,7 @@ import { useAuthContext } from "../../../hooks/useAuthContext";
 import Loading from "../../../globalClasses/Loading";
 import moment from "moment";
 import Separator from "../../Common/Separator";
+import PeriodRow from "./PeriodRow";
 
 export default function AttendancePage({ route }) {
   const { item } = route.params;
@@ -71,7 +72,7 @@ export default function AttendancePage({ route }) {
           </Text>
           <Text>{item.present}/5</Text>
         </View>
-        {isItemSelected && <Text>Something to be added here</Text>}
+        {isItemSelected && <PeriodRow date={item.date} />}
       </TouchableOpacity>
     );
   };
