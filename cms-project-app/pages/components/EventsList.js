@@ -41,7 +41,7 @@ export default function EventsList() {
         events.map((item) => {
           return (
             <Text key={item._id} style={styles.rowText}>
-              {item.eventName}
+              {"> "} {item.eventName}
             </Text>
           );
         })}
@@ -52,16 +52,18 @@ export default function EventsList() {
 const styles = StyleSheet.create({
   eventText: {
     marginHorizontal: 20,
-    backgroundColor: "#999",
+    borderWidth: 1,
+    borderColor: "#ccc",
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 20,
   },
   title: {
     fontSize: 20,
+    borderBottomColor: "#ccc",
+    borderBottomWidth: 1,
+    paddingBottom: 5,
   },
   rowText: {
-    borderBottomColor: "#888",
-    borderBottomWidth: 1,
     paddingVertical: 5,
   },
 });

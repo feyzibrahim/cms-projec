@@ -11,7 +11,7 @@ import StudentProfile from "../pages/Students/StudentProfile";
 import Announcement from "../pages/Common/Announcement";
 import Events from "../pages/Common/Events";
 import SubjectList from "../pages/Students/Subjects/SubjectList";
-
+import FullAssignment from "../pages/Students/Assignments/FullAssignment";
 const Drawer = createDrawerNavigator();
 
 export default function StudentStack() {
@@ -101,6 +101,16 @@ export default function StudentStack() {
               size={22}
               color={color}
             />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Assignment"
+        component={FullAssignment}
+        options={{
+          title: "View Assignments",
+          drawerIcon: ({ color }) => (
+            <Ionicons name="layers-outline" size={22} color={color} />
           ),
         }}
       />

@@ -1,45 +1,49 @@
-import { StyleSheet, View, Text, Dimensions } from "react-native";
+import { StyleSheet, View, Text, Dimensions, ScrollView } from "react-native";
 import { useAuthContext } from "../hooks/useAuthContext";
 import TimeTable from "./components/TimeTable";
 import DueWork from "./components/DueWork";
 import EventsList from "./components/EventsList";
 import AnnouncementList from "./components/AnnouncementList";
 
-export default function Studentspage({ navigation }) {
+export default function Studentspage() {
   const { user } = useAuthContext();
 
   return (
-    <View style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text>Hello, {user && user.name}</Text>
+    <ScrollView>
+      <View style={styles.container}>
+        <View style={styles.titleContainer}>
+          <Text style={{ fontSize: 26, fontWeight: "600" }}>
+            Hello, {user && user.name}
+          </Text>
+        </View>
+
+        <View style={styles.classAndClassCount}>
+          <View>
+            <Text>Classes</Text>
+          </View>
+          <View>
+            <Text>5 classes Today</Text>
+          </View>
+        </View>
+
+        <TimeTable />
+
+        <View style={styles.dueWorkView}>
+          <View>
+            <Text styles={styles.dueText}>Due work</Text>
+          </View>
+          <View>
+            <Text>View all</Text>
+          </View>
+        </View>
+
+        <DueWork />
+
+        <EventsList />
+
+        <AnnouncementList />
       </View>
-
-      <View style={styles.classAndClassCount}>
-        <View>
-          <Text>Classes</Text>
-        </View>
-        <View>
-          <Text>5 classes Today</Text>
-        </View>
-      </View>
-
-      <TimeTable />
-
-      <View style={styles.dueWorkView}>
-        <View>
-          <Text styles={styles.dueText}>Due work</Text>
-        </View>
-        <View>
-          <Text>View all</Text>
-        </View>
-      </View>
-
-      <DueWork />
-
-      <EventsList />
-
-      <AnnouncementList />
-    </View>
+    </ScrollView>
   );
 }
 const styles = StyleSheet.create({
