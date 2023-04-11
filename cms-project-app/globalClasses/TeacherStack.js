@@ -1,8 +1,7 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import TeacherProfile from "../pages/Teachers/TeacherProfile";
 import TeacherPage from "../pages/Teachers/TeacherPage";
-import Attendence from "../pages/Attendence";
-import Internal from "../pages/Internal";
+import InternalMark from "../pages/Students/InternalMarks/InternalMark";
 import TTDayList from "../pages/Common/TTDayList";
 import Setting from "../pages/Setting";
 import Help from "../pages/Help";
@@ -12,6 +11,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import TeacherList from "../pages/Common/TeachersList";
 import Events from "../pages/Common/Events";
 import Announcement from "../pages/Common/Announcement";
+import ViewSem from "../pages/Students/Attendance/ViewSem";
 
 const Drawer = createDrawerNavigator();
 
@@ -92,8 +92,8 @@ export default function TeacherDrawer() {
         }}
       />
       <Drawer.Screen
-        name="Attendencepage"
-        component={Attendence}
+        name="Attendance"
+        component={ViewSem}
         options={{
           title: "Add Attendance",
           drawerIcon: ({ color }) => (
@@ -107,7 +107,7 @@ export default function TeacherDrawer() {
       />
       <Drawer.Screen
         name="internal"
-        component={Internal}
+        component={InternalMark}
         options={{
           title: "Internal Marks",
           drawerIcon: ({ color }) => (

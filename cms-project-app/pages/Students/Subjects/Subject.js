@@ -41,10 +41,10 @@ export default function Subject(props) {
   const renderPeriod = ({ item }) => {
     const { name, code } = item;
     return (
-      <View style={[styles.listItem]}>
+      <View style={styles.listItem}>
         <View style={styles.itemContent}>
           <Text style={styles.itemPeriod}>{name}</Text>
-          <View>
+          <View style={styles.itemTime}>
             <Text style={styles.itemDetails}>Subject Code:{code}</Text>
           </View>
         </View>
@@ -77,18 +77,6 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 16,
   },
-  breakItem: {
-    backgroundColor: "#f0f0f0",
-    borderTopWidth: 1,
-    borderTopColor: "#ccc",
-  },
-  lunchItem: {
-    backgroundColor: "#f0f0f0",
-    borderTopWidth: 1,
-    borderTopColor: "#ccc",
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
-  },
   itemTime: {
     marginRight: 16,
   },
@@ -103,13 +91,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   itemPeriod: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: "bold",
     color: "#333",
-    paddingRight: 10,
+    paddingLeft: 20,
   },
   itemDetails: {
-    fontSize: 14,
+    fontSize: 12,
     color: "#666",
   },
 });

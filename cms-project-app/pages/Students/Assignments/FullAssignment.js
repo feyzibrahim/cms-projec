@@ -13,7 +13,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { BASE_URL } from "../../../globalClasses/Config";
 import moment from "moment";
 
-export default function DueWork() {
+export default function FullAssignment() {
   const [assignments, setAssignments] = useState();
   const { user } = useAuthContext();
   const [isLoading, setIsLoading] = useState(false);
