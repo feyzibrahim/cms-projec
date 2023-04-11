@@ -10,6 +10,7 @@ import TeacherList from "../pages/Common/TeachersList";
 import StudentProfile from "../pages/Students/StudentProfile";
 import Announcement from "../pages/Common/Announcement";
 import Events from "../pages/Common/Events";
+import SubjectList from "../pages/Students/Subjects/SubjectList";
 
 const Drawer = createDrawerNavigator();
 
@@ -60,12 +61,12 @@ export default function StudentStack() {
         }}
       />
       <Drawer.Screen
-        name="subject"
+        name="timetable"
         component={TTDayList}
         options={{
           title: "Time Table",
           drawerIcon: ({ color }) => (
-            <Ionicons name="book-outline" size={22} color={color} />
+            <Ionicons name="calendar-outline" size={22} color={color} />
           ),
         }}
       />
@@ -76,6 +77,16 @@ export default function StudentStack() {
           title: "Teachers",
           drawerIcon: ({ color }) => (
             <Ionicons name="people-circle-outline" size={22} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="subjects"
+        component={SubjectList}
+        options={{
+          title: "Subjects",
+          drawerIcon: ({ color }) => (
+            <Ionicons name="book-outline" size={22} color={color} />
           ),
         }}
       />

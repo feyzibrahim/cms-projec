@@ -88,7 +88,6 @@ exports.getAttendanceStatistics = async (req, res) => {
 
   try {
     const attendance = await Attendance.find({ studentId, semester });
-
     const attendanceByDate = {};
     attendance.forEach((a) => {
       const dateStr = a.date.toDateString();
@@ -120,11 +119,7 @@ exports.getAttendanceStatistics = async (req, res) => {
 exports.getDistinctDates = async (req, res) => {
   try {
     const { studentId, semester } = req.params;
-
-    // Find all attendance records for the given student and semester
     const attendanceRecords = await Attendance.find({ studentId, semester });
-
-    // Group attendance records by date and status
     const attendanceByDateAndStatus = attendanceRecords.reduce(
       (acc, record) => {
         const dateStr = record.date.toDateString();
@@ -142,7 +137,6 @@ exports.getDistinctDates = async (req, res) => {
       {}
     );
 
-    // Map the grouped attendance records to an array of objects with index, date (as a Unix timestamp), and present periods
     const dates = Object.values(attendanceByDateAndStatus).map(
       ({ date, present }, index) => ({
         index,
@@ -161,19 +155,12 @@ exports.getDistinctDates = async (req, res) => {
 exports.getAttendanceByDate = async (req, res) => {
   try {
     const { studentId, semester, date } = req.params;
-
-    // Parse the date parameter to a Date object
     const searchDate = new Date(date);
-
-    // Find all attendance records for the given student, semester, and date
     const attendance = await Attendance.find({
       studentId,
       semester,
       date: searchDate,
     });
-
-    // Return the attendance records for the given date
-
     res.status(200).json(attendance);
   } catch (error) {
     console.error(error);

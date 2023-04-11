@@ -6,24 +6,26 @@ import Loading from "../../../globalClasses/Loading";
 import { useAuthContext } from "../../../hooks/useAuthContext";
 import Separator from "../../Common/Separator";
 
-export default function PeriodRow(props) {
-  const { date } = props;
-  const dd = new Date(date);
-  const isoString = dd.toISOString();
+export default function Subject(props) {
+  const { semester } = props;
   const { user } = useAuthContext();
-  const [attendance, setTimeTable] = useState("");
+  const [subjects, setSubjects] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  // console.log(semester);
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(`${BASE_URL}/api/attendance/${user.dataAccessId}/1/${isoString}`, {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      })
+      .get(
+        `${BASE_URL}/api/subject?department=${user.departmentId}&semester=${semester._id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      )
       .then((res) => {
-        setTimeTable(res.data);
-        console.log(res.data);
+        setSubjects(res.data.subjects);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -37,14 +39,14 @@ export default function PeriodRow(props) {
   }
 
   const renderPeriod = ({ item }) => {
-    const { period, status } = item;
+    const { name, code } = item;
     return (
       <View style={[styles.listItem]}>
         <View style={styles.itemContent}>
-          <Text style={styles.itemPeriod}>{period}</Text>
-        </View>
-        <View style={styles.itemTime}>
-          <Text style={styles.itemTimeText}>{status}</Text>
+          <Text style={styles.itemPeriod}>{name}</Text>
+          <View>
+            <Text style={styles.itemDetails}>Subject Code:{code}</Text>
+          </View>
         </View>
       </View>
     );
@@ -52,12 +54,13 @@ export default function PeriodRow(props) {
 
   return (
     <FlatList
-      data={attendance}
+      data={subjects}
       renderItem={renderPeriod}
-      keyExtractor={(item, index) => `${item._id}-${index}`}
+      key={(item) => item}
+      // keyExtractor={(item, index) => `${item._id}-${index}`}
       contentContainerStyle={styles.listContainer}
       ItemSeparatorComponent={({ index }) => (
-        <Separator index={index} length={attendance.length} />
+        <Separator index={index} length={subjects.length} />
       )}
     />
   );
@@ -74,6 +77,18 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 16,
   },
+  breakItem: {
+    backgroundColor: "#f0f0f0",
+    borderTopWidth: 1,
+    borderTopColor: "#ccc",
+  },
+  lunchItem: {
+    backgroundColor: "#f0f0f0",
+    borderTopWidth: 1,
+    borderTopColor: "#ccc",
+    borderBottomWidth: 1,
+    borderBottomColor: "#ccc",
+  },
   itemTime: {
     marginRight: 16,
   },
@@ -85,11 +100,16 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "space-between",
   },
   itemPeriod: {
     fontSize: 16,
     fontWeight: "bold",
     color: "#333",
     paddingRight: 10,
+  },
+  itemDetails: {
+    fontSize: 14,
+    color: "#666",
   },
 });
