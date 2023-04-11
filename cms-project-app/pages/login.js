@@ -17,7 +17,7 @@ export default function Login() {
   const { login } = useAuthContext();
 
   const handleLogin = () => {
-    if (email == "" && password == "") {
+    if (email == "" || password == "") {
       alert("Please enter the details");
       return;
     }

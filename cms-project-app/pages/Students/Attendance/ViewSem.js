@@ -35,7 +35,7 @@ const Sem = ({ navigation }) => {
 
 const Stack = createStackNavigator();
 
-const SemList = () => {
+const ViewSem = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -59,4 +59,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SemList;
+export default ViewSem;
