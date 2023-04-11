@@ -4,6 +4,7 @@ import { useAuthContext } from "../../../Hook/contextHooks/useAuthContext";
 import { useStaffContext } from "../../../Hook/contextHooks/useStaffContext";
 import Select from "react-select";
 import Creatable from "react-select/creatable";
+import { BASE_URL } from "../../../globalClasses/Config";
 
 const StaffForm = (props) => {
   const { user } = useAuthContext();
@@ -22,8 +23,6 @@ const StaffForm = (props) => {
   const [salary, setSalary] = useState();
 
   const { dispatch } = useStaffContext();
-
-  const userTypeG = "staff";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,17 +46,14 @@ const StaffForm = (props) => {
       salary,
     };
 
-    const response = await fetch(
-      "https://cms-server-80fv.onrender.com/api/staff",
-      {
-        method: "POST",
-        body: JSON.stringify(staff),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${user.token}`,
-        },
-      }
-    );
+    const response = await fetch(`${BASE_URL}/api/staff`, {
+      method: "POST",
+      body: JSON.stringify(staff),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
 
     const json = await response.json();
 
@@ -66,8 +62,6 @@ const StaffForm = (props) => {
     }
 
     if (response.ok) {
-      console.log("New Staff Added", json);
-      signup(email, password, userTypeG, json.user_id, json._id);
       setStaffName("");
       setEmail("");
       setPassword("");
@@ -81,33 +75,7 @@ const StaffForm = (props) => {
 
       setError("");
       dispatch({ type: "CREATE_STAFF", payload: json });
-    }
-  };
-
-  const signup = async (email, password, userType, collegeId, dataAccessId) => {
-    const response = await fetch(
-      "https://cms-server-80fv.onrender.com/api/user/signup",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email,
-          password,
-          userType,
-          collegeId,
-          dataAccessId,
-        }),
-      }
-    );
-
-    const json = await response.json();
-    if (!response.ok) {
-      setError(json.error);
-    }
-
-    if (response.ok) {
       props.showForm();
-      console.log("New User Created", json);
     }
   };
 

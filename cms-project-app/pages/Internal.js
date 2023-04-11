@@ -8,7 +8,7 @@ import {
 } from "react-native";
 
 export default function Internal({ navigation }) {
-  const gotomarksheetpage = () => {
+  const gotoNextPage = () => {
     navigation.navigate("studentsList");
   };
 
@@ -27,13 +27,13 @@ export default function Internal({ navigation }) {
         data={sem}
         renderItem={({ item }) => (
           <View style={styles.subItem}>
-            <TouchableOpacity onPress={gotomarksheetpage}>
+            <TouchableOpacity onPress={gotoNextPage}>
               <View
                 style={{
                   backgroundColor: item.color,
                   width: 300,
                   padding: 40,
-                  marginBottam: 40,
+                  marginBottom: 40,
                   borderRadius: 20,
                 }}
               >

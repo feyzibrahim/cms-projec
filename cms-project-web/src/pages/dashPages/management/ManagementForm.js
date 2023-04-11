@@ -4,6 +4,7 @@ import { useAuthContext } from "../../../Hook/contextHooks/useAuthContext";
 import { useManagementContext } from "../../../Hook/contextHooks/useManagementContext";
 import Select from "react-select";
 import Creatable from "react-select/creatable";
+import { BASE_URL } from "../../../globalClasses/Config";
 
 const ManagementForm = (props) => {
   const { user } = useAuthContext();
@@ -22,8 +23,6 @@ const ManagementForm = (props) => {
   const [salary, setSalary] = useState();
 
   const { dispatch } = useManagementContext();
-
-  const userTypeG = "management";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,17 +46,14 @@ const ManagementForm = (props) => {
       salary,
     };
 
-    const response = await fetch(
-      "https://cms-server-80fv.onrender.com/api/management",
-      {
-        method: "POST",
-        body: JSON.stringify(management),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${user.token}`,
-        },
-      }
-    );
+    const response = await fetch(`${BASE_URL}/api/management`, {
+      method: "POST",
+      body: JSON.stringify(management),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
 
     const json = await response.json();
 
@@ -66,8 +62,6 @@ const ManagementForm = (props) => {
     }
 
     if (response.ok) {
-      console.log("New Teacher Added", json);
-      signup(email, password, userTypeG, json.user_id, json._id);
       setManagerName("");
       setEmail("");
       setPassword("");
@@ -81,33 +75,7 @@ const ManagementForm = (props) => {
 
       setError("");
       dispatch({ type: "CREATE_MANAGEMENT", payload: json });
-    }
-  };
-
-  const signup = async (email, password, userType, collegeId, dataAccessId) => {
-    const response = await fetch(
-      "https://cms-server-80fv.onrender.com/api/user/signup",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email,
-          password,
-          userType,
-          collegeId,
-          dataAccessId,
-        }),
-      }
-    );
-
-    const json = await response.json();
-    if (!response.ok) {
-      setError(json.error);
-    }
-
-    if (response.ok) {
       props.showForm();
-      console.log("New User Created", json);
     }
   };
 

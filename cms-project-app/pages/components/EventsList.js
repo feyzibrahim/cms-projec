@@ -35,11 +35,15 @@ export default function EventsList() {
 
   return (
     <View style={styles.eventText}>
-      <Text>Events</Text>
+      <Text style={styles.title}>Events</Text>
       {isLoading && <Text>Loading...</Text>}
       {events &&
         events.map((item) => {
-          return <Text key={item._id}>{item.eventName}</Text>;
+          return (
+            <Text key={item._id} style={styles.rowText}>
+              {item.eventName}
+            </Text>
+          );
         })}
     </View>
   );
@@ -47,6 +51,17 @@ export default function EventsList() {
 
 const styles = StyleSheet.create({
   eventText: {
-    paddingLeft: 20,
+    marginHorizontal: 20,
+    backgroundColor: "#999",
+    padding: 10,
+    borderRadius: 5,
+  },
+  title: {
+    fontSize: 20,
+  },
+  rowText: {
+    borderBottomColor: "#888",
+    borderBottomWidth: 1,
+    paddingVertical: 5,
   },
 });

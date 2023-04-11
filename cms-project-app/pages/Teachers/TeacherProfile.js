@@ -1,9 +1,9 @@
 import axios from "axios";
+import { BASE_URL } from "../../globalClasses/Config";
 import { useState, useEffect } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import { useAuthContext } from "../hooks/useAuthContext";
-import { BASE_URL } from "../globalClasses/Config";
-import { ActivityIndicator } from "react-native-paper";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import Loading from "../../globalClasses/Loading";
 
 export default function TeacherProfile() {
   const { user } = useAuthContext();
@@ -29,11 +29,7 @@ export default function TeacherProfile() {
   }, []);
 
   if (isLoading) {
-    return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <ActivityIndicator size={"large"} />
-      </View>
-    );
+    return <Loading />;
   }
 
   return (
@@ -78,7 +74,7 @@ export default function TeacherProfile() {
               <Text
                 style={{ fontSize: 16, fontWeight: "500", paddingVertical: 5 }}
               >
-                Department{" "}
+                Department
               </Text>
               <Text>{teacher && teacher.department}</Text>
             </View>
@@ -94,7 +90,7 @@ export default function TeacherProfile() {
               <Text
                 style={{ fontSize: 16, fontWeight: "500", paddingVertical: 5 }}
               >
-                Joining Date{" "}
+                Joining Date
               </Text>
               <Text>{teacher && teacher.joiningDate}</Text>
             </View>
@@ -104,7 +100,7 @@ export default function TeacherProfile() {
               <Text
                 style={{ fontSize: 16, fontWeight: "500", paddingVertical: 5 }}
               >
-                Email Id{" "}
+                Email Id
               </Text>
               <Text>{teacher && teacher.email}</Text>
             </View>
@@ -112,7 +108,7 @@ export default function TeacherProfile() {
               <Text
                 style={{ fontSize: 16, fontWeight: "500", paddingVertical: 5 }}
               >
-                Contact Number{" "}
+                Contact Number
               </Text>
               <Text>{teacher && teacher.facultyMobileNumber}</Text>
             </View>

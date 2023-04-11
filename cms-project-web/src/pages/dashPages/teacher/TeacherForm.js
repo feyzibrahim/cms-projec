@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useAuthContext } from "../../../Hook/contextHooks/useAuthContext";
 import { useTeacherContext } from "../../../Hook/contextHooks/useTeacherContext";
 import Select from "react-select";
+import { BASE_URL } from "../../../globalClasses/Config";
 
 const TeacherForm = (props) => {
   const { user } = useAuthContext();
@@ -16,6 +17,7 @@ const TeacherForm = (props) => {
   const [gender, setGender] = useState();
   const [designation, setDesignation] = useState("Teacher");
   const [department, setDepartment] = useState();
+  const [departmentId, setDepartmentId] = useState("");
   const [facultyMobileNumber, setFacultyMobileNumber] = useState();
   const [dob, setDob] = useState();
   const [joiningDate, setJoiningDate] = useState();
@@ -30,17 +32,15 @@ const TeacherForm = (props) => {
   const [isDepListLoading, setIsDepListLoading] = useState(true);
   const handleDepartment = (selectedOptions) => {
     setDepartment(selectedOptions.value);
+    setDepartmentId(selectedOptions.departmentId);
   };
 
   const loadDepartment = async () => {
-    const res = await fetch(
-      "https://cms-server-80fv.onrender.com/api/department",
-      {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      }
-    );
+    const res = await fetch(`${BASE_URL}/api/department`, {
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
 
     const json = await res.json();
 
@@ -50,6 +50,7 @@ const TeacherForm = (props) => {
         dummy.push({
           value: data.department_name,
           label: data.department_name,
+          departmentId: data._id,
         });
         return null;
       });
@@ -79,6 +80,7 @@ const TeacherForm = (props) => {
       gender,
       designation,
       department,
+      departmentId,
       facultyMobileNumber,
       dob,
       joiningDate,
@@ -86,17 +88,14 @@ const TeacherForm = (props) => {
       salary,
     };
 
-    const response = await fetch(
-      "https://cms-server-80fv.onrender.com/api/teacher",
-      {
-        method: "POST",
-        body: JSON.stringify(teacher),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${user.token}`,
-        },
-      }
-    );
+    const response = await fetch(`${BASE_URL}/api/teacher`, {
+      method: "POST",
+      body: JSON.stringify(teacher),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
 
     const json = await response.json();
 
@@ -106,7 +105,15 @@ const TeacherForm = (props) => {
 
     if (response.ok) {
       console.log("New Teacher Added", json);
-      signup(email, password, userTypeG, json.user_id, json._id);
+      signup(
+        teacherName,
+        email,
+        password,
+        userTypeG,
+        json.user_id,
+        json._id,
+        departmentId
+      );
       setTeacherName("");
       setEmail("");
       setPassword("");
@@ -124,21 +131,29 @@ const TeacherForm = (props) => {
     }
   };
 
-  const signup = async (email, password, userType, collegeId, dataAccessId) => {
-    const response = await fetch(
-      "https://cms-server-80fv.onrender.com/api/user/signup",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email,
-          password,
-          userType,
-          collegeId,
-          dataAccessId,
-        }),
-      }
-    );
+  const signup = async (
+    teacherName,
+    email,
+    password,
+    userType,
+    collegeId,
+    dataAccessId,
+    departmentId
+  ) => {
+    const name = teacherName;
+    const response = await fetch(`${BASE_URL}/api/user/signup`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name,
+        email,
+        password,
+        userType,
+        collegeId,
+        dataAccessId,
+        departmentId,
+      }),
+    });
 
     const json = await response.json();
     if (!response.ok) {

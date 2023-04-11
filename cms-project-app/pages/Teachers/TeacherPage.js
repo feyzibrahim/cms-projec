@@ -1,9 +1,9 @@
 import { StyleSheet, View, Text, Dimensions, ScrollView } from "react-native";
-import { useAuthContext } from "../hooks/useAuthContext";
-import DueWork from "./components/DueWork";
-import TimeTable from "./components/TimeTable";
-import EventsList from "./components/EventsList";
-import AnnouncementList from "./components/AnnouncementList";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import DueWork from "../components/DueWork";
+import TimeTable from "../components/TimeTable";
+import EventsList from "../components/EventsList";
+import AnnouncementList from "../components/AnnouncementList";
 
 export default function TeacherPage() {
   const { user } = useAuthContext();
@@ -11,7 +11,7 @@ export default function TeacherPage() {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text>Hello, {user && user.email}</Text>
+        <Text>Hello, {user && user.name}</Text>
       </View>
 
       <View style={styles.classAndClassCount}>

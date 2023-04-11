@@ -4,10 +4,29 @@ const mongoose = require("mongoose");
 // Get All Teacher
 
 const getTeachers = async (req, res) => {
-  const user_id = req.user._id;
+  const { q, departmentId, fromMob } = req.query;
 
-  const teachers = await Teacher.find({ user_id });
-  res.status(200).json(teachers);
+  if (fromMob) {
+    const teachers = await Teacher.find({
+      user_id: { $regex: fromMob },
+    });
+
+    res.status(200).json(teachers);
+    return;
+  }
+
+  if (q) {
+    const teachers = await Teacher.find({
+      user_id: { $regex: q },
+      departmentId: { $regex: departmentId },
+    });
+    res.status(200).json(teachers);
+  } else {
+    const user_id = req.user._id;
+
+    const teachers = await Teacher.find({ user_id });
+    res.status(200).json(teachers);
+  }
 };
 
 // Get Single Teacher
@@ -33,37 +52,11 @@ const getTeacher = async (req, res) => {
 // Create new Teacher
 
 const createTeacher = async (req, res) => {
-  const {
-    teacherName,
-    email,
-    password,
-    registrationNumber,
-    gender,
-    designation,
-    department,
-    facultyMobileNumber,
-    dob,
-    joiningDate,
-    subjectsCanTeach,
-    salary,
-  } = req.body;
-
   // add doc to db
   try {
     const user_id = req.user._id;
     const teacher = await Teacher.create({
-      teacherName,
-      email,
-      password,
-      registrationNumber,
-      gender,
-      designation,
-      department,
-      facultyMobileNumber,
-      dob,
-      joiningDate,
-      subjectsCanTeach,
-      salary,
+      ...req.body,
       user_id,
     });
     res.status(200).json(teacher);
