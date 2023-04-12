@@ -34,7 +34,9 @@ export default function TimeTable() {
     const day = getCurrentDay();
     axios
       .get(
-        `${BASE_URL}/api/timetable/${day.toLowerCase()}?departmentId=6431014d0a7f4d7822ca0cb0&year=1`,
+        `${BASE_URL}/api/timetable/${day.toLowerCase()}?departmentId=${
+          user.departmentId
+        }&semester=1`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,

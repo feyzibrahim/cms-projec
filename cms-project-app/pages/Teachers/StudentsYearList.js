@@ -1,25 +1,19 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { BASE_URL } from "../../globalClasses/Config";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import Loading from "../../globalClasses/Loading";
-import { useNavigation } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import StudentsList from "./StudentList";
 
-export default function YearList() {
+const YearList = ({ navigation }) => {
   const { user } = useAuthContext();
   const [isLoading, setIsLoading] = useState();
   const [yearButtons, setYearButtons] = useState([]);
-  const navigation = useNavigation();
 
   const gotoNextPage = (year) => {
-    navigation.navigate("YearStudents", year);
+    navigation.navigate("studentsLists", { year });
   };
 
   const loadData = () => {
@@ -72,7 +66,26 @@ export default function YearList() {
       {yearButtons}
     </View>
   );
-}
+};
+
+const Stack = createStackNavigator();
+
+const StudentsYearList = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="YearList"
+        component={YearList}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="studentsLists"
+        component={StudentsList}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -96,3 +109,5 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
 });
+
+export default StudentsYearList;

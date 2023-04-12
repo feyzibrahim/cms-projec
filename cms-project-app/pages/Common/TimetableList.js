@@ -19,7 +19,7 @@ export default function TimetableList(props) {
       .get(
         `${BASE_URL}/api/timetable/${day.toLowerCase()}?departmentId=${
           user.departmentId
-        }&year=1`,
+        }&semester=1`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
