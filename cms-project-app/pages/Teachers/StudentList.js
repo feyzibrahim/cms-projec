@@ -13,33 +13,19 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import Loading from "../../globalClasses/Loading";
 import Separator from "../Common/Separator";
 
-// export default function DepTeachers({ navigation }) {
-export default function DepTeachers() {
+export default function StudentList({ route }) {
+  const { year } = route.params;
+
   const { user } = useAuthContext();
-  const [teachers, setTeachers] = useState();
+  const [students, setStudents] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
-  // const [isFocused, setIsFocused] = useState(false);
-
-  // const handleFocus = () => setIsFocused(true);
-  // const handleBlur = () => setIsFocused(false);
-
-  // const borderColor = isFocused ? "#777" : "#ccc";
-
-  // const [searchQuery, setSearchQuery] = useState('');
-
-  // const handleSearch = (query) => {
-  //   setSearchQuery(query);
-  // };
-
   const loadData = () => {
+    console.log(year);
     setIsLoading(true);
     axios
       .get(
-        `${BASE_URL}/api/teacher?q=` +
-          user.collegeId +
-          "&departmentId=" +
-          user.departmentId,
+        `${BASE_URL}/api/student?departmentId=${user.departmentId}&year=${year}`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -47,8 +33,9 @@ export default function DepTeachers() {
         }
       )
       .then((res) => {
-        setTeachers(res.data);
+        setStudents(res.data);
         setIsLoading(false);
+        console.log(res.data);
       })
       .catch((error) => {
         console.log(error);
@@ -66,51 +53,20 @@ export default function DepTeachers() {
 
   return (
     <>
-      {/* <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          marginVertical: 10,
-          marginHorizontal: 20,
-          borderColor: borderColor,
-          borderWidth: 1,
-          borderRadius: 10,
-        }}
-      >
-        <Ionicons
-          name="search-outline"
-          size={22}
-          color={borderColor}
-          style={{ paddingLeft: 5 }}
-        />
-        <TextInput
-          placeholder="Search"
-          value={searchQuery}
-          onChangeText={handleSearch}
-          style={{
-            paddingVertical: 10,
-            paddingHorizontal: 10,
-            width: "90%",
-          }}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          b
-        />
-      </View> */}
-      {teachers != null ? (
+      {students != null ? (
         <View style={styles.container}>
           <FlatList
-            data={teachers}
+            data={students}
             keyExtractor={(item) => item._id}
             ItemSeparatorComponent={({ index }) => (
-              <Separator index={index} length={teachers.length} />
+              <Separator index={index} length={students.length} />
             )}
             // extraData={searchQuery}
             renderItem={({ item }) => (
               <TouchableOpacity>
                 <View style={styles.subItem}>
-                  <Text>{item.teacherName}</Text>
-                  <Text>{item.registrationNumber}</Text>
+                  <Text>{item.student_name}</Text>
+                  <Text>{item.mobileNumber}</Text>
                 </View>
               </TouchableOpacity>
             )}
@@ -119,7 +75,7 @@ export default function DepTeachers() {
       ) : (
         <View style={styles.emptyMsg}>
           <Text>Students are empty</Text>
-          <Text>Please ask college admin to add teachers</Text>
+          <Text>Please ask college admin to add students</Text>
         </View>
       )}
     </>

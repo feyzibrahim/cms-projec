@@ -1,7 +1,6 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Studentspage from "../pages/Studentspage";
 import ViewSem from "../pages/Students/Attendance/ViewSem";
-import Internal from "../pages/Internal";
 import TTDayList from "../pages/Common/TTDayList";
 import Setting from "../pages/Setting";
 import CustomDrawer from "../globalClasses/CustomDrawer";
@@ -12,6 +11,8 @@ import Announcement from "../pages/Common/Announcement";
 import Events from "../pages/Common/Events";
 import SubjectList from "../pages/Students/Subjects/SubjectList";
 import FullAssignment from "../pages/Students/Assignments/FullAssignment";
+import InternalMark from "../pages/Students/InternalMarks/InternalMark";
+
 const Drawer = createDrawerNavigator();
 
 export default function StudentStack() {
@@ -116,9 +117,9 @@ export default function StudentStack() {
       />
       <Drawer.Screen
         name="internal"
-        component={Internal}
+        component={InternalMark}
         options={{
-          title: "Internal Marks",
+          title: "Internal Exam Marks",
           drawerIcon: ({ color }) => (
             <Ionicons name="school-outline" size={22} color={color} />
           ),

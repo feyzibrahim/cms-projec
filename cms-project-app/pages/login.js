@@ -8,11 +8,19 @@ import {
   TextInput,
   Dimensions,
   Pressable,
+  TouchableOpacity,
 } from "react-native";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const { login } = useAuthContext();
 
@@ -43,11 +51,22 @@ export default function Login() {
       <View style={styles.textInputView}>
         <TextInput
           placeholder="Password"
+          secureTextEntry={!showPassword}
           value={password}
           onChangeText={(text) => {
             setPassword(text);
           }}
         />
+        <TouchableOpacity
+          onPress={togglePasswordVisibility}
+          style={styles.iconContainer}
+        >
+          <Ionicons
+            name={showPassword ? "eye-outline" : "eye-off-outline"}
+            size={24}
+            color="#888"
+          />
+        </TouchableOpacity>
       </View>
 
       <View style={styles.signIn}>
@@ -67,6 +86,22 @@ export default function Login() {
 }
 
 const styles = StyleSheet.create({
+  inputContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderBottomWidth: 1,
+    borderBottomColor: "#888",
+    marginBottom: 16,
+    margin: 30,
+  },
+  input: {
+    flex: 1,
+    height: 40,
+  },
+  iconContainer: {
+    padding: 8,
+  },
+
   container: {
     flex: 1,
     backgroundColor: "#DFDFDf",
@@ -81,6 +116,9 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     margin: 30,
     alignSelf: "stretch",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   signInView: {
     backgroundColor: "#A38ED1",

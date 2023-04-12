@@ -1,17 +1,19 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import TeacherProfile from "../pages/Teachers/TeacherProfile";
 import TeacherPage from "../pages/Teachers/TeacherPage";
-import Attendence from "../pages/Attendence";
-import Internal from "../pages/Internal";
 import TTDayList from "../pages/Common/TTDayList";
 import Setting from "../pages/Setting";
 import Help from "../pages/Help";
-import YearList from "../pages/Teachers/YearList";
+import StudentsYearList from "../pages/Teachers/StudentsYearList";
 import CustomDrawer from "../globalClasses/CustomDrawer";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import TeacherList from "../pages/Common/TeachersList";
 import Events from "../pages/Common/Events";
 import Announcement from "../pages/Common/Announcement";
+import ViewSem from "../pages/Teachers/Attendance/ViewSem";
+import SubjectList from "../pages/Students/Subjects/SubjectList";
+import AssignmentPage from "../pages/Teachers/AssignmentPage";
+import InternalPage from "../pages/Teachers/InternalExam/InternalPage";
 
 const Drawer = createDrawerNavigator();
 
@@ -62,10 +64,20 @@ export default function TeacherDrawer() {
         }}
       />
       <Drawer.Screen
-        name="subject"
+        name="timetable"
         component={TTDayList}
         options={{
           title: "Time Table",
+          drawerIcon: ({ color }) => (
+            <Ionicons name="book-outline" size={22} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="subjects"
+        component={SubjectList}
+        options={{
+          title: "Subjects",
           drawerIcon: ({ color }) => (
             <Ionicons name="book-outline" size={22} color={color} />
           ),
@@ -83,7 +95,7 @@ export default function TeacherDrawer() {
       />
       <Drawer.Screen
         name="studentsList"
-        component={YearList}
+        component={StudentsYearList}
         options={{
           title: "Students",
           drawerIcon: ({ color }) => (
@@ -92,8 +104,18 @@ export default function TeacherDrawer() {
         }}
       />
       <Drawer.Screen
-        name="Attendencepage"
-        component={Attendence}
+        name="assignment"
+        component={AssignmentPage}
+        options={{
+          title: "Assignments",
+          drawerIcon: ({ color }) => (
+            <Ionicons name="duplicate-outline" size={22} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Attendance"
+        component={ViewSem}
         options={{
           title: "Add Attendance",
           drawerIcon: ({ color }) => (
@@ -107,7 +129,7 @@ export default function TeacherDrawer() {
       />
       <Drawer.Screen
         name="internal"
-        component={Internal}
+        component={InternalPage}
         options={{
           title: "Internal Marks",
           drawerIcon: ({ color }) => (

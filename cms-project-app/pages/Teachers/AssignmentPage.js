@@ -7,13 +7,15 @@ import {
   FlatList,
 } from "react-native";
 import axios from "axios";
-import Loading from "../../../globalClasses/Loading";
-import { useAuthContext } from "../../../hooks/useAuthContext";
+import Loading from "../../globalClasses/Loading";
+import { useAuthContext } from "../../hooks/useAuthContext";
 import { MaterialIcons } from "@expo/vector-icons";
-import { BASE_URL } from "../../../globalClasses/Config";
+import { BASE_URL } from "../../globalClasses/Config";
 import moment from "moment";
+import AssignmentForm from "./AssignmentForm";
+import { createStackNavigator } from "@react-navigation/stack";
 
-export default function FullAssignment() {
+const FullAssignment = ({ navigation }) => {
   const [assignments, setAssignments] = useState();
   const { user } = useAuthContext();
   const [isLoading, setIsLoading] = useState(false);
@@ -21,7 +23,7 @@ export default function FullAssignment() {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(`${BASE_URL}/api/assignments/semester/643432e2599ccaa0f668f0b5`, {
+      .get(`${BASE_URL}/api/assignments/teacher/${user.dataAccessId}`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -35,13 +37,16 @@ export default function FullAssignment() {
         setIsLoading(false);
       });
   }, []);
+
   if (isLoading) {
     return <Loading />;
   }
+
   return (
     <View style={styles.VerticalScroll}>
       <FlatList
         data={assignments}
+        keyExtractor={(item) => item._id}
         renderItem={({ item }) => {
           return (
             <TouchableOpacity>
@@ -78,13 +83,53 @@ export default function FullAssignment() {
           );
         }}
       />
+      <View style={{ margin: 20 }}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("CreateAssignment");
+          }}
+        >
+          <Text
+            style={{
+              backgroundColor: "#A38ED1",
+              paddingVertical: 20,
+              paddingHorizontal: 20,
+              borderRadius: 10,
+              textAlign: "center",
+            }}
+          >
+            New Assignment
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
-}
+};
+
+const Stack = createStackNavigator();
+
+const AssignmentPage = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="ListFull"
+        component={FullAssignment}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="CreateAssignment"
+        component={AssignmentForm}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
+};
+
 const styles = StyleSheet.create({
   VerticalScroll: {
     paddingVertical: 10,
     paddingHorizontal: 10,
+    flex: 1,
   },
   subTitle: {
     fontWeight: "bold",
@@ -113,3 +158,5 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
+export default AssignmentPage;

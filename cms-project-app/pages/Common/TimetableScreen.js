@@ -14,7 +14,7 @@ export default function TimetableScreen() {
     setIsLoading(true);
     axios
       .get(
-        `${BASE_URL}/api/timetable?departmentId=${user.departmentId}&year=1`,
+        `${BASE_URL}/api/timetable?departmentId=${user.departmentId}&semester=1`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
